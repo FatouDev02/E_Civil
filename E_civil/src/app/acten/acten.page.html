@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <!-- <ion-title>Ajouter une région</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img src="../../assets/images/embleme.png" slot="start" style="width: 70px; height: 70px;">
+    </ion-img>
+    <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
+    <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #ffffff;"></ion-icon>
+   
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="row">
+
+    <div id="card" class="shadow-lg p-1 mb-2 bg-white rounded" >
+      
+
+      <h1 >Acte de   <span style="color: #ACBE11;"> Naissance</span>  <br>
+       
+      </h1>
+     
+    </div>
+
+  </div>
+  
+
+  <div class="container" id="mere">
+    <div class="brand-logo"> <img src="../../assets/images/add.png" alt=""> </div>
+
+    <form (ngSubmit)="addacten()" autocomplete="off" >
+
+      <div class="box">
+        <div class="activite-details">
+          <div class="input-box mb-3">
+            <Label for="inputs" >Nom *</Label>
+            <input type="text" [(ngModel)]="nom"  id="inputs" name="nom" placeholder="Nom de l'enfant" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs"> Prenom *</Label>
+            <input type="text" [(ngModel)]="prenom"  id="inputs" name="prenom" placeholder="Nom de l'enfant" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs" >Nom et Prénom du Père *</Label>
+            <input type="text" [(ngModel)]="nompere"  id="inputs" name="nompere" placeholder="Nom et prenom" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs" >Nom et Prénom de la mère *</Label>
+            <input type="text" [(ngModel)]="nommere"  id="inputs" name="nommere" placeholder="Nom et prenom" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs" >Profession du Père *</Label>
+            <input type="text" [(ngModel)]="profpere"  id="inputs" name="profpere" placeholder="Profession" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <label for="inputs" class="form-label"> Profession de la mère *</label>
+            <input type="text" id="inputs" class="form-control" name="profmere"  [(ngModel)]="profmere" placeholder="Profession"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <label for="inputs" class="form-label"> Date de naissance de l'enfant *</label>
+            <input type="date" id="inputs" class="form-control" name="datedenaissance"  [(ngModel)]="datedenaissance"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs">Lieu de naissance *</Label>
+            <input type="text" [(ngModel)]="lieudenaissance"  id="inputs" name="lieudenaissance" placeholder="Lieu" class="form-control" autocomplete="off"  required>
+          </div>
+
+         
+          <div class="input-box mb-3">
+            <Label for="inputs" >Numéro du Volet de l'hopital *</Label>
+            <input type="text" [(ngModel)]="numvolet"  id="inputs" name="numvolet" placeholder="002435634" class="form-control" autocomplete="off"  required>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="button">
+        <input class="but" type="submit" value="Envoyer">
+      </div>
+    </form>
+
+  </div>
+
+</ion-content>

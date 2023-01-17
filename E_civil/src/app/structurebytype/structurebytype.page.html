@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <!-- <ion-title style="text-align: center;">Structures administratives</ion-title> -->
+    <ion-img src="../../assets/images/embleme.png" slot="start" style="width: 80px; height: 80px;">
+    </ion-img>
+    <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
+    <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #ffffff;"></ion-icon>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+
+    <div id="card" class="row shadow-lg  mb-1 bg-white rounded" >
+     
+      <div class="col-lg-4 col-8">
+        <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-start">
+         
+    
+       <button class="btn buttonColor" type="button" routerLink="/dash/addstructure" >Ajouter +  </button>
+
+    
+        </div>
+    
+      </div>
+      <div  class="col-lg-4 col-8" >
+      
+
+        <h1 >Mairies  <span style="color: #ACBE11;">Du Mali </span>  <br>
+         
+        </h1>
+       
+      </div>
+      
+     
+      
+    </div>
+    
+  </div>
+
+  <div class="container" id="cont2">
+      <div class="row">
+        <div class="col-12 col-md-5" *ngFor= "let all of allstruct ">
+          <div class="card shadow-soft border-light" id="firstcard"> <!-- Here I create a New Div with class name card -->
+            
+            <div class="card_info"> <!-- Here I create a New Div for user info with class name card_info -->
+            </div>
+            <div class="row">
+              <div class="card_title col-12 col-md-8">
+                <h5>  {{all.nom}}</h5>
+
+              </div>
+              <div class="col-12 col-md-3">
+                <button class="btnadd"  routerLink="/dash/acten">+</button>
+              </div>
+            </div>
+         </div>
+
+
+          <div class="card shadow-soft  border-light" id="mycard"> <!-- Here I create a New Div with class name card -->
+            <div class="row"  style="margin: 0 5px;">
+              <img src="../../assets/images/drapeau.png" alt="">
+  
+            
+            </div>
+           
+         </div>
+
+        </div>
+        
+      </div>
+  </div>
+  </ion-content>
+  

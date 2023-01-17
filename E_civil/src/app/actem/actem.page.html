@@ -1,0 +1,197 @@
+
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <!-- <ion-title>Ajouter une région</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-img src="../../assets/images/embleme.png" slot="start" style="width: 70px; height: 70px;">
+    </ion-img>
+    <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
+    <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #ffffff;"></ion-icon>
+   
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="row">
+
+    <div id="card" class="shadow-lg p-1 mb-2 bg-white rounded" >
+      
+
+      <h1 >Acte de   <span style="color: #ACBE11;"> Mariage</span>  <br>
+       
+      </h1>
+     
+    </div>
+
+  </div>
+  
+
+  <div class="container" id="mere">
+    <div class="brand-logo"> <img src="../../assets/images/add.png" alt=""> </div>
+
+    <form  autocomplete="off" >
+
+      <div class="box">
+        <div class="activite-details">
+          <div class="input-box mb-3">
+            <Label for="inputs" >Nom et Prénom de l'homme*</Label>
+            <input type="text" [(ngModel)]="nomh"  id="inputs" name="nomh" placeholder="Nom et prenom" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs"> Nom et Prénom de la femme*</Label>
+            <input type="text" [(ngModel)]="nomF"  id="inputs" name="nomF" placeholder="Nom et prenom" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs" >Profession de l'homme *</Label>
+            <input type="text" [(ngModel)]="proh"  id="inputs" name="proh" placeholder="Profession" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs" >Profession de la femme *</Label>
+            <input type="text" [(ngModel)]="prof"  id="inputs" name="prof" placeholder="Profeesion" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs" >Date de naissance de l'homme *</Label>
+            <input type="date" [(ngModel)]="datenh"  id="inputs" name="datenh" class="form-control" autocomplete="off"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <label for="inputs" class="form-label"> Date de naissance de la femme *</label>
+            <input type="date" id="inputs" class="form-control" name="datenf"  [(ngModel)]="datenf"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <label for="inputs" class="form-label">Témoin de l'homme *</label>
+            <input type="text" id="inputs" class="form-control" name="temoinh"  placeholder="Témoin " [(ngModel)]="temoinh"  required>
+          </div>
+
+          <div class="input-box mb-3">
+            <Label for="inputs">Témoin de la femme *</Label>
+            <input type="text" [(ngModel)]="temoinf"  id="inputs" name="temoinf" placeholder="Témoin" class="form-control" autocomplete="off"  required>
+          </div>
+
+         
+          <div class="input-box mb-3">
+            <Label for="inputs" >Date prévu pour le mariage*</Label>
+            <input type="date" [(ngModel)]="datemariage"  id="inputs" name="datemariage"  class="form-control" autocomplete="off"  required>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="button">
+        <input class="but" type="submit" value="Envoyer">
+      </div>
+    </form>
+
+  </div>
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>actem</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div class="container">
+    <div class="brand-logo"> <img src="../../assets/images/add.png" alt=""> </div>
+    <div class="brand-title">Acte de Mariage</div>
+    <div class="inputs">
+      
+       <label>Nom et Prénom de l'homme</label>
+      <input type="email" placeholder="example@test.com" />
+      <label>Nom et Prénom de la femme</label>
+      <input type="email" placeholder="example@test.com" />
+      <label>Date de naissance homme</label>
+      <input type="email" placeholder="example@test.com" />
+      <label>Date de naissance femme</label>
+      <input type="email" placeholder="example@test.com" />
+      <label>Profession de l'homme</label>
+      <input type="email" placeholder="example@test.com" />
+      <label>Profession de la femme</label>
+      <input type="email" placeholder="example@test.com" />
+      <label>Témoin de l'homme</label>
+      <input type="email" placeholder="example@test.com" />
+      <label>Témoin de la femme</label>
+      <input type="email" placeholder="example@test.com" />
+
+      
+      
+      <button type="submit">Envoyer</button>
+    </div>
+  </div>
+</ion-content> -->
