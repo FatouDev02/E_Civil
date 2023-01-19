@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { isDeepStrictEqual } from 'util';
 import { StructService } from '../Services/struct.service';
 
 @Component({
@@ -8,20 +11,99 @@ import { StructService } from '../Services/struct.service';
 })
 export class StrucuturesPage implements OnInit {
   struct: any;
+  type:any;
+  description:any
+  mystruct:any
+  length:any
+  dem:any
 
-  constructor(private structservice:StructService) { }
+  idstruct:any;
+  constructor(private structservice:StructService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
+    
     this.ListStruct();
   }
+
+  // Listdembystruct(){
+
+  //   this.structservice.getdemandebytypestruct().subscribe(
+  //     (data)=>{
+  //         this.struct=data
+  //         console.log(this.struct)
+  //     }
+  //   );
+  // }
+  OnClick(id:any){
+    this.idstruct  = this.route.snapshot.params['id']
+    console.log(this.idstruct)
+    this.structservice.getdemandebytypestruct(id).subscribe(
+          (data)=>{
+              this.dem=data
+              console.log(this.dem)
+          }
+        );
+    
+
+  }
+  
 
   ListStruct(){
     this.structservice.getall().subscribe(
       (data)=>{
           this.struct=data
+
           console.log(this.struct)
       }
     );
   }
+   //Pop up enregistrement reussi
+   MessageSuccess(){
+    Swal.fire({
+      title: "Nouvelle Structure a été envoyé avec  succes",
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: '#ACBE11',
+      heightAuto: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigateByUrl('/dash/strucutures', {skipLocationChange: true}).then(() => {
+          this.router.navigate(["/dash/strucutures"])
+        })
+
+          // this.actualisePagApresSuppresion()
+          // this.router.navigateByUrl('/dashboard/personnel-externe')
+          // window.location.reload();
+    }else if (result.isDenied) {
+      this.router.navigateByUrl('/dash/strucutures')
+    }
+
+  });
+
+  }
+
+
+  AddStruct(){
+    var structt=[{
+      'type':this.type,
+      'description':this.description,
+      
+    }]
+    const data=new FormData()
+    data.append('structt',JSON.stringify(structt).slice(1,JSON.stringify(structt).lastIndexOf(']')))
+    this.structservice.add(structt).subscribe(
+      (data)=>{
+          this.mystruct=data
+          this.length=this.mystruct.length
+          console.log(this.length)
+          console.log(this.mystruct)
+          this.MessageSuccess();
+         // this.router.navigate(['/dash/strucutures'])
+
+      }
+    );
+  
+  }
+
   
 }

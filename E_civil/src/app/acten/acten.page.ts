@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { ActenService } from '../Services/acten.service';
+import { StructService } from '../Services/struct.service';
 
 @Component({
   selector: 'app-acten',
@@ -20,10 +21,18 @@ export class ActenPage implements OnInit {
   datedenaissance: any;
   lieudenaissance: any;
   a: any;
+  idstruct:any
+  id:any
 
-  constructor( private router:Router,private actenservice:ActenService) { }
+  constructor( private router:Router,private actenservice:ActenService,
+    private route:ActivatedRoute,
+    private structservice:StructService) { }
 
   ngOnInit() {
+    const idstruct = this.route.snapshot.params['id']
+    this.id = idstruct
+    console.log("id de la structure : " + idstruct)
+
   }
           //Pop up enregistrement reussi
           MessageSuccess(){
@@ -64,18 +73,19 @@ export class ActenPage implements OnInit {
               'lieudenaissance':this.lieudenaissance,
             }]
             const data=new FormData()
-          // data.append('file',this.fichier)
-        
+           // data.append('file',this.fichier)
+            
             data.append('acten',JSON.stringify(acten).slice(1,JSON.stringify(acten).lastIndexOf(']')))
-            this.actenservice.add(this.numvolet,acten).subscribe(
+            this.actenservice.add(this.numvolet,acten,this.idstruct).subscribe(
               (data)=>{
                //this.myform.reset()
                this.a=data
                 console.log(this.a)
                 this.MessageSuccess();
-               // this.router.navigate(['/pays'])
+               //this.router.navigate(['/dash/structures'])
               }
             );
            }
   
+           
 }

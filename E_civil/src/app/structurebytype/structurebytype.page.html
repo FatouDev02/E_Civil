@@ -42,8 +42,13 @@
   </div>
 
   <div class="container" id="cont2">
-      <div class="row">
+      <div class="row" >
+        <div *ngIf="length == 0"> 
+          <p>riennn </p>
+         </div>
         <div class="col-12 col-md-5" *ngFor= "let all of allstruct ">
+         
+
           <div class="card shadow-soft border-light" id="firstcard"> <!-- Here I create a New Div with class name card -->
             
             <div class="card_info"> <!-- Here I create a New Div for user info with class name card_info -->
@@ -54,7 +59,7 @@
 
               </div>
               <div class="col-12 col-md-3">
-                <button class="btnadd"  routerLink="/dash/acten">+</button>
+                <button class="btnadd" [routerLink]="['/dash/'+type+'/'+all.id]">+</button>
               </div>
             </div>
          </div>

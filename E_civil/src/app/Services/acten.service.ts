@@ -17,7 +17,7 @@ env=environment
     return this.http.get(`${this.env.api}/Ecivil/acten/get/${id}`);
   }
 
-  add(numvolet:any,acten:any):Observable<any>{
+  add(numvolet:any,acten:any,id:any):Observable<any>{
     const data:FormData=new FormData();
     data.append('acten', JSON.stringify(acten).slice(1,JSON.stringify(acten).lastIndexOf(']')));
     return this.http.post(`${this.env.api}/ecivil/acten/add/${numvolet}`,data);

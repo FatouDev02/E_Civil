@@ -18,5 +18,22 @@ export class StructService {
     return this.http.get(`${this.env.api}/ecivil/struct/liststructbytype/${id}`)
 
   }
+
+  getdemandebytypestruct(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/listdemandetypestruc/${id}`)
+
+  }
+  getdemandebyid(id:any){
+    return this.http.get(`${this.env.api}/ecivil/acten//getdemandebyid/${id}`)
+
+  }
+  add(structt:any): Observable<any>{
+    const data:FormData=new FormData();
+
+    data.append('structt', JSON.stringify(structt).slice(1,JSON.stringify(structt).lastIndexOf(']')));
+    return this.http.post(`${this.env.api}/ecivil/struct/add`,data)
+
+
+  }
   
 }

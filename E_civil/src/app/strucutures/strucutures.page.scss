@@ -5,6 +5,41 @@
     --background:linear-gradient(160deg, #D9D9D9 0%,  #ACBE11 100%);
 }
 
+#cont2{
+    // background-image: linear-gradient(160deg, #ACBE11 0%, #D9D9D9 100%);
+     margin: 0;
+     border-radius: 9px; 
+     width: 100% !important; 
+     margin-bottom: 10px;
+    // margin: auto 0 !important;
+     
+  } 
+ #cardpopup {
+     border: 2px solid #ACBE11;
+     border-radius: 8px;
+     max-width: 250px;
+     text-align: center;
+     margin-top: 20px;
+     margin-right: 5px;
+     margin-left: 5px;
+  }
+ .card_img {
+     width: 80px;
+     height: 80px;
+     overflow: hidden;
+     border-radius: 100%;
+     margin: -20px auto 0;
+ }
+ .card_img img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+ .card_info {
+     padding-bottom: 10px;
+ 
+ }
+
 
 
 #cont2{
@@ -31,7 +66,7 @@
     text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.55);
     margin-top: 6px;
  }
- .card_img {
+ .cardimg {
     width: 80px;
     height: 80px;
     overflow: hidden;

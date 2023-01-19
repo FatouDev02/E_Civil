@@ -12,6 +12,7 @@
 </ion-header>
 
 <ion-content>
+
   <div class="row">
 
     <div id="card" class="row shadow-lg  mb-1 bg-white rounded" >
@@ -20,33 +21,108 @@
         <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-start">
          
     
-       <button class="btn buttonColor" type="button" routerLink="/dash/addstructure" >Ajouter  </button>
+       <!-- <button class="btn buttonColor" type="button" routerLink="/dash/addstructure" >Ajouter  </button> -->
+
+    <!-- //////////poppppppppppppppppppppppppppp -->
+
+    <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form">
+      Ajouter +
+    </button>
+    
+    
+  <!-- Modal Content -->
+  <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card  shadow-soft border-light p-4">
+                   
+                    <button type="button" class="btn-close" aria-label="Close"  data-dismiss="modal-form"> 
+                      <span aria-hidden="true">&times;</span>
+
+                    </button>
+                   
+                    <div class="card-header text-center pb-0">
+                        <h2 class="h4">E-civil</h2>
+                        <span>Ajouter une Nouvelle Structure</span>   
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="AddStruct()"  class="mt-4">
+                           <!-- Form -->
+                           <div class="form-group">
+                            <label for="exampleInputPassword6">Type de Struct</label>
+                            <div class="input-group mb-4">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
+                                </div>
+                                <input class="form-control" [(ngModel)]="type" name="type" placeholder="Titre de l'activité" type="text"  required>
+                            </div>
+                        </div>
+                        <!-- End of Form -->
+                           
+                          
+                            <div class="form-group">
+                                <!-- Form -->
+                            <div class="form-group">
+                              <label for="exampleInputIcon3">Description</label>
+                              <div class="input-group mb-4">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                  </div>
+                                  <input class="form-control" [(ngModel)]="description" name="description" placeholder="Donnez une description a l'activité" type="text" >
+                              </div>
+                          </div>
+                          <!-- End of Form -->
+                               
+                            </div>
+                            <button type="submit" class="btn btn-block btn-primary">Enregistrer</button>
+                        </form>
+  
+                        <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
+                            <span class="font-weight-normal">
+                                Not registered?
+                                <a routerLink="/allactivity" class="font-weight-bold">Afficher tout les activités</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- End of Modal Content -->
+  
         </div>
     
       </div>
+
       <div  class="col-lg-4 col-12" >
       
 
-        <h1 >Structures  <span style="color: #ACBE11;">administratives </span>  <br>
+        <h1 >Structure  <span style="color: #ACBE11;">administratives </span>  <br>
          
         </h1>
        
       </div>
 
     </div>
-    
+  
+
+
   </div>
 
   <div class="container" id="cont2">
       <div class="row">
         <div class="col-12 col-md-6"  *ngFor= "let s of struct ">
-         
+         <div *ngIf="length == 0"> 
+          <p>riennn </p>
+         </div>
           <div class="card shadow-soft  border-light" id="mycard"  > <!-- Here I create a New Div with class name card -->
             <div class="row"  style="margin: 0 5px;">
 
 
               <div class="col-12 col-md-4">
-                <div class="card_img"> <!-- Here I create a New Div for image with class name card_img -->
+                <div class="cardimg"> <!-- Here I create a New Div for image with class name card_img -->
                   <img src="../../assets/images/embleme.png" alt="user-image">
                </div>
                </div>
@@ -58,9 +134,56 @@
                                   </div>
               </div>
               <p style="text-align: justify;">{{s.description}}
-               </p>
-               <button class="card_btn"   [routerLink]="['/dash/structurebytype',s.id]"> ICI</button>
-  
+
+              </p>
+
+               <!-- <button class="card_btn"   [routerLink]="['/dash/structurebytype',s.id]"> ICI</button> -->
+               <button  type="button" class="card_btn" 
+               (click)="OnClick(s.id)"
+               data-bs-toggle="modal" data-bs-target="#modal-formm"> ICI</button>
+            <!-- Modal Content -->
+            <div class="modal fade" id="modal-formm" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body p-0">
+                          <div class="card  shadow-soft border-light p-4">
+                             
+                              <button type="button" class="btn-close" aria-label="Close"  data-dismiss="modal-form"> 
+                                <span aria-hidden="true">&times;</span>
+          
+                              </button>
+                             
+                              <div class="card-header text-center pb-0">
+                                  <h2 class="h4">E-civil</h2>
+                                  <span>Choisissez un type de  demande de declarations</span>   
+                              </div>
+                              <div class="card-body">
+                                <div class="container" id="cont2">
+
+                                  <div class="row" >
+                                    <div class="col-4 col-md-4" *ngFor= "let d of dem " >
+                  
+                                      <div class="card shadow-soft border-black" id="cardpopup"> <!-- Here I create a New Div with class name card -->
+                                        <div class="card_img"> <!-- Here I create a New Div for image with class name card_img -->
+                                            <img src="../../assets/images/addfile.png" alt="user-image">
+                                        </div>
+                                        <div class="card_info"> <!-- Here I create a New Div for user info with class name card_info -->
+                                            <a [routerLink]="['/dash/structurebytype',s.id,d.type]" ><h4>{{d.name}}</h4></a>
+                                        </div>
+                                     </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+            
+                                 
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <!-- End of Modal Content -->
             
             </div>
            
@@ -71,5 +194,10 @@
 
       </div>
   </div>
+
+
+
+
+  
   </ion-content>
   

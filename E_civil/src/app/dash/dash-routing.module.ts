@@ -54,32 +54,32 @@ const routes: Routes = [
         loadChildren: () => import('../addstructure/addstructure.module').then( m => m.AddstructurePageModule)
       },
       {
-        path: 'structurebytype/:id',
+        path: 'structurebytype/:id/:type',
         loadChildren: () => import('../structurebytype/structurebytype.module').then( m => m.StructurebytypePageModule)
       },
       
       {
-        path: 'acten',
+        path: 'Acten/:id',
         loadChildren: () => import('../acten/acten.module').then( m => m.ActenPageModule)
       },
       {
-        path: 'actem',
+        path: 'Actem/:id',
         loadChildren: () => import('../actem/actem.module').then( m => m.ActemPageModule)
       },
       {
-        path: 'acte-d',
+        path: 'Acted/:id',
         loadChildren: () => import('../acte-d/acte-d.module').then( m => m.ActeDPageModule)
       },
       {
-        path: 'casier',
+        path: 'Casier/:id',
         loadChildren: () => import('../casier/casier.module').then( m => m.CasierPageModule)
       },
       {
-        path: 'residence',
+        path: 'Residence/:id',
         loadChildren: () => import('../residence/residence.module').then( m => m.ResidencePageModule)
       },
       {
-        path: 'nationnalite',
+        path: 'Nationnalite/:id',
         loadChildren: () => import('../nationnalite/nationnalite.module').then( m => m.NationnalitePageModule)
       },
       {
