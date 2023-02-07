@@ -16,7 +16,6 @@
           --background: var(--ion-color-warning-contrast) !important;
           --color: #FFFFFF !important;
           letter-spacing: 2px;
-          font-family: myfon1;
   
   
         }
@@ -29,11 +28,11 @@
         }
   
         .nomUtilisateur {
-          font-family: myfon1;
           font-style: normal;
-          font-size: large;
+          font-size: 2em;
           font-weight: bolder;
           color: #ACBE00;
+          text-transform: uppercase;
         }
         img{
             max-width: 70%;
@@ -41,7 +40,6 @@
         }
   
         .statusUtilisateur {
-          font-family: myfon1;
           font-style: normal;
           font-weight: bolder;
           font-size: medium;
@@ -49,7 +47,7 @@
         }
   
         .lienPage {
-          font-family: myfon1;
+          
           font-weight: 600;
           font-size: medium;
           letter-spacing: 2px;

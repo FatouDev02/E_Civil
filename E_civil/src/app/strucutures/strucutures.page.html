@@ -1,14 +1,28 @@
 <ion-header>
   <ion-toolbar class="new-background-color">
+    <ion-title style="text-align: center;" class="title mesclass">Republique du Mali <br>
+      <span class="mesclass" style="color: #5ba820;">Un peuple</span>-
+      <span class="mesclass" style="color: hwb(60 8% 0%);">Un but</span>-
+      <span class="mesclass" style="color: #dc0000;">Une foi</span>
+     </ion-title>
+     
     <!-- <ion-title style="text-align: center;">Structures administratives</ion-title> -->
-    <ion-img src="../../assets/images/embleme.png" slot="start" style="width: 80px; height: 80px;">
-    </ion-img>
-    <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
+    <!-- <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
     <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #ffffff;"></ion-icon>
+     -->
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button> </ion-menu-button>
     </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button ion-button navPop>
+        <ion-back-button text="" icon="arrow-back"></ion-back-button>
+        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
+    </ion-img> 
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
@@ -17,7 +31,7 @@
 
     <div id="card" class="row shadow-lg  mb-1 bg-white rounded" >
      
-      <div class="col-lg-4 col-12">
+      <div class="col-lg-4 col-10">
         <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-start">
          
     
@@ -25,9 +39,9 @@
 
     <!-- //////////poppppppppppppppppppppppppppp -->
 
-    <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form">
-      Ajouter +
-    </button>
+          <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form">
+            Ajouter +
+          </button>
     
     
   <!-- Modal Content -->
@@ -37,7 +51,7 @@
             <div class="modal-body p-0">
                 <div class="card  shadow-soft border-light p-4">
                    
-                    <button type="button" class="btn-close" aria-label="Close"  data-dismiss="modal-form"> 
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"  > 
                       <span aria-hidden="true">&times;</span>
 
                     </button>
@@ -50,12 +64,12 @@
                         <form (ngSubmit)="AddStruct()"  class="mt-4">
                            <!-- Form -->
                            <div class="form-group">
-                            <label for="exampleInputPassword6">Type de Struct</label>
+                            <label for="exampleInputPassword6">Type de Structure</label>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
+                                    <span class="input-group-text"><span class="fas fa-envelope"></span></span>
                                 </div>
-                                <input class="form-control" [(ngModel)]="type" name="type" placeholder="Titre de l'activité" type="text"  required>
+                                <input class="form-control" [(ngModel)]="type" name="type" placeholder="Mairies/Commissariats/Tribunaux" type="text"  required>
                             </div>
                         </div>
                         <!-- End of Form -->
@@ -69,7 +83,7 @@
                                   <div class="input-group-prepend">
                                       <span class="input-group-text"><span class="fas fa-envelope"></span></span>
                                   </div>
-                                  <input class="form-control" [(ngModel)]="description" name="description" placeholder="Donnez une description a l'activité" type="text" >
+                                  <input class="form-control" [(ngModel)]="description" name="description" placeholder="Donnez une description à cette structure" type="text" >
                               </div>
                           </div>
                           <!-- End of Form -->
@@ -78,12 +92,12 @@
                             <button type="submit" class="btn btn-block btn-primary">Enregistrer</button>
                         </form>
   
-                        <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
+                        <!-- <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
                             <span class="font-weight-normal">
                                 Not registered?
                                 <a routerLink="/allactivity" class="font-weight-bold">Afficher tout les activités</a>
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -99,7 +113,7 @@
       <div  class="col-lg-4 col-12" >
       
 
-        <h1 >Structure  <span style="color: #ACBE11;">administratives </span>  <br>
+        <h1 >Structures  <span style="color: #ACBE11;">Administratives </span>  <br>
          
         </h1>
        
@@ -115,7 +129,7 @@
       <div class="row">
         <div class="col-12 col-md-6"  *ngFor= "let s of struct ">
          <div *ngIf="length == 0"> 
-          <p>riennn </p>
+          <p>Aucune Structure Enregistrée</p>
          </div>
           <div class="card shadow-soft  border-light" id="mycard"  > <!-- Here I create a New Div with class name card -->
             <div class="row"  style="margin: 0 5px;">
@@ -154,7 +168,7 @@
                               </button>
                              
                               <div class="card-header text-center pb-0">
-                                  <h2 class="h4">E-civil</h2>
+                                  <h2 class="h4">E-Sebenw</h2>
                                   <span>Choisissez un type de  demande de declarations</span>   
                               </div>
                               <div class="card-body">
@@ -163,13 +177,14 @@
                                   <div class="row" >
                                     <div class="col-4 col-md-4" *ngFor= "let d of dem " >
                   
-                                      <div class="card shadow-soft border-black" id="cardpopup"> <!-- Here I create a New Div with class name card -->
-                                        <div class="card_img"> <!-- Here I create a New Div for image with class name card_img -->
+                                      <div class="card shadow-soft border-black" id="cardpopup"> 
+                                        <div class="card_img">
                                             <img src="../../assets/images/addfile.png" alt="user-image">
                                         </div>
-                                        <div class="card_info"> <!-- Here I create a New Div for user info with class name card_info -->
-                                            <a [routerLink]="['/dash/structurebytype',s.id,d.type]" ><h4>{{d.name}}</h4></a>
+                                        <div class="card_info"> 
+                                            <a [routerLink]="['/dash/structurebytype',idStructure,d.type]" ><h4>{{d.name}}</h4></a>
                                         </div>
+
                                      </div>
                                     </div>
                                   </div>

@@ -8,13 +8,16 @@ import { DashPageRoutingModule } from './dash-routing.module';
 
 import { DashPage } from './dash.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashPageRoutingModule
+    DashPageRoutingModule,
   ],
   declarations: [DashPage]
+
+  
 })
 export class DashPageModule {}

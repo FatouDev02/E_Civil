@@ -1,8 +1,7 @@
 
 
-
 .new-background-color{
-  --background:linear-gradient(160deg, #D9D9D9 0%,  #ACBE11 100%);
+  --background-color:#ffffff;
 }
 
 
@@ -29,7 +28,7 @@
  
 }
 
-#mycard{
+.mycard{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 2px solid #000000;
   margin-top: 10px;
@@ -68,3 +67,23 @@
            font-size: xx-large;
 }
 
+.leaflet-marker-icon{
+  width: 20px !important;
+}
+
+.leaflet-marker-pane img{
+  width: 20px !important;
+}
+
+@media (max-width: 385px) {
+  .mesclass{
+    font-size: .8em;
+    
+  }
+}
+@media (max-width: 185px) {
+  .mesclass{
+    font-size: .6em;
+    
+  }
+}

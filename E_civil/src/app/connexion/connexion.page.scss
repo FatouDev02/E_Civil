@@ -79,7 +79,7 @@ input {
     outline: 0;
     padding: .5rem 1rem;
 
-    &[type="email"],
+    &[type="text"],
     &[type="password"] {
       width: 100%;
     }
@@ -127,14 +127,14 @@ a {
     background-color: transparent;
     text-align: center;
 
-    &[type="email"],
+    &[type="text"],
     &[type="password"] {
       background-repeat: no-repeat;
       background-size: 1.5rem;
       background-position: 1rem 50%;
     }
 
-    &[type="email"] {
+    &[type="text"] {
       background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M256.017 273.436l-205.17-170.029h410.904l-205.734 170.029zm-.034 55.462l-205.983-170.654v250.349h412v-249.94l-206.017 170.245z"/></svg>');
     }
 
@@ -161,7 +161,7 @@ a {
    // padding: 10px ;
     margin-top: 10px ;
     .img-wrapper{
-      width: 120px;
+      width: 95px;
       height: 120px;
       overflow: hidden;
       margin: 0 auto;

@@ -1,64 +1,56 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { GoogleMap } from '@capacitor/google-maps';
-import { environment } from 'src/environments/environment';
-import { CapacitorGoogleMaps } from '@capacitor-community/capacitor-googlemaps-native';
-
+import * as L from 'leaflet';
+import { Geolocation } from "@ionic-native/geolocation/ngx";
+import {Icon} from 'leaflet'
 @Component({
   selector: 'app-allstructure',
   templateUrl: './allstructure.page.html',
   styleUrls: ['./allstructure.page.scss'],
+  providers: [
+    Geolocation
+  ]
 })
 export class AllstructurePage implements OnInit {
-
+  map!: L.Map;
  
-  constructor() {
-    // CapacitorGoogleMaps.initialize({
-    //   key: environment.mapsKey
-    // });
-   }
+  constructor(private geolocation:Geolocation) {}
 
   ngOnInit(): void {
+   
   }
-
-  @ViewChild('map')mapRef!: ElementRef;
-  map!: GoogleMap;
 ionViewDidEnter(){
-  this.createMap();
-}
-async createMap(){
-  this.map = await GoogleMap.create({
-     /**
-     * A unique identifier for the map instance.
-     */
-     id: 'my-map',
-     /**
-      * The Google Maps SDK API Key.
-      */
-     apiKey: environment.mapsKey,
-     
-     /**
-      * The DOM element that the Google Map View will be mounted on which determines size and positioning.
-      */
-     element: this.mapRef.nativeElement,
-     /**
-      * Destroy and re-create the map instance if a map with the supplied id already exists
-      * @default false
-      */
-   //  forceCreate: true,
-     /**
-      * The initial configuration settings for the map.
-      */
-     config: {
-      center:{
-        lat:33.6,
-        lng:-117.9,
-      },
-      zoom:8,
-      
-     }
+  //Afficher la crate dans l'element avec l'id mapId 
+  this.map=L.map('mapId').setView([12.72686,-8.05997],6);
+	
+  //permet d'afficher la vue en plusieur forme de map
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }   ).addTo(this.map);
 
-  })
+      //creer un marqueur
+      const markPoint=L.marker([12.72686,-8.05997],)
+      
+      this.map.addLayer(markPoint); 
 }
+
+
+// getCurrentPosition() {
+//   this.geolocation.getCurrentPosition().then((resp) => {
+//     console.log(resp.coords.latitude, resp.coords.longitude);
+
+//   }).catch((error) => {
+//     console.log('Error getting location', error);
+//   });
+// }
+
+// watchPosition(){
+//   let watch = this.geolocation.watchPosition();
+// watch.subscribe((data: any) => {
+//  // data can be a set of coordinates, or an error (if an error occurred).
+//  // data.coords.latitude
+//  // data.coords.longitude
+// });
+// }
 
 
 }

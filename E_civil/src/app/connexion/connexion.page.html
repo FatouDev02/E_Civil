@@ -4,7 +4,6 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
   <!DOCTYPE html>
   <html lang="en">
   <!-- <head>
@@ -22,9 +21,9 @@
       <div class="register">
         <div class="row" style="margin: 10px 10px;">
 
-          <div id="card" class="shadow-lg  bg-black rounded" >
+          <div id="card" class="shadow-lg  bg-white " >
             <div class="img-wrapper">
-              <img src="../../assets/images/logo.png" alt="" id="svg" class="site__logo" width="80" height="100%">
+              <img src="../../assets/images/logo.jpg" alt="" id="svg" class="site__logo" width="80" height="100%">
                   </div>
           </div>
       
@@ -33,21 +32,56 @@
   
         <h5>Connectez- vous</h5>
   
-        <form action="" method="post" class="form">
+        <form *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+         class="form">
   
           <div class="form__field">
-            <input type="email" placeholder="info@mailaddress.com">
+            
+            <input type="text" class="login__input" name="username"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && username.errors }" placeholder="Nom d'utilisateur">
+            <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+             Veuillez Saisir votre nom d'utilisateur
+            </div>
+
           </div>
   
           <div class="form__field">
-            <input type="password" placeholder="••••••••••••">
+            <input type="password" class="login__input"  name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && password.errors }" placeholder="Mot de passe" >
+                <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+                  <div *ngIf="password.errors['required']">Veuillez Saisir votre mot de passe</div>
+                  <div *ngIf="password.errors['minlength']">
+                    Le mot de passe doit avoir minimum 6 caractères
+                  </div>
+                </div>   
           </div>
   
+
           <div class="form__field">
             <input type="submit" value="connexion">
           </div>
+          <div class="form-group">
+            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+              Login failed: {{ errorMessage }}
+            </div>
+          </div>
   
         </form>
+        <div class="alert alert-success" *ngIf="isLoggedIn" routerLink="/dash/accueil">
+          Logged in as {{ roles }}.
+        </div>
+        <p>Mot de passe <a routerLink="/forgatpwd">Oublié?</a></p>
 
         <p>Vous n'avez pas de compte?<a routerLink="/inscription">Inscrivez-vous</a></p>
   
@@ -57,4 +91,3 @@
   
   </body>
   </html>
-</ion-content>

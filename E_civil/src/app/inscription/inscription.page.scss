@@ -1,33 +1,13 @@
 
-
 ion-content{
-    background-color: #F2F2F2
-    ;}
-$base-bgcolor: #ffffff;
-$base-color: #7e8ba3;
-$base-font-weight: 300;
-$base-font-size: 1rem;
-$base-line-height: 1.5;
-$base-font-family: Helvetica Neue;
-$base-font-family-fallback: sans-serif;
 
-* {
-  box-sizing: border-box;
+  --ion-background-color:#FFFFFF;
 }
 
-html {
-  height: 100%;
-}
 
-body {
-  background-color: $base-bgcolor;
-  color: $base-color;
-  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family, $base-font-family-fallback;
-  margin: 0;
-  min-height: 100%;
-}
 
-.align {
+
+#align {
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -80,12 +60,26 @@ input {
     padding: .2rem 1rem;
 
     &[type="email"],
-    &[type="password"] {
+    &[type="password"],
+    &[type="text"],
+    &[type="select"] {
       width: 100%;
     }
 
   }
+  
 
+  .select{
+    border: 0;
+    font: inherit;
+  
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+    width: 100%;
+    outline: 0;
+    padding: .2rem 1rem;
+  }
 }
 
 $grid-max-width: 25rem;
@@ -128,7 +122,14 @@ a {
     text-align: center;
 
     &[type="email"],
-    &[type="password"] {
+    &[type="password"],
+    &[type="text"],
+    &[type="select"] {
+      background-repeat: no-repeat;
+      background-size: 1.5rem;
+      background-position: 1rem 50%;
+    }
+    .select{
       background-repeat: no-repeat;
       background-size: 1.5rem;
       background-position: 1rem 50%;
@@ -155,20 +156,20 @@ a {
 
 
 #card{
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    border-radius: 8px;
-   // padding: 10px ;
-    margin-top: 10px ;
-    .img-wrapper{
-      width: 120px;
-      height: 120px;
-      overflow: hidden;
-      margin: 0 auto;
-    }
-    img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border-radius: 8px;
+ // padding: 10px ;
+  margin-top: 10px ;
+  .img-wrapper{
+    width: 95px;
+    height: 120px;
+    overflow: hidden;
+    margin: 0 auto;
   }
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

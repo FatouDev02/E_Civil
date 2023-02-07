@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { ActenService } from '../Services/acten.service';
 import { StructService } from '../Services/struct.service';
+import { StorageService } from '../Services/storage.service';
 
 @Component({
   selector: 'app-acten',
@@ -20,41 +21,49 @@ export class ActenPage implements OnInit {
   numvolet: any;
   datedenaissance: any;
   lieudenaissance: any;
+  genre:any;
   a: any;
   idstruct:any
   id:any
+  isLoggedIn = false;
+  iduser:any
 
   constructor( private router:Router,private actenservice:ActenService,
     private route:ActivatedRoute,
+    private storageService:StorageService,
     private structservice:StructService) { }
 
   ngOnInit() {
     const idstruct = this.route.snapshot.params['id']
     this.id = idstruct
     console.log("id de la structure : " + idstruct)
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+      this.iduser = this.storageService.getUser().id;
+      console.log('user id'+this.iduser);
+    }
 
   }
           //Pop up enregistrement reussi
           MessageSuccess(){
             Swal.fire({
-              title: "Votre déclaration a été envoyé avec  succes",
+              title: "Votre déclaration a été envoyé avec  succès",
               showConfirmButton: true,
               confirmButtonText: "OK",
-              confirmButtonColor: '#FF7900',
+              confirmButtonColor: '#ABDE11',
               heightAuto: false
             }).then((result) => {
               if (result.isConfirmed) {
-                this.router.navigateByUrl('/declarations', {skipLocationChange: true}).then(() => {
-                  this.router.navigate(["/declarations"])
+                this.router.navigateByUrl('/dash/acten', {skipLocationChange: true}).then(() => {
+                  this.router.navigate(["/dash/acten"])
                 })
 
                   // this.actualisePagApresSuppresion()
                   // this.router.navigateByUrl('/dashboard/personnel-externe')
                   // window.location.reload();
             }else if (result.isDenied) {
-              this.router.navigateByUrl('/acten')
+              this.router.navigateByUrl('/dash/acten')
             }
-
           });
 
           }
@@ -68,6 +77,7 @@ export class ActenPage implements OnInit {
               'nommere':this.nommere,
               'profpere':this.profpere,
               'profmere':this.profmere,
+              'genre':this.genre,
               // 'numvolet':this.numvolet,
               'datedenaissance':this.datedenaissance,
               'lieudenaissance':this.lieudenaissance,
@@ -76,12 +86,14 @@ export class ActenPage implements OnInit {
            // data.append('file',this.fichier)
             
             data.append('acten',JSON.stringify(acten).slice(1,JSON.stringify(acten).lastIndexOf(']')))
-            this.actenservice.add(this.numvolet,acten,this.idstruct).subscribe(
+            this.actenservice.addacten(this.numvolet,acten,this.id,this.iduser).subscribe(
               (data)=>{
                //this.myform.reset()
                this.a=data
                 console.log(this.a)
                 this.MessageSuccess();
+                this.router.navigate(['/dash/accueil'])
+
                //this.router.navigate(['/dash/structures'])
               }
             );

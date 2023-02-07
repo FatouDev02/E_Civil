@@ -1,0 +1,255 @@
+
+@media (max-width: 385px) {
+    .mesclass{
+      font-size: .8em;
+      
+    }
+  }
+  @media (max-width: 185px) {
+    .mesclass{
+      font-size: .6em;
+      
+    }
+  }
+
+  
+  /* Design */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  
+ion-content{
+
+    --ion-background-color:#FFFFFF;
+  }
+  
+  
+  html {
+   // background-color: #ecf9ff;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4gGo9TnYrMo2_w-RT1fyPQXZNMJnWedN7Dg&usqp=CAU");
+  }
+  
+  body {
+    color: #272727;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 1rem;
+  }
+  
+  #reg{
+    max-width: 1200px;
+    margin: 20px auto;
+  }
+  
+  h1 {
+      font-size: 24px;
+      font-weight: 400;
+      text-align: center;
+  }
+  
+  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  
+  .btn {
+    color: #ffffff;
+    padding: 0.8rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+  }
+  
+  .btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  
+  }
+  
+  // .cards_item {
+  //   display: flex;
+  //   padding: 1rem;
+  // }
+  
+  @media (min-width: 40rem) {
+    .cards_item {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 56rem) {
+    .cards_item {
+      width: 100%;
+    }
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .card_content {
+    padding: 1rem;
+    background: linear-gradient(to bottom left, #b9d5fd 40%, #709fdc 100%);
+  }
+  
+  .card_title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+  }
+  
+  .card_text {
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;    
+    font-weight: 400;
+  }
+  .made_by{
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 35px;
+    text-align: center;
+  }
+  #gauche{
+      background: linear-gradient(160deg, #ACBE11 40%, #D9D9D9 100%);;
+      
+  }
+  
+  .cercle {
+      width: 40px;
+      height: 40px;
+      background: #b9d5fd;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        
+  }
+  #cc{
+      display: flex;
+      justify-content: center;
+  }
+  #lesp{
+    margin: 10px;
+  }
+  .popbtn{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  
+  
+  #pays{
+      margin: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+    
+    }
+  
+    
+    #card{
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 5px auto;
+      margin: 20px;
+      .img-wrapper{
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    #card2{
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 5px auto;
+      margin: 20px;
+    }
+    #filtre{
+      width: 30%;
+      margin: 5px auto;
+      color: #ACBE11;
+      background-color: #d9d9d9;
+    }
+    
+    /**  <div class="row">
+    <div class="col-6 col-md-4 mt-10 ">
+    <div id="card2" class="shadow-lg p-3 mb-5 bg-white rounded" >
+        
+      <p>Acte<br> de Naissance</p>
+   </div>
+  </div>
+
+  <div class="col-6 col-md-4 ">
+    <div id="card2" class="shadow-lg p-3 mb-5 bg-white rounded" >
+        
+      <p>Acte <br>de mariage</p>
+   </div>
+  </div>
+  <div class="col-6 col-md-4 ">
+    <div id="card2" class="shadow-lg p-3 mb-5 bg-white rounded" >
+        
+      <p>Acte <br>de décès</p>
+   </div>
+  </div>
+
+</div>
+<div class="row"> 
+  <div class="col-6 col-md-4 mt-10 ">
+    <div id="card2" class="shadow-lg p-3 mb-5 bg-white rounded" >
+        
+      <p>Certificat de Nationnalité</p>
+   </div>
+  </div>
+
+  <div class="col-6 col-md-4">
+    <div id="card2" class="shadow-lg p-3 mb-5 bg-white rounded" >
+        
+      <p>Certificat de résidence</p>
+   </div>
+  </div>
+  <div class="col-6 col-md-4">
+    <div id="card2" class="shadow-lg p-3 mb-5 bg-white rounded" >
+        
+      <p>Casier <br> Judiciaire </p>
+   </div>
+  </div>
+</div>  **/

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from '../guards/auth/auth-guard.service';
 
 import { DashPage } from './dash.page';
 
@@ -14,8 +15,16 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'accueilagent',
+        loadChildren: () => import('../accueilagent/accueilagent.module').then( m => m.AccueilagentPageModule),
+       // canActivate:[AuthGuardService]
+
+      },
+      {
         path: 'accueil',
-        loadChildren: () => import('../accueil/accueil.module').then( m => m.AccueilPageModule)
+        loadChildren: () => import('../accueil/accueil.module').then( m => m.AccueilPageModule),
+       // canActivate:[AuthGuardService]
+
       },
       {
         path: 'declarations',
@@ -85,6 +94,10 @@ const routes: Routes = [
       {
         path: 'addstructure',
         loadChildren: () => import('../addstructure/addstructure.module').then( m => m.AddstructurePageModule)
+      },
+      {
+        path: 'agenttest',
+        loadChildren: () => import('../agenttest/agenttest.module').then( m => m.AgenttestPageModule)
       },
     ]
   }

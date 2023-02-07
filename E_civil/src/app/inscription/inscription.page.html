@@ -4,26 +4,18 @@
   </ion-toolbar>
 </ion-header> -->
 
-  <!DOCTYPE html>
-  <html lang="en">
-  <!-- <head>
-  
-    <meta charset="UTF-8">
-    <title>Daily UI | #001 - Sign Up</title>
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  </head> -->
-  <body class="align">
-  
+<ion-content >
+
+  <div class="align">
+
     <div class="grid align__item">
   
       <div class="register">
         <div class="row" style="margin: 10px 10px;">
 
-          <div id="card" class="shadow-lg  bg-black rounded" >
+          <div id="card" class="shadow-lg  bg-white" >
             <div class="img-wrapper">
-              <img src="../../assets/images/logo.png" alt="" id="svg" class="site__logo" width="80" height="100%">
+              <img src="../../assets/images/logo.jpg" alt="" id="svg" class="site__logo" width="80" height="100%">
                   </div>
           </div>
       
@@ -31,24 +23,37 @@
 
         <h5>Inscrivez- vous</h5>
   
-        <form action="" method="post" class="form">
+        <form
+         class="form">
   
           <div class="form__field">
-            <input type="email" placeholder="info@mailaddress.com">
+            <input type="text"   id="inputs" name="nom" placeholder="nom">
           </div>
           <div class="form__field">
-            <input type="email" placeholder="info@mailaddress.com">
+            <input type="text"   id="inputs" name="prenom" placeholder="prenom">
+          </div>
+
+          <div class="form__field">
+            <input type="text"   id="inputs" name="username" placeholder="username">
           </div>
           <div class="form__field">
-            <input type="email" placeholder="info@mailaddress.com">
+            <input type="text"  id="inputs" name="email" placeholder="email">
+          </div>
+
+          <div class="form__field">
+            <input type="text"  id="inputs" name="password" placeholder="*************">
           </div>
           <div class="form__field">
-            <input type="email" placeholder="info@mailaddress.com">
+            <input type="text"   id="inputs" name="lieuderesidence"  placeholder="lieu">
           </div>
-  
           <div class="form__field">
-            <input type="password" placeholder="••••••••••••">
-          </div>
+            <select  class="form-field" class="select" required>
+              <option selected>--Votre genre--</option>
+              <option value="1">Masculin</option>
+              <option value="2">Feminin</option>
+              <!-- <option *ngFor="let entite of Entites" >{{entite.libelleentite}}</option> -->
+              
+            </select>          </div>
   
           <div class="form__field">
             <input type="submit" value="Envoyer">
@@ -57,11 +62,12 @@
   
         </form>
 
-        <p>Déja un compte?<a href="#">Connectez-vous</a></p>
+        <p>Déja un compte?<a routerLink="/connexion">Connectez-vous</a></p>
   
       </div>
   
     </div>
-  
-  </body>
-  </html>
+  </div>
+
+  </ion-content>
+

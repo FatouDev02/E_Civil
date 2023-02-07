@@ -1,0 +1,73 @@
+
+ion-content.background{
+    --background: url(../../assets/images/bg.jpg) 0 0/100% 100% no-repeat;
+}
+  
+  
+  
+
+// ion-content{
+//     background-color: #F2F2F2
+//     ;
+// }
+
+
+#body {
+    background-image: url("../../assets/images/bg.jpg") 0 0/100% 100% no-repeat;
+    
+  margin: 0;
+  min-height: 100%;
+  color: #FFFFFF;
+}
+
+h2 {
+    font-size: 2.75rem;
+    font-weight: 200;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+  }
+  
+  #all{
+      color: #FFFFFF;
+  position: absolute;
+  top: 70%;
+display: grid;
+align-items: center;
+grid-auto-rows: auto;
+  }
+
+
+
+@media (maxwidth:460px) {
+    h2 {
+        font-size: 0.75rem;
+        font-weight: 100;
+        margin: 0 0 1rem;
+        text-transform: uppercase;
+      }
+      
+      #all{
+     color: #FFFFFF;
+      position: absolute;
+      top:70%;
+      } 
+}
+
+
+.btn{
+    width: 50%;
+    margin: 10px auto;
+    
+
+}
+#mybtn{
+    border-radius: 10px;
+    background-color:#ACBE11 ;
+    color: #FFFFFF;
+}
+#mybtn:hover{
+    background-color:#FFFFFF ;
+    color: #ACBE11;
+
+}
+

@@ -1,14 +1,28 @@
 <ion-header>
   <ion-toolbar class="new-background-color">
+    <ion-title style="text-align: center;" class="title mesclass">Republique du Mali <br>
+      <span class="mesclass" style="color: #5ba820;">Un peuple</span>-
+      <span class="mesclass" style="color: hwb(60 8% 0%);">Un but</span>-
+      <span class="mesclass" style="color: #dc0000;">Une foi</span>
+     </ion-title>
+     
     <!-- <ion-title style="text-align: center;">Structures administratives</ion-title> -->
-    <ion-img src="../../assets/images/embleme.png" slot="start" style="width: 80px; height: 80px;">
-    </ion-img>
-    <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
+    <!-- <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
     <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #ffffff;"></ion-icon>
+     -->
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button> </ion-menu-button>
     </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button ion-button navPop>
+        <ion-back-button text="" icon="arrow-back"></ion-back-button>
+        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
+    </ion-img> 
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
@@ -18,10 +32,84 @@
      
       <div class="col-lg-4 col-8">
         <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-start">
-         
-    
-       <button class="btn buttonColor" type="button" routerLink="/dash/addstructure" >Ajouter +  </button>
+          
 
+    <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form">
+      Ajouter 
+    </button>
+          
+        <!-- Modal Content -->
+        <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-body p-0">
+                      <div class="card  shadow-soft border-light p-4">
+                         
+                          <button type="button" class="btn-close" aria-label="Close"  data-dismiss="modal-form"> 
+                            <span aria-hidden="true">&times;</span>
+      
+                          </button>
+                         
+                          <div class="card-header text-center pb-0">
+                              <h2 class="h4">E-civil</h2>
+                              <span>Ajouter une Nouvelle Structure</span>   
+                          </div>
+                          <div class="card-body">
+                              <form (ngSubmit)="AddStruct()"  class="mt-4">
+                                 <!-- Form -->
+                                 <div class="form-group">
+                                  <label for="exampleInputPassword6">Type de Struct</label>
+                                  <div class="input-group mb-4">
+                                      <div class="input-group-prepend">
+                                          <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
+                                      </div>
+                                      <select name="nom" class="form-control"  required>
+                                        <option value="">xfgdbx</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <!-- End of Form -->
+                                 
+                                
+                                  <div class="form-group">
+                                      <!-- Form -->
+                                  
+                                
+                                   <!-- Form -->
+                                   <div class="form-group">
+                                    <label for="exampleInputIcon3">Latitude</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                        </div>
+                                        <input class="form-control" [(ngModel)]="latitude" name="latitude" placeholder="Donnez une description a l'activité" type="text" >
+                                    </div>
+                                </div>
+                                
+                                <!-- End of Form -->
+                                   <!-- Form -->
+                                   <div class="form-group">
+                                    <label for="exampleInputIcon3">Longitude</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                        </div>
+                                        <input class="form-control" [(ngModel)]="longitude" name="longitude" placeholder="Donnez une description a l'activité" type="text" >
+                                    </div>
+                                </div>
+                                
+                                <!-- End of Form -->
+                                     
+                                  </div>
+                                  <button type="submit" class="btn btn-block btn-primary">Enregistrer</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <!-- End of Modal Content -->
     
         </div>
     
@@ -29,13 +117,11 @@
       <div  class="col-lg-4 col-8" >
       
 
-        <h1 >Mairies  <span style="color: #ACBE11;">Du Mali </span>  <br>
+        <h1 style="color:black" >{{type1}}  <span style="color: #ACBE11;">Du Mali </span>  <br>
          
         </h1>
        
       </div>
-      
-     
       
     </div>
     
@@ -44,9 +130,9 @@
   <div class="container" id="cont2">
       <div class="row" >
         <div *ngIf="length == 0"> 
-          <p>riennn </p>
+          <p style=" text-align:center;font-size:larger ">Aucune Structure Enregistrée</p>
          </div>
-        <div class="col-12 col-md-5" *ngFor= "let all of allstruct ">
+        <div class="col-12 col-md-5" *ngFor= "let all of allstruct; let i=index ">
          
 
           <div class="card shadow-soft border-light" id="firstcard"> <!-- Here I create a New Div with class name card -->
@@ -58,22 +144,23 @@
                 <h5>  {{all.nom}}</h5>
 
               </div>
+              
               <div class="col-12 col-md-3">
                 <button class="btnadd" [routerLink]="['/dash/'+type+'/'+all.id]">+</button>
               </div>
             </div>
+
          </div>
 
 
-          <div class="card shadow-soft  border-light" id="mycard"> <!-- Here I create a New Div with class name card -->
-            <div class="row"  style="margin: 0 5px;">
+          <div class="card mycard shadow-soft  border-light"  id="map{{i}}"> <!-- Here I create a New Div with class name card -->
+            <div class="row"  style="margin: 0 5px;"  >
               <img src="../../assets/images/drapeau.png" alt="">
-  
-            
             </div>
            
          </div>
 
+         
         </div>
         
       </div>

@@ -8,14 +8,15 @@ import { AllstructurePageRoutingModule } from './allstructure-routing.module';
 
 import { AllstructurePage } from './allstructure.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AllstructurePageRoutingModule
+        AllstructurePageRoutingModule
   ],
   declarations: [AllstructurePage]
 })

@@ -1,12 +1,86 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>declarations</ion-title>
+    <ion-title style="text-align: center;">Mes Déclarations</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button ion-button navPop>
+        <ion-back-button text="" icon="arrow-back"></ion-back-button>
+        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
+    </ion-img> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-6">
+      <div class="filtre ">
+        <!-- <select class="form-select  form-select-md larger" aria-label=".form-select-sm example" (change)="filtrebyentity()" [(ngModel)]="filtreEntity" >
+          <option>
+            <ion-icon name="funnel-outline" slot="start"></ion-icon>Filtrer par Entité
+          </option>
+          <option>
+            <ion-icon name="funnel-outline" ></ion-icon>Tout afficher
+          </option>
+          <option *ngFor="let entite of allentity" >{{entite.libelleentite}}</option>
+        </select> -->
+  
+        <select class="form-select form-select-md larger"  id="filtre" aria-label=".form-select-sm example"
+         (change)="activitesavenir()" [(ngModel)]="textFiltre" name="textFiltre">
+          <option >
+            <ion-icon name="funnel-outline" slot="start" selected></ion-icon>Filtrer 
+          </option>
+          <option>
+            <ion-icon name="funnel-outline" ></ion-icon>Tout afficher
+          </option>
+          
+          <option  >Acte de naissance</option>
+          <option >Acte de mariage</option>
+        </select>
+  
+  
+      </div>
+  
+    </div>
+    <!-- <div class="col-lg-6 col-12">
+      <div class=" justify-content-md-end">
+        <button class="btn buttonColor" type="button" routerLink="/dashboard/allactivity/creer-activites" >+ &nbsp; Creer Activité</button>
+      </div>
+    </div> -->
+  </div>
+  <div class="row">
+    
+    <div class="col-12 col-md-6 list-group first-init-reply" *ngFor= "let all of alldem ">
+      <a  class="list-group-item">
+        <ion-icon name="folder-outline" style="color:brown; width:40 px; height:40px "></ion-icon>
+        Pour: {{all.nom}} {{all.prenom}}     
+       </a>
+      
+     
+    </div>
+   
+
+
+ 
+
+
+    
+
+  </div>
+   
+  
+ 
+
+   
+   
+</div>
+
 
 </ion-content>

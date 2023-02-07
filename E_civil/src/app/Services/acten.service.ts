@@ -17,10 +17,40 @@ env=environment
     return this.http.get(`${this.env.api}/Ecivil/acten/get/${id}`);
   }
 
-  add(numvolet:any,acten:any,id:any):Observable<any>{
+  addacten(numvolet:any,acten:any,id:any,iduser:any):Observable<any>{
     const data:FormData=new FormData();
     data.append('acten', JSON.stringify(acten).slice(1,JSON.stringify(acten).lastIndexOf(']')));
-    return this.http.post(`${this.env.api}/ecivil/acten/add/${numvolet}`,data);
+    return this.http.post(`${this.env.api}/ecivil/acten/add/${numvolet}/${id}/${iduser}`,data);
+
+  }
+  addactem(actem:any,id:any,iduser:any):Observable<any>{
+    const data:FormData=new FormData();
+    data.append('actem', JSON.stringify(actem).slice(1,JSON.stringify(actem).lastIndexOf(']')));
+    return this.http.post(`${this.env.api}/ecivil/actem/add/${id}/${iduser}`,data);
+
+  }
+   addacted(numvolet:any,acted:any,id:any,iduser:any):Observable<any>{
+    const data:FormData=new FormData();
+    data.append('acted', JSON.stringify(acted).slice(1,JSON.stringify(acted).lastIndexOf(']')));
+    return this.http.post(`${this.env.api}/ecivil/acted/add/${numvolet}/${id}/${iduser}`,data);
+
+  } 
+  addcasier(lieudenaissance:any,casier:any,id:any,iduser:any):Observable<any>{
+    const data:FormData=new FormData();
+    data.append('casier', JSON.stringify(casier).slice(1,JSON.stringify(casier).lastIndexOf(']')));
+    return this.http.post(`${this.env.api}/ecivil/casier/add/${id}/${iduser}`,data);
+
+  }
+   addresidence(lieuresidence:any,residence:any,id:any,iduser:any):Observable<any>{
+    const data:FormData=new FormData();
+    data.append('residence', JSON.stringify(residence).slice(1,JSON.stringify(residence).lastIndexOf(']')));
+    return this.http.post(`${this.env.api}/ecivil/residence/add/${lieuresidence}/${id}/${iduser}`,data);
+
+  } 
+  addnationn(lieuresidence:any,nationnalite:any,id:any,iduser:any):Observable<any>{
+    const data:FormData=new FormData();
+    data.append('nationnalite', JSON.stringify(nationnalite).slice(1,JSON.stringify(nationnalite).lastIndexOf(']')));
+    return this.http.post(`${this.env.api}/ecivil/nationnalite/add/${lieuresidence}/${id}/${iduser}`,data);
 
   }
 

@@ -1,8 +1,21 @@
 
+@media (max-width: 385px) {
+    .mesclass{
+      font-size: .8em;
+      
+    }
+  }
+  @media (max-width: 185px) {
+    .mesclass{
+      font-size: .6em;
+      
+    }
+  }
+
 
 
 .new-background-color{
-    --background:linear-gradient(160deg, #D9D9D9 0%,  #ACBE11 100%);
+    --background-color:#ffffff;
 }
 
 #cont2{

@@ -17,6 +17,8 @@ export class StrucuturesPage implements OnInit {
   length:any
   dem:any
 
+  idStructure:any=1;
+
   idstruct:any;
   constructor(private structservice:StructService,private router:Router,private route:ActivatedRoute) { }
 
@@ -25,26 +27,25 @@ export class StrucuturesPage implements OnInit {
     this.ListStruct();
   }
 
-  // Listdembystruct(){
+  /*Listdembystruct(){
 
-  //   this.structservice.getdemandebytypestruct().subscribe(
-  //     (data)=>{
-  //         this.struct=data
-  //         console.log(this.struct)
-  //     }
-  //   );
-  // }
+    this.structservice.getall().subscribe(
+      (data)=>{
+          this.struct=data
+          console.log(this.struct)
+      }
+    );
+  }*/
   OnClick(id:any){
-    this.idstruct  = this.route.snapshot.params['id']
-    console.log(this.idstruct)
+    //this.idstruct  = this.route.snapshot.params['id']
+    console.log(id)
+    this.idStructure=id
     this.structservice.getdemandebytypestruct(id).subscribe(
           (data)=>{
               this.dem=data
               console.log(this.dem)
           }
         );
-    
-
   }
   
 
@@ -78,7 +79,7 @@ export class StrucuturesPage implements OnInit {
       this.router.navigateByUrl('/dash/strucutures')
     }
 
-  });
+   });
 
   }
 

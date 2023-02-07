@@ -1,17 +1,30 @@
 <ion-header>
   <ion-toolbar class="new-background-color">
-    <!-- <ion-title>Ajouter une région</ion-title> -->
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-img src="../../assets/images/embleme.png" slot="start" style="width: 70px; height: 70px;">
-    </ion-img>
-    <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
+    <ion-title style="text-align: center;" class="title mesclass">Republique du Mali <br>
+      <span class="mesclass" style="color: #5ba820;">Un peuple</span>-
+      <span class="mesclass" style="color: hwb(60 8% 0%);">Un but</span>-
+      <span class="mesclass" style="color: #dc0000;">Une foi</span>
+     </ion-title>
+     
+    <!-- <ion-title style="text-align: center;">Structures administratives</ion-title> -->
+    <!-- <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
     <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #ffffff;"></ion-icon>
-   
-
+     -->
+    <ion-buttons slot="start">
+      <ion-menu-button> </ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button ion-button navPop>
+        <ion-back-button text="" icon="arrow-back"></ion-back-button>
+        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
+    </ion-img> 
   </ion-toolbar>
+
 </ion-header>
+
 
 
 <ion-content>
@@ -77,6 +90,10 @@
           <div class="input-box mb-3">
             <Label for="inputs">Lieu de naissance *</Label>
             <input type="text" [(ngModel)]="lieudenaissance"  id="inputs" name="lieudenaissance" placeholder="Lieu" class="form-control" autocomplete="off"  required>
+          </div>
+          <div class="input-box mb-3">
+            <Label for="inputs">Genre *</Label>
+            <input type="text" [(ngModel)]="genre"  id="inputs" name="genre" placeholder="Lieu" class="form-control" autocomplete="off"  required>
           </div>
 
          

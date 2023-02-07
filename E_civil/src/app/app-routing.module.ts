@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dash',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 
@@ -30,7 +30,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
 
- 
+
  
   {
     path: 'dash',
@@ -44,6 +44,19 @@ const routes: Routes = [
     path: 'popupaddstruct',
     loadChildren: () => import('./popupaddstruct/popupaddstruct.module').then( m => m.PopupaddstructPageModule)
   },
+  {
+    path: 'forgatpwd',
+    loadChildren: () => import('./forgatpwd/forgatpwd.module').then( m => m.ForgatpwdPageModule)
+  },
+  {
+    path: 'valideagent/:id',
+    loadChildren: () => import('./valideagent/valideagent.module').then( m => m.ValideagentPageModule)
+  },
+  {
+    path: 'valideagentnext/:id/:iduser',
+    loadChildren: () => import('./valideagentnext/valideagentnext.module').then( m => m.ValideagentnextPageModule)
+  }
+ 
  
  
  

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ActenService } from '../Services/acten.service';
+import { StorageService } from '../Services/storage.service';
 
 @Component({
   selector: 'app-actem',
@@ -15,11 +17,28 @@ export class ActemPage implements OnInit {
   datenh:any
   prof:any
   proh:any
-  nomF:any
+  nomf:any
   nomh:any
-  constructor(private router:Router) { }
+  ///////////////////
+  id:any
+  iduser:any
+  a:any
+
+  
+  constructor(private router:Router,private actenservice:ActenService, 
+       private route:ActivatedRoute,
+       private storageService:StorageService
+    ) { }
 
   ngOnInit() {
+    const idstruct = this.route.snapshot.params['id']
+    this.id = idstruct
+    console.log("id de la structure : " + idstruct)
+    if (this.storageService.isLoggedIn()) {
+      //this.isLoggedIn = true;
+      this.iduser = this.storageService.getUser().id;
+      console.log('user id'+this.iduser);
+    }
   }
  //Pop up enregistrement reussi
  MessageSuccess(){
@@ -27,7 +46,7 @@ export class ActemPage implements OnInit {
     title: "Votre déclaration a été envoyé avec  succes",
     showConfirmButton: true,
     confirmButtonText: "OK",
-    confirmButtonColor: '#FF7900',
+    confirmButtonColor: '#ABDE11',
     heightAuto: false
   }).then((result) => {
     if (result.isConfirmed) {
@@ -39,7 +58,7 @@ export class ActemPage implements OnInit {
         // this.router.navigateByUrl('/dashboard/personnel-externe')
         // window.location.reload();
   }else if (result.isDenied) {
-    this.router.navigateByUrl('/dash/acten')
+    this.router.navigateByUrl('/dash/actem')
   }
 
 });
@@ -47,31 +66,34 @@ export class ActemPage implements OnInit {
 }
 
 
-// addactem(){ 
-//   var actem=[{
-//     'nomh':this.nomh,
-//     'nomf':this.nomf,
-//     'proh':this.proh,
-//     'prof':this.prof,
-//     'temoinh':this.temoinh,
-//     'temoinf':this.temoinf,
-//     'datenh':this.datenh,
-//     'datenf':this.datenf,
-//     'datemariage':this.datemariage,
-//   }]
-//   const data=new FormData()
+addactem(){ 
+  var actem=[{
+    'nomh':this.nomh,
+    'nomf':this.nomf,
+    'proh':this.proh,
+    'prof':this.prof,
+    'temoinh':this.temoinh,
+    'temoinf':this.temoinf,
+    'datenh':this.datenh,
+    'datenf':this.datenf,
+    'datemariage':this.datemariage,
+  }]
+  const data=new FormData()
 
-//   data.append('actem',JSON.stringify(actem).slice(1,JSON.stringify(actem).lastIndexOf(']')))
-//   this.http.post('http://localhost:8080/Ecivil/actem/add',data).subscribe(
-//     (data)=>{
-//      //this.myform.reset()
-//      this.a=data
-//       console.log(this.a)
-//       this.MessageSuccess();
-//      // this.router.navigate(['/dash/actem'])
-//     }
-//   );
-//  }
+  data.append('actem',JSON.stringify(actem).slice(1,JSON.stringify(actem).lastIndexOf(']')))
+  this.actenservice.addactem(actem,this.id,this.iduser).subscribe(
+    (data)=>{
+      //this.myform.reset()
+      this.a=data
+       console.log(this.a)
+       this.MessageSuccess();
+       this.router.navigate(['/dash/accueil'])
+
+      //this.router.navigate(['/dash/structures'])
+     }
+  );
+ }
+ 
 
 
 }
