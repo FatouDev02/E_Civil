@@ -13,6 +13,8 @@ export class AccueilPage implements OnInit {
   nom: any;
   prenom: any;
   structid: any;
+  roles: any;
+  monrole: any;
 
   constructor(private storageService: StorageService,private structservice:StructService) { }
 
@@ -24,6 +26,12 @@ export class AccueilPage implements OnInit {
     console.log(this.username)
     this.nom=user.nom
     this.prenom=user.prenom
+    this.roles = user.roles;
+    console.log(this.roles)
+    if(this.roles=="ADMIN"){
+      this.monrole=user.roles;
+    }
+
   }
 
 }

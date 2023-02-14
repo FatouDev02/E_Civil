@@ -1,6 +1,35 @@
 
 /* https://codepen.io/swapnet/pen/QWwPVwE 
 https://codepen.io/rickyeckhardt/pen/oNXeoZp*/
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    ion-title{
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 385px) {
+    .mesclass{
+      font-size: .8em;
+      
+    }
+  }
+  @media (max-width: 185px) {
+    .mesclass{
+      font-size: .6em;
+      
+    }
+  }
+  @media (max-width: 308px) {
+    .mesclass{
+      font-size: .7em;
+      
+    }
+  }
+
 #card{
     text-align: center;
    // box-shadow: 0 2px 10px rgba(0,0,0,0.2);

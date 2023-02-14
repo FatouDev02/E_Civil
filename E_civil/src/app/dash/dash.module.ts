@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashPageRoutingModule } from './dash-routing.module';
 
 import { DashPage } from './dash.page';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,9 +16,10 @@ import { DashPage } from './dash.page';
     FormsModule,
     IonicModule,
     DashPageRoutingModule,
+    RouterModule
   ],
   declarations: [DashPage]
 
-  
+
 })
 export class DashPageModule {}

@@ -17,6 +17,11 @@ export class NationnalitePage implements OnInit {
   erreur!: boolean;
   fichier:any
   imgacten:any
+  nom: any;
+  prenom: any;
+  photoacten: any;
+  lieuderesidence: any;
+  mydata: any;
   constructor( private router:Router,private actenservice:ActenService,
     private route:ActivatedRoute,
     private storageService:StorageService,
@@ -26,6 +31,7 @@ export class NationnalitePage implements OnInit {
   ngOnInit() {
     const idstruct = this.route.snapshot.params['id']
     this.id = idstruct
+    
     console.log("id de la structure : " + idstruct)
     if (this.storageService.isLoggedIn()) {
      // this.isLoggedIn = true;
@@ -54,7 +60,20 @@ export class NationnalitePage implements OnInit {
       }
     }
   }
-  add(){
+  add() {
 
+    var nationnalite = [{
+      'nom': this.nom,
+      'prenom': this.prenom,
+      'photoacten': this.photoacten,
+      'lieuderesidence': this.lieuderesidence,
+    }]
+    const data = new FormData()
+    data.append('file', this.fichier)
+    data.append('nationnalite', JSON.stringify(nationnalite).slice(1, JSON.stringify(nationnalite).lastIndexOf(']')))
+    this.actenservice.addnationn(this.id,this.iduser,nationnalite,this.lieuderesidence,this.fichier).subscribe(data => {
+      this.mydata = data
+      console.log(this.mydata)
+    });
   }
 }

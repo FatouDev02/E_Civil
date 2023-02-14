@@ -4,8 +4,8 @@
       <span class="mesclass" style="color: #5ba820;">Un peuple</span>-
       <span class="mesclass" style="color: hwb(60 8% 0%);">Un but</span>-
       <span class="mesclass" style="color: #dc0000;">Une foi</span>
-     </ion-title>
-     
+    </ion-title>
+
     <!-- <ion-title style="text-align: center;">Structures administratives</ion-title> -->
     <!-- <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #ffffff;"></ion-icon>
     <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #ffffff;"></ion-icon>
@@ -19,8 +19,9 @@
         <!-- <ion-icon name="arrow-back"></ion-icon> -->
       </ion-button>
     </ion-buttons>
-    <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
-    </ion-img> 
+    <ion-img src="../../assets/images/logo.jpg" slot="end"
+      style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
+    </ion-img>
   </ion-toolbar>
 
 </ion-header>
@@ -29,190 +30,191 @@
 
   <div class="row">
 
-    <div id="card" class="row shadow-lg  mb-1 bg-white rounded" >
-     
-      <div class="col-lg-4 col-10">
-        <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-start">
-         
-    
-       <!-- <button class="btn buttonColor" type="button" routerLink="/dash/addstructure" >Ajouter  </button> -->
+    <div id="card" class="row shadow-lg  mb-1 bg-white rounded">
 
-    <!-- //////////poppppppppppppppppppppppppppp -->
+      <div class="col-md-4 ">
+       
 
-          <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form">
+
+
+          <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" *ngIf="showAdmin">
             Ajouter +
           </button>
-    
-    
-  <!-- Modal Content -->
-  <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body p-0">
-                <div class="card  shadow-soft border-light p-4">
-                   
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"  > 
+
+
+          <!-- Modal Content -->
+          <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body p-0">
+                  <div class="card  shadow-soft border-light p-4">
+
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
 
                     </button>
-                   
+
                     <div class="card-header text-center pb-0">
-                        <h2 class="h4">E-civil</h2>
-                        <span>Ajouter une Nouvelle Structure</span>   
+                      <h2 class="h4">E-civil</h2>
+                      <span>Ajouter une Nouvelle Structure</span>
                     </div>
                     <div class="card-body">
-                        <form (ngSubmit)="AddStruct()"  class="mt-4">
-                           <!-- Form -->
-                           <div class="form-group">
-                            <label for="exampleInputPassword6">Type de Structure</label>
-                            <div class="input-group mb-4">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><span class="fas fa-envelope"></span></span>
-                                </div>
-                                <input class="form-control" [(ngModel)]="type" name="type" placeholder="Mairies/Commissariats/Tribunaux" type="text"  required>
+                      <form (ngSubmit)="AddStruct()" class="mt-4">
+                        <!-- Form -->
+                        <div class="form-group">
+                          <label for="exampleInputPassword6">Type de Structure</label>
+                          <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><span class="fas fa-envelope"></span></span>
                             </div>
+                            <input class="form-control" [(ngModel)]="type" name="type"
+                              placeholder="Mairies/Commissariats/Tribunaux" type="text" required>
+                          </div>
                         </div>
                         <!-- End of Form -->
-                           
-                          
-                            <div class="form-group">
-                                <!-- Form -->
-                            <div class="form-group">
-                              <label for="exampleInputIcon3">Description</label>
-                              <div class="input-group mb-4">
-                                  <div class="input-group-prepend">
-                                      <span class="input-group-text"><span class="fas fa-envelope"></span></span>
-                                  </div>
-                                  <input class="form-control" [(ngModel)]="description" name="description" placeholder="Donnez une description à cette structure" type="text" >
+
+
+                        <div class="form-group">
+                          <!-- Form -->
+                          <div class="form-group">
+                            <label for="exampleInputIcon3">Description</label>
+                            <div class="input-group mb-4">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><span class="fas fa-envelope"></span></span>
                               </div>
+                              <input class="form-control" [(ngModel)]="description" name="description"
+                                placeholder="Donnez une description à cette structure" type="text">
+                            </div>
                           </div>
                           <!-- End of Form -->
-                               
-                            </div>
-                            <button type="submit" class="btn btn-block btn-primary">Enregistrer</button>
-                        </form>
-  
-                        <!-- <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
+
+                        </div>
+                        <button type="submit" class="btn btn-block btn-primary">Enregistrer</button>
+                      </form>
+
+                      <!-- <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
                             <span class="font-weight-normal">
                                 Not registered?
                                 <a routerLink="/allactivity" class="font-weight-bold">Afficher tout les activités</a>
                             </span>
                         </div> -->
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-  </div>
-  <!-- End of Modal Content -->
-  
-        </div>
-    
-      </div>
+          </div>
+          <!-- End of Modal Content -->
 
-      <div  class="col-lg-4 col-12" >
       
 
-        <h1 >Structures  <span style="color: #ACBE11;">Administratives </span>  <br>
-         
+      </div>
+
+      <div class="col-md-8">
+
+
+        <h1>Structures <span style="color: #ACBE11;">Administratives </span> <br>
+
         </h1>
-       
+
       </div>
 
     </div>
-  
+
 
 
   </div>
 
   <div class="container" id="cont2">
-      <div class="row">
-        <div class="col-12 col-md-6"  *ngFor= "let s of struct ">
-         <div *ngIf="length == 0"> 
+    <div class="row">
+      <div class="col-12 col-md-6" *ngFor="let s of struct ">
+        <div *ngIf="length == 0">
           <p>Aucune Structure Enregistrée</p>
-         </div>
-          <div class="card shadow-soft  border-light" id="mycard"  > <!-- Here I create a New Div with class name card -->
-            <div class="row"  style="margin: 0 5px;">
+        </div>
+        <div class="card shadow-soft  border-light" id="mycard"> <!-- Here I create a New Div with class name card -->
+          <div class="row" style="margin: 0 5px;">
 
 
-              <div class="col-12 col-md-4">
-                <div class="cardimg"> <!-- Here I create a New Div for image with class name card_img -->
-                  <img src="../../assets/images/embleme.png" alt="user-image">
-               </div>
-               </div>
-
-
-              <div class="col-12 col-md-6">
-                <div class="card_info"> <!-- Here I create a New Div for user info with class name card_info -->
-                  <h1  id="card_title"> {{s.type}}</h1>
-                                  </div>
+            <div class="col-12 col-md-4">
+              <div class="cardimg"> <!-- Here I create a New Div for image with class name card_img -->
+                <img src="../../assets/images/embleme.png" alt="user-image">
               </div>
-              <p style="text-align: justify;">{{s.description}}
+            </div>
 
-              </p>
 
-               <!-- <button class="card_btn"   [routerLink]="['/dash/structurebytype',s.id]"> ICI</button> -->
-               <button  type="button" class="card_btn" 
-               (click)="OnClick(s.id)"
-               data-bs-toggle="modal" data-bs-target="#modal-formm"> ICI</button>
+            <div class="col-12 col-md-6">
+              <div class="card_info"> <!-- Here I create a New Div for user info with class name card_info -->
+                <h1 id="card_title"> {{s.type}}</h1>
+              </div>
+            </div>
+            <p style="text-align: justify;">{{s.description}}
+
+            </p>
+
+            <!-- <button class="card_btn"   [routerLink]="['/dash/structurebytype',s.id]"> ICI</button> -->
+            <button type="button" class="card_btn" (click)="OnClick(s.id)" data-bs-toggle="modal"
+              data-bs-target="#modal-formm"> ICI</button>
             <!-- Modal Content -->
-            <div class="modal fade" id="modal-formm" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+            <div class="modal fade" id="modal-formm" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+              aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                      <div class="modal-body p-0">
-                          <div class="card  shadow-soft border-light p-4">
-                             
-                              <button type="button" class="btn-close" aria-label="Close"  data-dismiss="modal-form"> 
-                                <span aria-hidden="true">&times;</span>
-          
-                              </button>
-                             
-                              <div class="card-header text-center pb-0">
-                                  <h2 class="h4">E-Sebenw</h2>
-                                  <span>Choisissez un type de  demande de declarations</span>   
-                              </div>
-                              <div class="card-body">
-                                <div class="container" id="cont2">
+                <div class="modal-content">
+                  <div class="modal-body p-0">
+                    <div class="card  shadow-soft border-light p-4">
 
-                                  <div class="row" >
-                                    <div class="col-4 col-md-4" *ngFor= "let d of dem " >
-                  
-                                      <div class="card shadow-soft border-black" id="cardpopup"> 
-                                        <div class="card_img">
-                                            <img src="../../assets/images/addfile.png" alt="user-image">
-                                        </div>
-                                        <div class="card_info"> 
-                                            <a [routerLink]="['/dash/structurebytype',idStructure,d.type]" ><h4>{{d.name}}</h4></a>
-                                        </div>
+                      <button type="button" class="btn-close" aria-label="Close" data-dismiss="modal-form">
+                        <span aria-hidden="true">&times;</span>
 
-                                     </div>
-                                    </div>
-                                  </div>
+                      </button>
+
+                      <div class="card-header text-center pb-0">
+                        <h2 class="h4">E-Sebenw</h2>
+                        <span>Choisissez un type de demande de declarations</span>
+                      </div>
+                      <div class="card-body">
+                        <div class="container" id="cont2">
+
+                          <div class="row">
+                            <div class="col-4 col-md-4" *ngFor="let d of dem ">
+
+                              <div class="card shadow-soft border-black" id="cardpopup">
+                                <div class="card_img">
+                                  <img src="../../assets/images/addfile.png" alt="user-image">
+                                </div>
+                                <div class="card_info">
+                                  <a [routerLink]="['/dash/structurebytype',idStructure,d.type]">
+                                    <h4>{{d.name}}</h4>
+                                  </a>
                                 </div>
 
-            
-                                 
                               </div>
+                            </div>
                           </div>
+                        </div>
+
+
+
                       </div>
+                    </div>
                   </div>
+                </div>
               </div>
             </div>
             <!-- End of Modal Content -->
-            
-            </div>
-           
-         </div>
+
+          </div>
 
         </div>
-        
 
       </div>
+
+
+    </div>
   </div>
 
 
 
 
-  
-  </ion-content>
-  
+
+</ion-content>

@@ -4,8 +4,8 @@
       <span class="mesclass" style="color: #5ba820;">Un peuple</span>-
       <span class="mesclass" style="color: hwb(60 8% 0%);">Un but</span>-
       <span class="mesclass" style="color: #dc0000;">Une foi</span>
-     </ion-title>
-     
+    </ion-title>
+
     <ion-buttons slot="start">
       <ion-menu-button> </ion-menu-button>
     </ion-buttons>
@@ -15,248 +15,237 @@
         <!-- <ion-icon name="arrow-back"></ion-icon> -->
       </ion-button>
     </ion-buttons>
-    <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
-    </ion-img> 
+    <ion-img src="../../assets/images/logo.jpg" slot="end"
+      style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
+    </ion-img>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-<div class="container " id="all">
-  <h1> Bienvenue Agent:{{username}}</h1>
+  <div class="container " id="all">
+    <h1> Bienvenue Agent:{{username}}</h1>
 
-  <div class="container " id="pays">
-    <div class=" row  " id="cc" >
+    <div class="container " id="pays">
+      <div class=" row  " id="cc">
 
-      <div id="card" class="col-8 col-md-4 shadow-lg p-3 mb-5 bg-white rounded" >
-        <div class="cercle">
-          <h2>50</h2>  
-              </div>
-        <p>Nombre d’Agents</p>
-     </div>
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbreacten">
+          <div class="cercle">
+            <h2 >{{nbreacten}}</h2>
+          </div>
+          <p>Nombre de demandes de Naissance </p>
+        </div>
 
-     <div id="card"class="col-8 col-md-4 shadow-lg p-3 mb-5 bg-white rounded" >
-      <div class="cercle">
-        <h2 >500</h2>  
-            </div>
-        <p>Nombre de demandes </p>
-     </div>
-     <!-- <div id="card"class="col-8 col-md-3 shadow-lg p-3 mb-5 bg-white rounded" >
-        <div class="cercle">
-          <h2 >50000</h2>  
-              </div>
-        <p>Nombre de Région</p>
-     </div> -->
-     
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbreactem">
+          <div class="cercle">
+            <h2 >{{nbreactem}}</h2>
+          </div>
+          <p>Nombre de demandes de Mariage </p>
+        </div>
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbreacted">
+          <div class="cercle">
+            <h2 > {{nbreacted}}</h2>
+          </div>
+          <p>Nombre de demandes de décès </p>
+
+        </div> <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbrecas">
+          <div class="cercle">
+            <h2>{{nbrecas}}</h2>
+          </div>
+          <p>Nombre de demandes de Casier</p>
+
+        </div> <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbreres">
+          <div class="cercle">
+            <h2>{{nbreres}}</h2>
+          </div>
+          <p >Nombre de demandes de residence </p>
+
+
+
+
+        </div> <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbrenat">
+          <div class="cercle">
+            <h2>{{nbrenat}}</h2>
+          </div>
+          <p>Nombre de demandes de Nationnalité </p>
+        </div>
+        
+      </div>
     </div>
-  </div>
 
-  <div class="container" id="firstrow" style="margin: 15px; ">
-    <div class="row  align-items-cente shadow-lg p-3 mb-5 bg-white rounded" id="gauche" >
-      <h1 class="pt-3">{{nom}}</h1>
+    <div class="container" id="firstrow" style="margin: 15px; ">
+      <div class="row   shadow-lg p-3 mb-2 bg-white rounded" id="gauche">
+        <h1 class="pt-3">{{nom}}</h1>
 
-      <div class="col-12 col-md-4"style="background-color:white;" id="map">
+        <div class="col-12 col-md-4" style="background-color:white;" id="map">
 
-        <img src="https://sites.google.com/site/tourismemali/_/rsrc/1244671525360/carte/Carte_Malojojojojoj.gif" alt="" >
-      </div>
-
-
-      <div class="col-12 col-md-8" >
-        <h1 class="pt-3">Liste de Presence du jour</h1>
-
-              <div class="row" style="margin: 10px;" *ngFor= "let s of listacten ">
-                <table class="table table-striped text-center mx-auto caption-top"   >
-                  <!-- <caption class="text-center">Liste des personnels de  </caption> -->
-                  <thead>
-                 
-                    <tr>
-                      <th scope="col">Nom</th>
-                      <th scope="col">Prenom</th>
-                      <th scope="col" class="hideColonne hideColonneOder">Genre</th>
-                      <!-- <th scope="col">Contact</th> -->
-                      <th scope="col" class="hideColonne hideColonneOder">Email</th>
-                      <th scope="col" class="hideColonne hideColonneOder">Téléphone</th>
-                      <th scope="col" class="hideColonne hideColonneOder">Demande</th>
-            
-                      <!-- <th scope="col" class="hideColonne">Action</th> -->
-                    </tr>
-                  </thead>
-                  <tbody  >
-                    <!-- <tr *ngFor="let table of PersonnelEntite | paginate: { itemsPerPage: 8, currentPage: pages}">
-                      <td> {{table.nom}} </td>
-                      <td> {{table.prenom}} </td>
-                      <td class="hideColonne hideColonneOder"> {{table.genre}} </td> -->
-                      <!-- <td> {{table.contact}} </td> -->
-                      <!-- <td class="hideColonne hideColonneOder"> {{table.email}} </td> -->
-                      <!-- <td class="hideColonne"> <span class="voirPlus">voir plus</span> </td> -->
-                    <!-- </tr> -->
-                     <tr >
-                      <td> sta </td>
-                      <td>sta </td>
-                      <td class="hideColonne hideColonneOder">f</td>
-                      <td> staaaa </td>
-                      <td class="hideColonne hideColonneOder"> 00899999 </td>
-                      <td class="hideColonne"> 
-                        <span class="voirPlus" data-bs-toggle="modal"
-                         data-bs-target="#modal-form"  
-                        (click)="OnClick(s.id)"
-                        >voir plus</span>
-                       </td>
-                     </tr>
-                
-                    
-                  </tbody>
-              
-                </table>
-                
-
-             <!-- Modal Content -->
+          <img src="https://sites.google.com/site/tourismemali/_/rsrc/1244671525360/carte/Carte_Malojojojojoj.gif"
+            alt="">
+        </div>
 
 
-  <div class="modal fade" id="modal-form" tabindex="-1"
-  role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-       <div class="modal-content" >
-           <div class="modal-body p-0" >
-               <div class="card  shadow-soft border-light p-4"  >
-                  
-                   <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"  > 
-                     <span aria-hidden="true">&times;</span>
+        <div class="col-12 col-md-8">
+          <h1 class="pt-3">Liste de Presence du jour</h1>
 
-                   </button>
-                  
-                   
-                  <div class="card-body" >
-                   <div class="row">
-                     <div class="col-3 col-md-4 mt-10 ">
-                       <ion-icon name="person-circle-outline" class=" vvv  m-auto" style="width: 50px; height: 50px"></ion-icon>
-                     </div>
-                     <div class="col-7 col-md-8 bg-danger">
-                       <h3>Fatoumata Coulibaly</h3>
-                     </div>
-                     
-                     <div id="lesp">
-                       <p>Nom:&nbsp;&nbsp;&nbsp; {{detailacte.nom}} </p> 
-                     <p>Nom:&nbsp;&nbsp;&nbsp;{{newdet}}</p> 
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <div *ngIf="longueur == 0">
+                  <p style=" text-align:center;font-size:larger ">Aucune demande </p>
+                </div>
+                <tr>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Genre</th>
+                  <th>Email</th>
+                  <th>Demade</th>
 
-                     </div>
-
-                    <div class="popbtn">
-                     <div><button>Annuler</button></div>
-                     <div><button>Valider</button></div>
+                </tr>
+              </thead>
+              <tbody *ngFor="let r of rdv ">
+                <tr>
+                  <td class="hideColonne hideColonneOder">{{r.nom}}</td>
+                  <td> {{r.prenom}}</td>
+                  <td class="hideColonne hideColonneOder"> {{r.genre}}</td>
+                  <td> {{r.email}} </td>
+                  <td> <span class="voirPlus" data-bs-toggle="modal" data-bs-target="#modal-form">voir plus</span>
+                  </td>
 
 
-                    </div>
-     
-                   </div>
-                  </div>
-               </div>
-           </div>
-       </div>
-   </div>
- </div>
- <!-- End of Modal Content -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-              </div>
-
-             
-
-            
-      </div>
-      
-  </div>
-  </div>
-
-
-
-
-
-
-  <div class="container " style="width:70%;">
-    <div class="container " >
-      <div id="card" class="shadow-lg p-3 mb-5 bg-white rounded">
-       <h1 >Demande Récentes</h1>
-      <div class="filtre">
-
-        <select class="form-select form-select-md larger"  id="filtre" aria-label=".form-select-sm example"
-        (change)="filtrer()" [(ngModel)]="textFiltre" name="textFiltre">
-         <option >
-           <ion-icon name="funnel-outline"  ></ion-icon>Filtrer 
-         </option>
-         
-         <option >Acte de naissance</option>
-         <option >Acte de mariage</option>
-         <option >Acte de décès</option>
-         <option >Casier Judiciaire</option>
-         <option >Certificat de résidence</option>
-         <option >Certificat de nationnalité</option>
-
-
-       </select>
-
-      </div>
-
-      </div>   
-      </div>
-  </div>
-  <div class="container" style="margin: 15px;">
-
-    <div class="row">
-      <table class="table table-striped text-center mx-auto caption-top"   >
-        <!-- <caption class="text-center">Liste des personnels de  </caption> -->
-        <thead>
-          <div *ngIf="longueur == 0"> 
-            <p style=" text-align:center;font-size:larger ">Aucune demande </p>
-           </div>
-          <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Prenom</th>
-            <th scope="col" class="hideColonne hideColonneOder">Genre</th>
-            <!-- <th scope="col">Contact</th> -->
-            <th scope="col" class="hideColonne hideColonneOder">Email</th>
-            <th scope="col" class="hideColonne hideColonneOder">Téléphone</th>
-            <th scope="col" class="hideColonne hideColonneOder">Demande</th>
-  
-            <!-- <th scope="col" class="hideColonne">Action</th> -->
-          </tr>
-        </thead>
-        <tbody *ngFor= "let s of listacten ">
-          <!-- <tr *ngFor="let table of PersonnelEntite | paginate: { itemsPerPage: 8, currentPage: pages}">
-            <td> {{table.nom}} </td>
-            <td> {{table.prenom}} </td>
-            <td class="hideColonne hideColonneOder"> {{table.genre}} </td> -->
-            <!-- <td> {{table.contact}} </td> -->
-            <!-- <td class="hideColonne hideColonneOder"> {{table.email}} </td> -->
-            <!-- <td class="hideColonne"> <span class="voirPlus">voir plus</span> </td> -->
-          <!-- </tr> -->
-           <tr >
-            <td> {{prenonuser}} </td>
-            <td>{{nomutilisateur}} {{s.id} </td>
-            <td class="hideColonne hideColonneOder">f</td>
-            <td> {{mailutilisateur}} </td>
-            <td class="hideColonne hideColonneOder"> 00899999 </td>
-            <td class="hideColonne"> 
-              <span class="voirPlus" data-bs-toggle="modal"
-               data-bs-target="#modal-form"  
-              (click)="OnClick(s.id)"
-              >voir plus</span>
-             </td>
-           </tr>
-      
           
-        </tbody>
-    
-      </table>
+          <!-- Modal Content -->
+
+
+          <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body p-0">
+                  <div class="card  shadow-soft border-light p-4">
+
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+
+                    </button>
+
+
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-3 col-md-4 mt-10 ">
+                          <ion-icon name="person-circle-outline" class=" vvv  m-auto"
+                            style="width: 50px; height: 50px"></ion-icon>
+                        </div>
+                        <div class="col-7 col-md-8 bg-danger">
+                          <h3>Fatoumata Coulibaly</h3>
+                        </div>
+
+                        <div id="lesp">
+                          <p>Nom:&nbsp;&nbsp;&nbsp; {{detailacte}} </p>
+                          <p>Nom:&nbsp;&nbsp;&nbsp;{{newdet}}</p>
+
+                        </div>
+
+                        <div class="popbtn">
+                          <div><button>Annuler</button></div>
+                          <div><button>Valider</button></div>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Modal Content -->
+
+
+
+
+
+
+        </div>
+
+      </div>
     </div>
-       
 
 
 
+
+
+
+    <div class="container " style="width:70%;">
+      <div class="container ">
+        <div id="card" class="shadow-lg p-3 mb-5 bg-white rounded">
+          <h1>Demande Récentes</h1>
+          <div class="filtre">
+
+            <select class="form-select form-select-md larger" id="filtre" aria-label=".form-select-sm example"
+              (change)="filtrer()" [(ngModel)]="textFiltre" name="textFiltre">
+              <option selected>Acte de naissance</option>
+
+              <option>Acte de mariage</option>
+              <option>Acte de décès</option>
+              <option>Casier Judiciaire</option>
+              <option>Certificat de résidence</option>
+              <option>Certificat de nationnalité</option>
+
+
+            </select>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin: 15px;">
+
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <div *ngIf="longueur == 0">
+              <p style=" text-align:center;font-size:larger ">Aucune demande </p>
+            </div>
+            <tr>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Genre</th>
+              <th>Email</th>
+              <th>Telephone</th>
+
+            </tr>
+          </thead>
+          <tbody *ngFor="let s of listacten ">
+            <tr>
+              <td class="hideColonne hideColonneOder">{{s.user.nom}}</td>
+              <td> {{s.user.prenom}}</td>
+              <td class="hideColonne hideColonneOder">{{s.user.genre}}</td>
+              <td> {{s.user.email}}</td>
+              <td class="hideColonne hideColonneOder">{{s.user.tel}}</td>
+              <!-- <td> <span class="voirPlus" data-bs-toggle="modal" data-bs-target="#modal-form"
+                  (click)="OnClick(s.id)">voir plus</span></td> -->
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+    </div>
 
   </div>
- 
-</div>
 
 
 

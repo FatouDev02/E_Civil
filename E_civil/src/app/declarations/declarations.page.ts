@@ -7,7 +7,7 @@ import { DemandeService } from '../Services/demande.service';
   styleUrls: ['./declarations.page.scss'],
 })
 export class DeclarationsPage implements OnInit {
-  textFiltre:any="Filtrer par Status";
+  textFiltre:any="Acte de naissance";
   alldem:any
   longueur:any
   constructor(private demandeservice:DemandeService) { }

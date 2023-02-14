@@ -1,5 +1,15 @@
 
-@media (max-width: 385px) {
+
+  @media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    ion-title{
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 385px) {
     .mesclass{
       font-size: .8em;
       
@@ -11,7 +21,12 @@
       
     }
   }
-
+  @media (max-width: 308px) {
+    .mesclass{
+      font-size: .7em;
+      
+    }
+  }
   
   /* Design */
   *,
@@ -25,32 +40,23 @@ ion-content{
 
     --ion-background-color:#FFFFFF;
   }
+
+
   
-  
-  html {
-   // background-color: #ecf9ff;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4gGo9TnYrMo2_w-RT1fyPQXZNMJnWedN7Dg&usqp=CAU");
-  }
-  
-  body {
-    color: #272727;
-    font-family: 'Quicksand', serif;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0;
-    padding: 1rem;
-  }
-  
-  #reg{
-    max-width: 1200px;
-    margin: 20px auto;
-  }
+  // #reg{
+  //   max-width: 1200px;
+  //   margin: 20px auto;
+  // }
   
   h1 {
       font-size: 24px;
       font-weight: 400;
       text-align: center;
   }
+  h2 {
+    margin-top: 40%;
+    font-size: 24px;
+}
   
   img {
     height: auto;
@@ -139,19 +145,18 @@ ion-content{
     text-align: center;
   }
   #gauche{
-      background: linear-gradient(160deg, #ACBE11 40%, #D9D9D9 100%);;
-      
+      background: linear-gradient(160deg, #ACBE11 50%, #D9D9D9 50%);;
+      margin-right: 5px;
   }
   
   .cercle {
-      width: 40px;
-      height: 40px;
-      background: #b9d5fd;
-        width: 120px;
-        height: 120px;
+      background: #ACBE11;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         overflow: hidden;
         margin: 0 auto;
+        color: #FFFFFF;
         
   }
   #cc{
@@ -181,8 +186,8 @@ ion-content{
       text-align: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       border-radius: 8px;
-      padding: 5px auto;
-      margin: 20px;
+      padding: 2px auto;
+      margin: 10px;
       .img-wrapper{
         width: 120px;
         height: 120px;

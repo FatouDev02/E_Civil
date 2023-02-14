@@ -28,7 +28,12 @@ ion-content{
     
   }
 }
-
+@media (max-width: 308px) {
+  .mesclass{
+    font-size: .7em;
+    
+  }
+}
 
 .header {
   text-align: center;
@@ -64,14 +69,26 @@ img {
 
 @media (max-width: 450px) {
   .box {
-      height: 200px;
+      height: 220px;
+  }
+}
+@media (max-width: 550px) {
+  .box {
+      height: 230px;
+  }
+}
+
+@media (max-width: 250px) {
+  .box {
+      height: 300px;
+      
   }
 }
 
 @media (max-width: 950px) and (min-width: 450px) {
   .box {
       text-align: center;
-      height: 180px;
+      height: 200px;
   }
 }
 
@@ -92,7 +109,9 @@ h2 {
   color: #000000;
   font-weight: var(--weight3);
 }
-
+.row1-container {
+  b: 20px;
+}
 
 @media (min-width: 950px) {
   .row1-container {

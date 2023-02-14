@@ -66,5 +66,18 @@ export class StructService {
   getactedbyidstruct(id:number): Observable<any>{
     return this.http.get(`${this.env.api}/ecivil/acted/listactedbystruct/${id}`)
   }
+  getcasbyidstruct(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/casier/listcasierbystruct/${id}`)
+  } 
+   getresbyidstruct(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/residence/listresbystruct/${id}`)
+  } 
+   getnatbyidstruct(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/nationnalite/listnatbystruct/${id}`)
+  }
+
+  getrdvdujour(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/rdv/${id}`)
+  }
   
 }

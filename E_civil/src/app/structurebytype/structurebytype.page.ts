@@ -6,6 +6,7 @@ import { latLng, Marker, marker, tileLayer } from 'leaflet';
 import * as L from 'leaflet';
 
 import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { StorageService } from '../Services/storage.service';
 @Component({
   selector: 'app-structurebytype',
   templateUrl: './structurebytype.page.html',
@@ -30,9 +31,14 @@ nom:any
   idd:any
   mastruct: any;
   type1: any;
+  roles: any;
+  showAdmin: any;
+  showuser: any;
+  showagent: any;
 
   constructor(private route:ActivatedRoute,private router:Router,
     private geolocation:Geolocation,
+    private storageService:StorageService,
     private structservice:StructService) { }
   //map!: L.Map;
 
@@ -41,23 +47,32 @@ nom:any
   
 
   ngOnInit() {
-
+////LES DETAILS DE L'UTILISATEURS
+const user=this.storageService.getUser();
+this.id=user.id
+console.log(this.id)
+this.roles = user.roles;
+console.log(this.roles)
+this.showAdmin = this.roles.includes('ADMIN');
+this.showuser = this.roles.includes('USER');
+this.showagent = this.roles.includes('Agent');
     
 
-    const idstruct = this.route.snapshot.params['id']
+    var idstruct = this.route.snapshot.params['id']
     this.id = idstruct
 
     const typestruct = this.route.snapshot.params['type']
     this.type = typestruct
   
     console.log("id de la structure : " + idstruct)
-
+    
    
-this.structservice.gettypestructbyid(1).subscribe(data =>{
+this.structservice.gettypestructbyid(idstruct).subscribe(data =>{
   this.mastruct=data
+  console.log("/////////////////////////////"+JSON.stringify(this.mastruct))
   this.type1=data.type;
   console.log("je code mon code dans vs code" + this.mastruct.type);
-  console.log("/////////////////" +JSON.stringify(this.mastruct));
+  console.log("/////////////////" +JSON.stringify(data));
 }),
     this.structservice.getstructbytype(idstruct).subscribe(data =>{
       this.allstruct=data;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { isDeepStrictEqual } from 'util';
+import { StorageService } from '../Services/storage.service';
 import { StructService } from '../Services/struct.service';
 
 @Component({
@@ -20,11 +21,27 @@ export class StrucuturesPage implements OnInit {
   idStructure:any=1;
 
   idstruct:any;
-  constructor(private structservice:StructService,private router:Router,private route:ActivatedRoute) { }
+  id: any;
+  roles: any;
+  monrole: any;
+  showAdmin: false;
+  showuser: false;
+  showagent: false;
+  constructor(private structservice:StructService,
+    private storageService: StorageService,
+    private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
     
     this.ListStruct();
+    const user=this.storageService.getUser();
+    this.id=user.id
+    console.log(this.id)
+    this.roles = user.roles;
+    console.log(this.roles)
+    this.showAdmin = this.roles.includes('ADMIN');
+    this.showuser = this.roles.includes('USER');
+    this.showagent = this.roles.includes('Agent');
   }
 
   /*Listdembystruct(){
@@ -85,13 +102,13 @@ export class StrucuturesPage implements OnInit {
 
 
   AddStruct(){
-    var structt=[{
-      'type':this.type,
-      'description':this.description,
-      
-    }]
-    const data=new FormData()
-    data.append('structt',JSON.stringify(structt).slice(1,JSON.stringify(structt).lastIndexOf(']')))
+      var structt=[{
+        'type':this.type,
+        'description':this.description,
+        
+      }]
+      const data=new FormData()
+      data.append('structt',JSON.stringify(structt).slice(1,JSON.stringify(structt).lastIndexOf(']')))
     this.structservice.add(structt).subscribe(
       (data)=>{
           this.mystruct=data

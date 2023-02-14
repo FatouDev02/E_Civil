@@ -31,7 +31,7 @@ export class DashPage implements OnInit {
     private menu: MenuController,
     private storageService: StorageService, 
     private authService: AuthService,
-    private eventBusService: EventBusService
+    private eventBusService: EventBusService,
     ) { }
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -73,10 +73,14 @@ export class DashPage implements OnInit {
  
   FermerSideBar(){
     this.menu.close()
-    setTimeout(() => {
-      window.location.reload()
-    }, 0);
+   
   }
+  
+  closeMenu() {
+    this.menu.close();
+    console.log("errerrrrrr");
+  }
+
 
   deconnecter(){
     localStorage.clear()

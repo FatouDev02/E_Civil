@@ -18,6 +18,11 @@ export class ResidencePage implements OnInit {
   erreur!: boolean;
   fichier:any
   imgacten:any
+  nom: any;
+  prenom: any;
+  photoacten: any;
+  lieuderesidence: any;
+  mydata: any;
   constructor(
     private router:Router,private actenservice:ActenService,
     private route:ActivatedRoute,
@@ -58,7 +63,21 @@ export class ResidencePage implements OnInit {
       }
     }
   }
-  add(){
-    
+  add() {
+
+    var residence = [{
+      'nom': this.nom,
+      'prenom': this.prenom,
+      'photoacten': this.photoacten,
+      'lieuderesidence': this.lieuderesidence,
+    }]
+    const data = new FormData()
+    data.append('file', this.fichier)
+    data.append('residence', JSON.stringify(residence).slice(1, JSON.stringify(residence).lastIndexOf(']')))
+    this.actenservice.addresidence(this.id,this.iduser,residence,this.lieuderesidence,this.fichier).subscribe(data => {
+      this.mydata = data
+      console.log(this.mydata)
+    });
   }
+
 }

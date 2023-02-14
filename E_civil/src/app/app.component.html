@@ -2,7 +2,7 @@
   <ion-router-outlet></ion-router-outlet>
 </ion-app> -->
 
-<!-- <ion-router-outlet id="main"> </ion-router-outlet> -->
+<!-- <ion-router-outlet id="main"> </ion-router-outlet> 
 
 <ion-app>
   <ion-header>
@@ -13,8 +13,8 @@
   
       <ion-popover trigger="popover-button" [dismissOnSelect]="true" class="popUps">
         <ng-template class="popUp">
-          <ion-content>
-            <!-- <h2>{{User.nomcomplet}}</h2> -->
+          <ion-content>-->
+            <!-- <h2>{{User.nomcomplet}}</h2> 
             <ion-list >
               <ion-item [button]="true" [detail]="false" routerLink="/tab2/profiletudiant">Profil</ion-item>
               <ion-item class="td" (click)="logout()">Déconnexion</ion-item>
@@ -25,12 +25,26 @@
   
     </ion-buttons>
   </ion-header>
-  <ion-split-pane contentId="main" >
+  <ion-split-pane contentId="main" >-->
+    <!--  the side menu  -->
+
+    
+    <!-- the main content 
+   <ion-router-outlet id="main"> </ion-router-outlet>
+  </ion-split-pane>
+
+  
+</ion-app>-->
+
+<ion-router-outlet id="main"></ion-router-outlet>
+
+<ion-app>
+  <ion-split-pane contentId="main" when="m">
     <!--  the side menu  -->
 
     
     <!-- the main content -->
-   <ion-router-outlet id="main"> </ion-router-outlet>
+   <ion-router-outlet id="main"></ion-router-outlet>
   </ion-split-pane>
 
   

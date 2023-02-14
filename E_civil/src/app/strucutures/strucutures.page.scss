@@ -1,105 +1,135 @@
+@media (max-width: 385px) {
+  .mesclass {
+    font-size: .8em;
+
+  }
+}
+
+@media (max-width: 185px) {
+  .mesclass {
+    font-size: .6em;
+
+  }
+}
+
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  ion-title {
+    font-size: 20px;
+  }
+}
 
 @media (max-width: 385px) {
-    .mesclass{
-      font-size: .8em;
-      
-    }
+  .mesclass {
+    font-size: .8em;
+
   }
-  @media (max-width: 185px) {
-    .mesclass{
-      font-size: .6em;
-      
-    }
-  }
-
-
-
-.new-background-color{
-    --background-color:#ffffff;
 }
 
-#cont2{
-    // background-image: linear-gradient(160deg, #ACBE11 0%, #D9D9D9 100%);
-     margin: 0;
-     border-radius: 9px; 
-     width: 100% !important; 
-     margin-bottom: 10px;
-    // margin: auto 0 !important;
-     
-  } 
- #cardpopup {
-     border: 2px solid #ACBE11;
-     border-radius: 8px;
-     max-width: 250px;
-     text-align: center;
-     margin-top: 20px;
-     margin-right: 5px;
-     margin-left: 5px;
+@media (max-width: 185px) {
+  .mesclass {
+    font-size: .6em;
+
   }
- .card_img {
-     width: 80px;
-     height: 80px;
-     overflow: hidden;
-     border-radius: 100%;
-     margin: -20px auto 0;
- }
- .card_img img {
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
- }
- .card_info {
-     padding-bottom: 10px;
- 
- }
-
-
-
-#cont2{
-    margin: 10px 10px;
-    border-radius: 10px; 
-//margin-top: 10px;    
-
- }
- 
- #card{
-    text-align: center;
-   // box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
 }
 
- #mycard{
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: 2px solid #000000;
-    margin-top: 10px;
-    margin-right: 10px;
- }
- #card_title{
-    text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.55);
-    margin-top: 6px;
- }
- .cardimg {
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    border-radius: 100%;
-    margin: -20px 10px 0;
-    }
-    .card_btn{
-              margin: 10px auto;
-               border-radius: 20px;
-               width: 14%;
-               height: auto;
-               font-size: 19px;
-               background-color: #ACBE00;
-    }
-    .btn{
-        margin: 10px 10px;
-        border-radius: 20px;
-        width: 35%;
-        height: auto;
-        font-size: 20px;
-               background-color: #ACBE00;
-    }
+.new-background-color {
+  --background-color: #ffffff;
+}
 
+#cont2 {
+  // background-image: linear-gradient(160deg, #ACBE11 0%, #D9D9D9 100%);
+  margin: 0;
+  border-radius: 9px;
+  width: 100% !important;
+  margin-bottom: 10px;
+  // margin: auto 0 !important;
+
+}
+
+#cardpopup {
+  border: 2px solid #ACBE11;
+  border-radius: 8px;
+  max-width: 250px;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.card_img {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 100%;
+  margin: -20px auto 0;
+}
+
+.card_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card_info {
+  padding-bottom: 10px;
+
+}
+
+
+
+#cont2 {
+  margin: 10px 10px;
+  border-radius: 10px;
+  //margin-top: 10px;    
+
+}
+
+#card {
+  text-align: center;
+  // box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+#mycard {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 2px solid #000000;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#card_title {
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.55);
+  margin-top: 6px;
+}
+
+.cardimg {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 100%;
+  margin: -20px 10px 0;
+}
+
+.card_btn {
+  margin: 10px auto;
+  border-radius: 20px;
+  width: 20%;
+  height: auto;
+  font-size: 19px;
+  background-color: #ACBE00;
+}
+
+.btn {
+  margin: 10px 10px;
+  border-radius: 20px;
+  width: 50%;
+  height: auto;
+  font-size: 20px;
+  background-color: #ACBE00;
+}
