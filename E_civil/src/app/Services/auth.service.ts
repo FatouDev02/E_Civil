@@ -29,13 +29,18 @@ export class AuthService {
     );
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
+  register(nom:string,prenom:string,genre:string,lieuderesidence:string,username: string, email: string, password: string,tel:string): Observable<any> {
     return this.http.post(
       AUTH_API + 'signup',
       {
-        username,
-        email,
-        password,
+        "nom":nom,
+        "prenom":prenom,
+        "genre":genre,
+        "lieuderesidence":lieuderesidence,
+        "username":username,
+        "email":email,
+        "password":password,
+        "tel":tel,
       },
       httpOptions
     );
@@ -51,5 +56,5 @@ return this.http.request(req);
     return this.http.post(AUTH_API + 'refreshtoken', { }, httpOptions);
   }
 
-  
+
 }

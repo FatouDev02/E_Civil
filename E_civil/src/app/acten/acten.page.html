@@ -83,7 +83,7 @@
           </div>
 
           <div class="input-box mb-3">
-            <label for="inputs" class="form-label"> Date de naissance de l'enfant *</label>
+            <label for="inputs" class="form-label"> Date de naissance  *</label>
             <input type="date" id="inputs" class="form-control" name="datedenaissance"  [(ngModel)]="datedenaissance"  required>
           </div>
 
@@ -91,11 +91,17 @@
             <Label for="inputs">Lieu de naissance *</Label>
             <input type="text" [(ngModel)]="lieudenaissance"  id="inputs" name="lieudenaissance" placeholder="Lieu" class="form-control" autocomplete="off"  required>
           </div>
+   
           <div class="input-box mb-3">
-            <Label for="inputs">Genre *</Label>
-            <input type="text" [(ngModel)]="genre"  id="inputs" name="genre" placeholder="Lieu" class="form-control" autocomplete="off"  required>
-          </div>
+            <select  name="genre" 
+            [(ngModel)]="genre"  id="inputs"  class="form-control" autocomplete="off" required>
+              <option value="selected">-- Genre--</option>
+              <option value="1">Masculin</option>
+              <option value="2">Feminin</option>
+              <!-- <option *ngFor="let entite of Entites" >{{entite.libelleentite}}</option> -->
 
+            </select>
+          </div>
          
           <div class="input-box mb-3">
             <Label for="inputs" >Numéro du Volet de l'hopital *</Label>

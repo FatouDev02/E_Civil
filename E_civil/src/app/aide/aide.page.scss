@@ -1,6 +1,26 @@
 
+ion-content{
+
+  --ion-background-color:linear-gradient(160deg, #D9D9D9 50%, #ACBE11 50%);
+}
 
 
+ 
+  @media (max-width: 477px) {
+    #lab{
+      font-size: 13px;
+    }
+  }
+  @media (max-width: 412px) {
+    #lab{
+      font-size:.5em
+    }
+  }
+  @media (max-width: 314) {
+    #lab{
+      font-size:8PX
+    }
+  }
 
 
 @media (max-width: 400px) {

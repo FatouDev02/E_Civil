@@ -35,6 +35,7 @@ nom:any
   showAdmin: any;
   showuser: any;
   showagent: any;
+  mystruct: any;
 
   constructor(private route:ActivatedRoute,private router:Router,
     private geolocation:Geolocation,
@@ -177,8 +178,24 @@ this.structservice.gettypestructbyid(idstruct).subscribe(data =>{
 
 
   AddStruct(){
+    var structt2=[{
+      'nom':this.nom,
+      'latitude':this.latitude,
+      'longitude':this.longitude,
+      
+    }]
+    const data=new FormData()
+    data.append('structt2',JSON.stringify(structt2).slice(1,JSON.stringify(structt2).lastIndexOf(']')))
+  this.structservice.addstruct(this.id,structt2).subscribe(
+    data=>{
+        this.mystruct=data
+        console.log(this.mystruct)
+       
+       // this.router.navigate(['/dash/strucutures'])
 
-  }
+    }
+  )
+}
 
 
   ///autres methodes

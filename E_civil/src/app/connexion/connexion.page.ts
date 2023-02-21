@@ -44,6 +44,8 @@ onSubmit(): void {
         this.router.navigate(['/dash/accueil'])
       }else if(this.roles[0]=="Agent"){
         this.router.navigate(['/dash/accueilagent'])
+      }else if(this.roles[0]=="ADMIN"){
+        this.router.navigate(['/dash/accueiladmin'])
       }
 
     },

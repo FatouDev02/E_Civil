@@ -15,9 +15,27 @@
         <!-- <ion-icon name="arrow-back"></ion-icon> -->
       </ion-button>
     </ion-buttons>
+
+    <ion-icon name="notifications-outline" slot="end" (click)="getnotif()" id="open-popover"
+      style="margin-right: 10px;width: 40px; height: 40px;margin-top: 5px;">
+    
+    </ion-icon>
+   <ion-popover [keepContentsMounted]="true" trigger="open-popover">
+    <ng-template >
+    <ion-content class="ion-padding">dfghjklm</ion-content>
+    <ion-card color="light"  *ngFor="let a of agentnotif ">
+      <ion-card-content style="text-transform: capitalize;">
+        {{a.description}} 
+      </ion-card-content>
+    </ion-card>
+    </ng-template>
+  
+
+   </ion-popover>
     <ion-img src="../../assets/images/logo.jpg" slot="end"
       style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
     </ion-img>
+
 
   </ion-toolbar>
 </ion-header>
@@ -119,53 +137,7 @@
           </div>
 
           
-          <!-- Modal Content -->
 
-
-          <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-body p-0">
-                  <div class="card  shadow-soft border-light p-4">
-
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-
-                    </button>
-
-
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-3 col-md-4 mt-10 ">
-                          <ion-icon name="person-circle-outline" class=" vvv  m-auto"
-                            style="width: 50px; height: 50px"></ion-icon>
-                        </div>
-                        <div class="col-7 col-md-8 bg-danger">
-                          <h3>Fatoumata Coulibaly</h3>
-                        </div>
-
-                        <div id="lesp">
-                          <p>Nom:&nbsp;&nbsp;&nbsp; {{detailacte}} </p>
-                          <p>Nom:&nbsp;&nbsp;&nbsp;{{newdet}}</p>
-
-                        </div>
-
-                        <div class="popbtn">
-                          <div><button>Annuler</button></div>
-                          <div><button>Valider</button></div>
-
-
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End of Modal Content -->
 
 
 
@@ -190,13 +162,13 @@
 
             <select class="form-select form-select-md larger" id="filtre" aria-label=".form-select-sm example"
               (change)="filtrer()" [(ngModel)]="textFiltre" name="textFiltre">
-              <option selected>Acte de naissance</option>
+              <option selected *ngIf="showacte">Acte de naissance</option>
 
-              <option>Acte de mariage</option>
-              <option>Acte de décès</option>
-              <option>Casier Judiciaire</option>
-              <option>Certificat de résidence</option>
-              <option>Certificat de nationnalité</option>
+              <option *ngIf="showacte">Acte de mariage</option>
+              <option *ngIf="showacte" >Acte de décès</option>
+              <option *ngIf="showcas">Casier Judiciaire</option>
+              <option *ngIf="showres">Certificat de résidence</option>
+              <option *ngIf="showcas">Certificat de nationnalité</option>
 
 
             </select>
@@ -220,7 +192,7 @@
               <th>Prenom</th>
               <th>Genre</th>
               <th>Email</th>
-              <th>Telephone</th>
+              <th>Traiter</th>
 
             </tr>
           </thead>
@@ -230,7 +202,12 @@
               <td> {{s.user.prenom}}</td>
               <td class="hideColonne hideColonneOder">{{s.user.genre}}</td>
               <td> {{s.user.email}}</td>
-              <td class="hideColonne hideColonneOder">{{s.user.tel}}</td>
+              <td class="hideColonne hideColonneOder"><ion-icon name="eye-outline" 
+                style="height: 20px;width:20px;color: #ACBE11;"
+                data-bs-toggle="modal" data-bs-target="#modal-form"
+                aria-label="close"
+                (click)="OnClick(s.id)"
+                ></ion-icon></td>
               <!-- <td> <span class="voirPlus" data-bs-toggle="modal" data-bs-target="#modal-form"
                   (click)="OnClick(s.id)">voir plus</span></td> -->
 
@@ -240,7 +217,58 @@
         </table>
       </div>
 
+          <!-- Modal Content -->
 
+
+          <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body p-0">
+                  <div class="card  shadow-soft border-light p-4">
+
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+
+                    </button>
+
+
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-3 col-md-4 mt-10 ">
+                          <ion-icon name="person-circle-outline" class=" vvv  m-auto"
+                            style="width: 50px; height: 50px"></ion-icon>
+                        </div>
+                        <div class="col-7 col-md-8 ">
+                          <h3 *ngIf="actembyid && showacte">Par:{{actembyid.user.prenom}} {{actembyid.user.nom}} </h3>
+                          <h3 *ngIf="detailacte && showacte">Par:{{detailacte.user.prenom}} {{detailacte.user.nom}} </h3>
+                          <h3 *ngIf="actedbyid && showacte">Par:{{actedbyid.user.prenom}} {{actedbyid.user.nom}} </h3>
+                          <h3 *ngIf="casbyid && showcas">Par:{{casbyid.user.prenom}} {{casbyid.user.nom}} </h3>
+                          <h3 *ngIf="resbyid && showres">Par:{{resbyid.user.prenom}} {{resbyid.user.nom}} </h3>
+                          <h3 *ngIf="natbyid && showcas">Par:{{natbyid.user.prenom}} {{natbyid.user.nom}} </h3>
+
+                        </div>
+
+                        <div id="lesp">
+
+                          <p>&nbsp;&nbsp;&nbsp;{{newdet}}</p>
+
+                        </div>
+                        <div class="popbtn">
+                          <div><button >Annuler</button></div>
+                          <div><button>Valider</button></div>
+
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Modal Content -->
 
 
     </div>

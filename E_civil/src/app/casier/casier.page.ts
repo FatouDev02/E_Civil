@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ActenService } from '../Services/acten.service';
 import { DemandeService } from '../Services/demande.service';
 import { StorageService } from '../Services/storage.service';
@@ -40,7 +41,30 @@ export class CasierPage implements OnInit {
     }
 
   }
+ //Pop up enregistrement reussi
+ MessageSuccess(){
+  Swal.fire({
+    title: "Votre déclaration a été envoyé avec  succes",
+    showConfirmButton: true,
+    confirmButtonText: "OK",
+    confirmButtonColor: '#ABDE11',
+    heightAuto: false
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.router.navigateByUrl('/dash/declarations', {skipLocationChange: true}).then(() => {
+        this.router.navigate(["/dash/declarations"])
+      })
 
+        // this.actualisePagApresSuppresion()
+        // this.router.navigateByUrl('/dashboard/personnel-externe')
+        // window.location.reload();
+  }else if (result.isDenied) {
+    this.router.navigateByUrl('/dash/casier')
+  }
+
+});
+
+}
   addcasier() {
 
     var casier = [{
@@ -55,6 +79,7 @@ export class CasierPage implements OnInit {
     this.actenservice.addcasier(this.id,this.iduser,casier,this.lieudenaissance,this.fichier).subscribe(data => {
 
       this.moncasier = data
+      this.MessageSuccess()
       console.log(this.moncasier)
 
     });

@@ -29,31 +29,25 @@ export class DemandeService {
     
     return this.http.get(`${this.env.api}/ecivil/acten/listdemande`);
   }
-  Getacten():Observable<any>{
-    const data:FormData=new FormData();
+  Getacten(id:any):Observable<any>{
     
-    return this.http.get(`${this.env.api}/ecivil/acten/list`);
+    return this.http.get(`${this.env.api}/ecivil/acten/list/${id}`);
   }
-  Getactem():Observable<any>{
-    const data:FormData=new FormData();
+  Getactem(id:any):Observable<any>{
     
-    return this.http.get(`${this.env.api}/ecivil/actem/list`);
+    return this.http.get(`${this.env.api}/ecivil/actem/list/${id}`);
   }
-   Getacted():Observable<any>{
-    const data:FormData=new FormData();
+   Getacted(id:any):Observable<any>{
     
-    return this.http.get(`${this.env.api}/ecivil/acted/list`);
-  } Getcasier():Observable<any>{
-    const data:FormData=new FormData();
+    return this.http.get(`${this.env.api}/ecivil/acted/list/${id}`);
+  } Getcasier(id:any):Observable<any>{
     
-    return this.http.get(`${this.env.api}/ecivil/casier/list`);
-  } Getresidence():Observable<any>{
-    const data:FormData=new FormData();
+    return this.http.get(`${this.env.api}/ecivil/casier/list/${id}`);
+  } Getresidence(id:any):Observable<any>{
     
-    return this.http.get(`${this.env.api}/ecivil/residence/list`);
-  } Getnation():Observable<any>{
-    const data:FormData=new FormData();
+    return this.http.get(`${this.env.api}/ecivil/residence/list/${id}`);
+  } Getnation(id:any):Observable<any>{
     
-    return this.http.get(`${this.env.api}/ecivil/nationnalite/list`);
+    return this.http.get(`${this.env.api}/ecivil/nationnalite/list/${id}`);
   }
 }

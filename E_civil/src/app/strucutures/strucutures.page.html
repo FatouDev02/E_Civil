@@ -13,12 +13,11 @@
     <ion-buttons slot="start">
       <ion-menu-button> </ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-button ion-button navPop>
         <ion-back-button text="" icon="arrow-back"></ion-back-button>
-        <!-- <ion-icon name="arrow-back"></ion-icon> -->
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-img src="../../assets/images/logo.jpg" slot="end"
       style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
     </ion-img>
@@ -27,21 +26,27 @@
 </ion-header>
 
 <ion-content>
-
   <div class="row">
 
-    <div id="card" class="row shadow-lg  mb-1 bg-white rounded">
+    <div id="card2" class="shadow-lg p-1 mb-2 bg-white rounded" >
+      
 
-      <div class="col-md-4 ">
+      <h1 >Structures  <span style="color: #ACBE11;"> Administratives</span>  <br>
        
+      </h1>
+     
+    </div>
 
+  </div>
 
-
-          <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" *ngIf="showAdmin">
+  <div class="row">
+      <div class="col-lg-6 col-6">
+          <!-- <button type="button" class="btn buttonColor" data-bs-toggle="modal" *ngIf="showAdmin" data-bs-target="#modal-form" >
+            Ajouter +
+          </button> -->
+          <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" >
             Ajouter +
           </button>
-
-
           <!-- Modal Content -->
           <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
             aria-hidden="true">
@@ -106,24 +111,7 @@
             </div>
           </div>
           <!-- End of Modal Content -->
-
-      
-
       </div>
-
-      <div class="col-md-8">
-
-
-        <h1>Structures <span style="color: #ACBE11;">Administratives </span> <br>
-
-        </h1>
-
-      </div>
-
-    </div>
-
-
-
   </div>
 
   <div class="container" id="cont2">
@@ -176,7 +164,7 @@
                         <div class="container" id="cont2">
 
                           <div class="row">
-                            <div class="col-4 col-md-4" *ngFor="let d of dem ">
+                            <div class="col-4 col-md-6" *ngFor="let d of dem ">
 
                               <div class="card shadow-soft border-black" id="cardpopup">
                                 <div class="card_img">
@@ -190,6 +178,8 @@
 
                               </div>
                             </div>
+
+
                           </div>
                         </div>
 

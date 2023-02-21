@@ -99,6 +99,10 @@ const routes: Routes = [
         path: 'agenttest',
         loadChildren: () => import('../agenttest/agenttest.module').then( m => m.AgenttestPageModule)
       },
+  {
+    path: 'accueiladmin',
+    loadChildren: () => import('../accueiladmin/accueiladmin.module').then( m => m.AccueiladminPageModule)
+  }
     ]
   }
 

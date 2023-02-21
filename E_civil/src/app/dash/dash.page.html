@@ -13,9 +13,9 @@
         <!-- image de l'utilisateur -->
         <div class="row mt-2">
           <div class="col align-self-center text-center" routerLink="/dash/profil">
-            <!-- <img alt="Silhouette of mountains" src="../../assets/images/logo.jpg" /> -->
+            <img style="margin-right: 10px;width: 100px; height: 100px" src="../../assets/images/user.png" />
             <ion-icon name="person" ios="ios-person" slot="end"
-              style="margin-right: 10px;width: 100px; height: 100px;color: #ffffff;"></ion-icon>
+              ></ion-icon>
 
           </div>
 
@@ -36,35 +36,50 @@
         <div class="row mt-2 ">
 
           <ion-item lines="none" routerDirection='root' [routerLinkActiveOptions]={exact:true} (click)="closeMenu()"
-            routerLink="/dash/accueil" routerLinkActive='active-item'>
-            <img class="ion-icon Active" src="../../assets/images/home.png" alt="" srcset="">
-
-            <img class="ion-icon Desactive" src="../../assets/images/home.jpg" alt="" srcset=""> &nbsp;&nbsp;&nbsp;
-            <ion-label class="lienPage">Accueil</ion-label>
-          </ion-item>
-
-          <ion-item lines="none" routerDirection='root' routerLink="/dash/strucutures" routerLinkActive='active-item'>
-            <img class="ion-icon Active" src="../../assets/images/home.png" alt="" srcset="">
+            routerLink="/dash/accueil" routerLinkActive='active-item' *ngIf="showuserBoard">
+            <img class="ion-icon Active" src="../../assets/images/home.png"  alt="" srcset="">
 
             <img class="ion-icon Desactive" src="../../assets/images/home.png" alt="" srcset=""> &nbsp;&nbsp;&nbsp;
+            <ion-label class="lienPage">Accueil</ion-label>
+          </ion-item>
+          <ion-item lines="none" routerDirection='root' [routerLinkActiveOptions]={exact:true} (click)="closeMenu()"
+            routerLink="/dash/accueilagent" routerLinkActive='active-item' *ngIf="showagentBoard">
+            <img class="ion-icon Active" src="../../assets/images/home.png"  alt="" srcset="">
+
+            <img class="ion-icon Desactive" src="../../assets/images/home.png" alt="" srcset=""> &nbsp;&nbsp;&nbsp;
+            <ion-label class="lienPage">Accueil-Agent</ion-label>
+          </ion-item>
+          <ion-item lines="none" routerDirection='root' [routerLinkActiveOptions]={exact:true} (click)="closeMenu()"
+          routerLink="/dash/accueiladmin" routerLinkActive='active-item' *ngIf="showAdminBoard">
+          <img class="ion-icon Active" src="../../assets/images/home.png"  alt="" srcset="">
+
+          <img class="ion-icon Desactive" src="../../assets/images/home.png" alt="" srcset=""> &nbsp;&nbsp;&nbsp;
+          <ion-label class="lienPage">Accueil-Admin</ion-label>
+        </ion-item>
+
+
+          <ion-item lines="none" routerDirection='root' routerLink="/dash/strucutures" routerLinkActive='active-item'  *ngIf="showAdminBoard">
+            <img class="ion-icon Active" src="../../assets/images/location.png" alt="" srcset="">
+
+            <img class="ion-icon Desactive" src="../../assets/images/location.png" alt="" srcset=""> &nbsp;&nbsp;&nbsp;
             <ion-label class="lienPage">Structures</ion-label>
           </ion-item>
 
-          <ion-item lines="none" routerLink="/dash/declarations" routerLinkActive='active-item'>
-            <img class="ion-icon Active"  src="../../assets/images/home.png"  alt="" srcset="">
-            <img class="ion-icon Desactive" src="../../assets/images/home.png" alt="" srcset=""> &nbsp;&nbsp;&nbsp;
-            <ion-label class="lienPage">Déclarations</ion-label>
+          <ion-item lines="none" routerLink="/dash/declarations" routerLinkActive='active-item'  *ngIf="showuserBoard">
+            <img class="ion-icon Active"  src="../../assets/images/decl.png"  alt="" srcset="">
+            <img class="ion-icon Desactive" src="../../assets/images/decl.png" alt="" srcset=""> &nbsp;&nbsp;&nbsp;
+            <ion-label class="lienPage" >Déclarations</ion-label>
           </ion-item>
 
           <ion-item lines="none" routerLink="/dash/rendezvous" routerLinkActive='active-item'>
-            <img class="ion-icon Active"  src="../../assets/images/home.png"  alt="" srcset="">
-            <img class="ion-icon Desactive"  src="../../assets/images/home.png"  alt="" srcset=""> &nbsp;&nbsp;&nbsp;
+            <img class="ion-icon Active"  src="../../assets/images/rdv.png"  alt="" srcset="">
+            <img class="ion-icon Desactive"  src="../../assets/images/rdv.png"  alt="" srcset=""> &nbsp;&nbsp;&nbsp;
             <ion-label class="lienPage">Rendez-Vous</ion-label>
           </ion-item>
 
           <ion-item lines="none" routerLink="/dash/aide" routerLinkActive='active-item'>
-            <img class="ion-icon Active"  src="../../assets/images/home.png"  alt="" srcset="">
-            <img class="ion-icon Desactive"  src="../../assets/images/home.png"  alt="" srcset=""> &nbsp;&nbsp;&nbsp;
+            <img class="ion-icon Active"  src="../../assets/images/help.png"  alt="" srcset="">
+            <img class="ion-icon Desactive"  src="../../assets/images/help.png"  alt="" srcset=""> &nbsp;&nbsp;&nbsp;
             <ion-label class="lienPage">Guide</ion-label>
           </ion-item>
 

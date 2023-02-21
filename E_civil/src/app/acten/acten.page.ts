@@ -54,8 +54,8 @@ export class ActenPage implements OnInit {
               heightAuto: false
             }).then((result) => {
               if (result.isConfirmed) {
-                this.router.navigateByUrl('/dash/acten', {skipLocationChange: true}).then(() => {
-                  this.router.navigate(["/dash/acten"])
+                this.router.navigateByUrl('/dash/declarations', {skipLocationChange: true}).then(() => {
+                  this.router.navigate(["/dash/declarations"])
                 })
 
                   // this.actualisePagApresSuppresion()
@@ -92,7 +92,6 @@ export class ActenPage implements OnInit {
                this.a=data
                 console.log(this.a)
                 this.MessageSuccess();
-                this.router.navigate(['/dash/accueil'])
 
                //this.router.navigate(['/dash/structures'])
               }

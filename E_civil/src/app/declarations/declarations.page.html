@@ -9,12 +9,7 @@
     <ion-buttons slot="start">
       <ion-menu-button> </ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="start">
-      <ion-button ion-button navPop>
-        <ion-back-button text="" icon="arrow-back"></ion-back-button>
-        <!-- <ion-icon name="arrow-back"></ion-icon> -->
-      </ion-button>
-    </ion-buttons>
+ 
     <ion-img src="../../assets/images/logo.jpg" slot="end"
       style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
     </ion-img>
@@ -25,7 +20,7 @@
 <ion-content>
   <div class="row">
 
-    <div id="card2" class="shadow-lg p-1 mb-2 bg-white rounded" >
+    <div id="card"  class="shadow-lg p-1 mb-2 bg-white rounded" >
       
 
       <h1 >Mes  <span style="color: #ACBE11;"> Declarations</span>  <br>
@@ -45,6 +40,12 @@
             (change)="activitesavenir()" [(ngModel)]="textFiltre" name="textFiltre">
             <option>Acte de naissance</option>
             <option>Acte de mariage</option>
+            <option >  Acte de décès
+            </option>
+            <option>Casier judiciaire</option>
+            <option>Certificat de residence</option>
+            <option>Certificat de Nationnalité</option>
+
           </select>
 
 
@@ -66,15 +67,58 @@
 
 
       <div class="col-md-2  box blue" *ngFor="let all of alldem ">
+        <div *ngIf="longueur == 0">
+          <p>Aucune Declaration Enregistrée</p>
+        </div> 
+        
         <h2 routerLink="/dash/strucutures">
           {{textFiltre}}
          
         </h2>
-        <p> Pour: {{all.nom}} {{all.prenom}}</p>
+        <p *ngIf="!shownonh"> Pour: {{all.nom}} {{all.prenom}}</p>
+        <p *ngIf="shownonh"> Pour: MR {{all.nomh}} et Mlle {{all.nomf}}</p>
+
+        <p></p>
+           
+    <!-- Button Modal -->
+<button type="button" class="btn btn-block btn-primary mb-4" data-bs-toggle="modal"     
+           (click)="OnClick(all.id)"
+ 
+ data-bs-target="#modal-default">voir +</button>
+
         <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="" class="imgg">
       </div>
 
     </div>
+ <!-- Modal Content -->
+<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="h6 modal-title mb-0" id="modal-title-default">Terms of Service</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>{{newdet}}</p>
+                <div >
+                  <div  >
+                    <p>sdfghjkl</p>
+                    <img src="{{photo}}" alt="">
+                  </div>
+                </div>
+
+                 </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary">I Got It</button>
+                <button type="button" class="btn btn-primary text-danger ml-auto" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Modal Content -->
 
 
 

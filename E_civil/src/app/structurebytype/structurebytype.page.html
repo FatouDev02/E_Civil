@@ -34,7 +34,10 @@
         <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-start">
           
 
-    <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" *ngIf="showAdmin">
+    <!-- <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" *ngIf="showAdmin">
+      Ajouter 
+    </button> -->
+    <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" >
       Ajouter 
     </button>
           
@@ -60,13 +63,11 @@
                                  <div class="form-group">
                                   <label for="exampleInputPassword6">Type de Struct</label>
                                   <div class="input-group mb-4">
-                                      <div class="input-group-prepend">
-                                          <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
-                                      </div>
-                                      <select name="nom" class="form-control"  required>
-                                        <option value="">xfgdbx</option>
-                                      </select>
-                                  </div>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                    </div>
+                                    <input class="form-control" [(ngModel)]="nom" name="nom" placeholder="Donnez une nom à la structure" type="text" >
+                                </div>
                               </div>
                               <!-- End of Form -->
                                  
@@ -82,7 +83,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><span class="fas fa-envelope"></span></span>
                                         </div>
-                                        <input class="form-control" [(ngModel)]="latitude" name="latitude" placeholder="Donnez une description a l'activité" type="text" >
+                                        <input class="form-control" [(ngModel)]="latitude" name="latitude" placeholder="Donnez une latitude" type="text" >
                                     </div>
                                 </div>
                                 
@@ -94,7 +95,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><span class="fas fa-envelope"></span></span>
                                         </div>
-                                        <input class="form-control" [(ngModel)]="longitude" name="longitude" placeholder="Donnez une description a l'activité" type="text" >
+                                        <input class="form-control" [(ngModel)]="longitude" name="longitude" placeholder="Donnez une longitude" type="text" >
                                     </div>
                                 </div>
                                 

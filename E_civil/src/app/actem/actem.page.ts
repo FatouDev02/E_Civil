@@ -87,7 +87,7 @@ addactem(){
       this.a=data
        console.log(this.a)
        this.MessageSuccess();
-       this.router.navigate(['/dash/accueil'])
+      // this.router.navigate(['/dash/accueil'])
 
       //this.router.navigate(['/dash/structures'])
      }

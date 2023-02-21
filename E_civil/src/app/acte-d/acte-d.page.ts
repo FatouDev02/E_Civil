@@ -95,7 +95,6 @@ addacted(){
       console.log(this.a)
       this.showLoading
       this.MessageSuccess();
-      this.router.navigate(['/dash/accueil'])
     }
   );
  }

@@ -4,70 +4,145 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content >
+<ion-content>
 
   <div class="align">
 
     <div class="grid align__item">
-  
+
       <div class="register">
         <div class="row" style="margin: 10px 10px;">
-
-          <div id="card" class="shadow-lg  bg-white" >
+          <div>
+          <!-- <div id="card" class="shadow-lg  bg-white"> -->
             <div class="img-wrapper">
-              <img src="../../assets/images/logo.jpg" alt="" id="svg" class="site__logo" width="80" height="100%">
-                  </div>
+              <img src="../../assets/images/logo.jpg" alt="" id="svg" class="site__logo" width="100%" height="100%">
+            </div>
           </div>
-      
-        </div>  
+
+        </div>
 
         <h5>Inscrivez- vous</h5>
-  
-        <form
-         class="form">
-  
+
+        <form class="form" *ngIf="!isSuccessful" name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
           <div class="form__field">
-            <input type="text"   id="inputs" name="nom" placeholder="nom">
-          </div>
-          <div class="form__field">
-            <input type="text"   id="inputs" name="prenom" placeholder="prenom">
+
+            <input [(ngModel)]="form.nom" name="nom"  required minlength="3"  #nom="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && nom.errors }" type="text" id="inputs" 
+              placeholder="Entrez votre nom">
           </div>
 
           <div class="form__field">
-            <input type="text"   id="inputs" name="username" placeholder="username">
+            <input [(ngModel)]="form.prenom"  name="prenom" required minlength="3"  #prenom="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }" type="text" id="inputs"
+              placeholder="Entrez votre prénom">
           </div>
+
+ <!-- ERREUR CONSERNANT LE NOM D'UTILISATEUR-->
+
+ <div style="color: red;" *ngIf="username.errors && f.submitted">
+  <div *ngIf="username.errors['required']">
+    champs obligatoire
+  </div>
+  <div *ngIf="username.errors['minlength']">
+    Username doit etre plus que 3 characteres
+  </div>
+  <div *ngIf="username.errors['maxlength']">
+    Username doit etre moins de 20 characteres
+  </div>
+  <!-- <div *ngIf="username !== null">
+    Le nom d'utilisateur existe déjà. Veuillez en choisir un autre.
+  </div> -->
+
+</div>
+<!-- FIN ERREUR CONSERNANT LE NOM D'UTILISATEUR-->
+
+
+
           <div class="form__field">
-            <input type="text"  id="inputs" name="email" placeholder="email">
+            <input [(ngModel)]="form.username" name="username" required minlength="3"  #username="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && username.errors }" type="text" id="inputs" 
+              placeholder="Nom d'utilisateur">
+          </div>
+
+          <!-- ERREUR CONSERNANT L'EMAIL-->
+
+          <div style="color: red;" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">Le champ email obligatoire</div>
+            <div *ngIf="email.errors['email']">
+              L'email doit être valable
+            </div>
+          </div>
+          <!--FIN ERREUR -->
+
+          <div class="form__field">
+            <input [(ngModel)]="form.email" name="email" required minlength="3" #email="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && email.errors }" type="email" id="inputs" 
+              placeholder="Adresse email(valide)">
+          </div>
+         
+   <!-- ERREUR CONSERNANT PASSWORD-->
+
+   <div style="color: red;" *ngIf="password.errors && f.submitted">
+    <div *ngIf="password.errors['required']">Le Mot de passe est obligatoire</div>
+    <div *ngIf="password.errors['minlength']">
+      Le mot de passe doit pas avoir plus de 8 caractères
+    </div>
+  </div>
+  <!--FIN ERREUR -->
+          <div class="form__field">
+            <input [(ngModel)]="form.password"  name="password" required minlength="3" #password="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && password.errors }" type="text" id="inputs"
+              placeholder="Mot de passe">
+          </div>
+       
+
+          <div class="form__field">
+            <input [(ngModel)]="form.lieuderesidence" name="lieuderesidence" required minlength="3"  #lieuderesidence="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && lieuderesidence.errors }" type="text" id="inputs"
+               placeholder="Lieu de résidence">
           </div>
 
           <div class="form__field">
-            <input type="text"  id="inputs" name="password" placeholder="*************">
+            <input [(ngModel)]="form.tel" name="tel" required minlength="3" maxlength="20" #tel="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && lieuderesidence.errors }" type="text" id="inputs"
+               placeholder=" Numéro de téléphone">
           </div>
+
+
           <div class="form__field">
-            <input type="text"   id="inputs" name="lieuderesidence"  placeholder="lieu">
-          </div>
-          <div class="form__field">
-            <select  class="form-field" class="select" required>
-              <option selected>--Votre genre--</option>
+            <select [(ngModel)]="form.genre"  name="genre" required   #genre="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && genre.errors }" class="form-field"id="inputs"  class="select" required>
+              <option selected>--Votre Genre--</option>
               <option value="1">Masculin</option>
               <option value="2">Feminin</option>
               <!-- <option *ngFor="let entite of Entites" >{{entite.libelleentite}}</option> -->
-              
-            </select>          </div>
-  
-          <div class="form__field">
-            <input type="submit" value="Envoyer">
+
+            </select>
           </div>
-          
-  
+          <div class="form__field">
+            <!-- <input type="submit" value="Envoyer"> -->
+            <button class="btn" >Inscription</button>
+
+          </div>
+          <!-- Inscription echouée-->
+          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Inscription Échouée !<br />{{ errorMessage }}
+          </div>
+                    <!--FIN ERREUR -->
+          <!-- Inscription Reussie-->
+
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Inscription Reussi!
+          </div>
+                    <!--FIN ERREUR -->
+
         </form>
 
         <p>Déja un compte?<a routerLink="/connexion">Connectez-vous</a></p>
-  
+
       </div>
-  
+
     </div>
   </div>
 
-  </ion-content>
-
+</ion-content>
