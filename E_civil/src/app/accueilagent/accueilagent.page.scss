@@ -75,10 +75,12 @@ ion-content{
     width: 100%;
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
+    //background: transparent;
+    background-color: #ACBE11
   }
   
   .btn:hover {
+    color:#ACBE11;
     background-color: rgba(255, 255, 255, 0.12);
   }
   

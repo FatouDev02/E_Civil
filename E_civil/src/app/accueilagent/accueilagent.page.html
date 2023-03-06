@@ -18,20 +18,20 @@
 
     <ion-icon name="notifications-outline" slot="end" (click)="getnotif()" id="open-popover"
       style="margin-right: 10px;width: 40px; height: 40px;margin-top: 5px;">
-    
-    </ion-icon>
-   <ion-popover [keepContentsMounted]="true" trigger="open-popover">
-    <ng-template >
-    <ion-content class="ion-padding">dfghjklm</ion-content>
-    <ion-card color="light"  *ngFor="let a of agentnotif ">
-      <ion-card-content style="text-transform: capitalize;">
-        {{a.description}} 
-      </ion-card-content>
-    </ion-card>
-    </ng-template>
-  
 
-   </ion-popover>
+    </ion-icon>
+    <ion-popover [keepContentsMounted]="true" trigger="open-popover">
+      <ng-template>
+        <ion-content class="ion-padding">dfghjklm</ion-content>
+        <ion-card color="light" *ngFor="let a of agentnotif ">
+          <ion-card-content style="text-transform: capitalize;">
+            {{a.description}}
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+
+
+    </ion-popover>
     <ion-img src="../../assets/images/logo.jpg" slot="end"
       style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
     </ion-img>
@@ -50,45 +50,48 @@
 
         <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbreacten">
           <div class="cercle">
-            <h2 >{{nbreacten}}</h2>
+            <h2>{{nbreacten}}</h2>
           </div>
           <p>Nombre de demandes de Naissance </p>
         </div>
 
-        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbreactem">
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbreactem">
           <div class="cercle">
-            <h2 >{{nbreactem}}</h2>
+            <h2>{{nbreactem}}</h2>
           </div>
           <p>Nombre de demandes de Mariage </p>
         </div>
-        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbreacted">
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbreacted">
           <div class="cercle">
-            <h2 > {{nbreacted}}</h2>
+            <h2> {{nbreacted}}</h2>
           </div>
           <p>Nombre de demandes de décès </p>
 
-        </div> <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbrecas">
+        </div>
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbrecas">
           <div class="cercle">
             <h2>{{nbrecas}}</h2>
           </div>
           <p>Nombre de demandes de Casier</p>
 
-        </div> <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbreres">
+        </div>
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbreres">
           <div class="cercle">
             <h2>{{nbreres}}</h2>
           </div>
-          <p >Nombre de demandes de residence </p>
+          <p>Nombre de demandes de residence </p>
 
 
 
 
-        </div> <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded"  *ngIf="nbrenat">
+        </div>
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbrenat">
           <div class="cercle">
             <h2>{{nbrenat}}</h2>
           </div>
           <p>Nombre de demandes de Nationnalité </p>
         </div>
-        
+
       </div>
     </div>
 
@@ -105,29 +108,45 @@
 
         <div class="col-12 col-md-8">
           <h1 class="pt-3">Liste de Presence du jour</h1>
+          <form (ngSubmit)="Lister()">
+
+            <div class="row">
+              <div class="col-8 col-md-8 ">
+                <input type="number" placeholder="Veuillez définir un nombre" [(ngModel)]="nombre" name="nombre">
+
+              </div>
+              <div class="col-4 col-md-4">
+                <button class="btn" type="submit">Génerer la liste</button>
+
+              </div>
+
+
+            </div>
+          </form>
+
 
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead>
-                <div *ngIf="longueur == 0">
-                  <p style=" text-align:center;font-size:larger ">Aucune demande </p>
-                </div>
+                <!-- <div *ngIf="longueur == 0">
+                  <p style=" text-align:center;font-size:larger ">Aucune demande à Traiter </p>
+                </div> -->
                 <tr>
                   <th>Nom</th>
                   <th>Prenom</th>
                   <th>Genre</th>
                   <th>Email</th>
-                  <th>Demade</th>
+                  <th>Demande</th>
 
                 </tr>
               </thead>
-              <tbody *ngFor="let r of rdv ">
+              <tbody *ngFor="let r of rdv  ">
                 <tr>
                   <td class="hideColonne hideColonneOder">{{r.nom}}</td>
                   <td> {{r.prenom}}</td>
                   <td class="hideColonne hideColonneOder"> {{r.genre}}</td>
                   <td> {{r.email}} </td>
-                  <td> <span class="voirPlus" data-bs-toggle="modal" data-bs-target="#modal-form">voir plus</span>
+                  <td> <span class="voirPlus" data-bs-toggle="modal" data-bs-target="#modal-formm">voir plus</span>
                   </td>
 
 
@@ -136,7 +155,7 @@
             </table>
           </div>
 
-          
+
 
 
 
@@ -165,7 +184,7 @@
               <option selected *ngIf="showacte">Acte de naissance</option>
 
               <option *ngIf="showacte">Acte de mariage</option>
-              <option *ngIf="showacte" >Acte de décès</option>
+              <option *ngIf="showacte">Acte de décès</option>
               <option *ngIf="showcas">Casier Judiciaire</option>
               <option *ngIf="showres">Certificat de résidence</option>
               <option *ngIf="showcas">Certificat de nationnalité</option>
@@ -184,9 +203,7 @@
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
-            <div *ngIf="longueur == 0">
-              <p style=" text-align:center;font-size:larger ">Aucune demande </p>
-            </div>
+          
             <tr>
               <th>Nom</th>
               <th>Prenom</th>
@@ -195,80 +212,81 @@
               <th>Traiter</th>
 
             </tr>
-          </thead>
+          </thead> 
+            <div *ngIf="longueur == 0">
+                <p style=" text-align:center;font-size:larger ">Aucune demande à Traiter </p>
+              </div>
           <tbody *ngFor="let s of listacten ">
+            <!-- <tbody *ngFor="let s of listacten | paginate: { itemsPerPage: 5, currentPage: p } "> -->
+           
             <tr>
               <td class="hideColonne hideColonneOder">{{s.user.nom}}</td>
               <td> {{s.user.prenom}}</td>
               <td class="hideColonne hideColonneOder">{{s.user.genre}}</td>
               <td> {{s.user.email}}</td>
-              <td class="hideColonne hideColonneOder"><ion-icon name="eye-outline" 
-                style="height: 20px;width:20px;color: #ACBE11;"
-                data-bs-toggle="modal" data-bs-target="#modal-form"
-                aria-label="close"
-                (click)="OnClick(s.id)"
-                ></ion-icon></td>
+              <td class="hideColonne hideColonneOder"><ion-icon name="eye-outline"
+                  style="height: 20px;width:20px;color: #ACBE11;" data-bs-toggle="modal" data-bs-target="#modal-form"
+                  aria-label="close" (click)="OnClick(s.id)"></ion-icon></td>
               <!-- <td> <span class="voirPlus" data-bs-toggle="modal" data-bs-target="#modal-form"
-                  (click)="OnClick(s.id)">voir plus</span></td> -->
+                  (c  lick)="OnClick(s.id)">voir plus</span></td> -->
 
 
             </tr>
           </tbody>
+
+
+
         </table>
       </div>
 
-          <!-- Modal Content -->
+      <!-- Modal Content -->
+      <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body p-0">
+              <div class="card  shadow-soft border-light p-4">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+
+                </button>
 
 
-          <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-body p-0">
-                  <div class="card  shadow-soft border-light p-4">
-
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-
-                    </button>
-
-
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-3 col-md-4 mt-10 ">
-                          <ion-icon name="person-circle-outline" class=" vvv  m-auto"
-                            style="width: 50px; height: 50px"></ion-icon>
-                        </div>
-                        <div class="col-7 col-md-8 ">
-                          <h3 *ngIf="actembyid && showacte">Par:{{actembyid.user.prenom}} {{actembyid.user.nom}} </h3>
-                          <h3 *ngIf="detailacte && showacte">Par:{{detailacte.user.prenom}} {{detailacte.user.nom}} </h3>
-                          <h3 *ngIf="actedbyid && showacte">Par:{{actedbyid.user.prenom}} {{actedbyid.user.nom}} </h3>
-                          <h3 *ngIf="casbyid && showcas">Par:{{casbyid.user.prenom}} {{casbyid.user.nom}} </h3>
-                          <h3 *ngIf="resbyid && showres">Par:{{resbyid.user.prenom}} {{resbyid.user.nom}} </h3>
-                          <h3 *ngIf="natbyid && showcas">Par:{{natbyid.user.prenom}} {{natbyid.user.nom}} </h3>
-
-                        </div>
-
-                        <div id="lesp">
-
-                          <p>&nbsp;&nbsp;&nbsp;{{newdet}}</p>
-
-                        </div>
-                        <div class="popbtn">
-                          <div><button >Annuler</button></div>
-                          <div><button>Valider</button></div>
-
-
-                        </div>
-
-                      </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-3 col-md-4 mt-10 ">
+                      <ion-icon name="person-circle-outline" class=" vvv  m-auto"
+                        style="width: 50px; height: 50px"></ion-icon>
                     </div>
+                    <div class="col-7 col-md-8 ">
+                      <h3 *ngIf="actembyid && showacte">Par:{{actembyid.user.prenom}} {{actembyid.user.nom}} </h3>
+                      <h3 *ngIf="detailacte && showacte">Par:{{detailacte.user.prenom}} {{detailacte.user.nom}} </h3>
+                      <h3 *ngIf="actedbyid && showacte">Par:{{actedbyid.user.prenom}} {{actedbyid.user.nom}} </h3>
+                      <h3 *ngIf="casbyid && showcas">Par:{{casbyid.user.prenom}} {{casbyid.user.nom}} </h3>
+                      <h3 *ngIf="resbyid && showres">Par:{{resbyid.user.prenom}} {{resbyid.user.nom}} </h3>
+                      <h3 *ngIf="natbyid && showcas">Par:{{natbyid.user.prenom}} {{natbyid.user.nom}} </h3>
+
+                    </div>
+
+                    <div id="lesp">
+
+                      <p>&nbsp;&nbsp;&nbsp;{{newdet}}</p>
+
+                    </div>
+                    <div class="popbtn">
+                      <div><button>Annuler</button></div>
+                      <div><button (click)="validerdemande()">Valider</button></div>
+                    </div>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- End of Modal Content -->
+        </div>
+      </div>
+      <!-- End of Modal Content -->
 
 
     </div>

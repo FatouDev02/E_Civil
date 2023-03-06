@@ -38,5 +38,5 @@ export class UserService {
 
 
         addUser(user:User):Observable<any>{
-          return this.http.post(`${this.env.api}/ApiTourist/user/addusser/`,user);
+          return this.http.post(`${this.env.api}/,kk/user/addusser/`,user);
       }}

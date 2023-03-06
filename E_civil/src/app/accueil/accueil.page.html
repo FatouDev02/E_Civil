@@ -15,6 +15,26 @@
         <!-- <ion-icon name="arrow-back"></ion-icon> -->
       </ion-button>
     </ion-buttons>
+
+    <ion-icon name="notifications-outline" slot="end" (click)="getnotif()" id="open-popover" class="cloche"
+    style="margin-right: 10px;width: 40px; height: 40px;margin-top: 5px;" >
+
+  </ion-icon>
+  <ion-popover [keepContentsMounted]="true" trigger="open-popover">
+    <ng-template>
+      
+      <div *ngIf="notiflong == 0">
+        <p>Aucune notification </p>
+      </div> 
+      <ion-card color="light" *ngFor="let a of agentnotif ">
+        <ion-card-content style="text-transform: capitalize;">
+          {{a.ndescription}}
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+
+
+  </ion-popover>
     <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
     </ion-img> 
     <!-- <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #1d1c1c;"></ion-icon> -->

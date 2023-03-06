@@ -10,6 +10,7 @@ import { StructService } from '../Services/struct.service';
 })
 export class AccueiladminPage implements OnInit {
   id: any;
+  p:number=1;
   username: any;
   nom: any;
   prenom: any;
@@ -25,6 +26,14 @@ export class AccueiladminPage implements OnInit {
   agents: any;
   longueuruser: any;
   longueuragent: any;
+  statutagent:any;
+  unagent: any;
+  idagent: any;
+  nomagent: any;
+  numeroagent: any;
+  nomdelastructagent: any;
+  aaaa: any;
+  agentstructnom: any;
 
 
   constructor(private storageService: StorageService,private structservice:StructService) { }
@@ -38,7 +47,7 @@ export class AccueiladminPage implements OnInit {
     this.nom=user.nom
     this.prenom=user.prenom
     this.roles = user.roles;
-   this.structservice.getall().subscribe(data=>{
+   this.structservice.getallstruct().subscribe(data=>{
     this.messetruct=data
     this.longueur=data.length
     console.log(this.longueur)
@@ -54,12 +63,19 @@ export class AccueiladminPage implements OnInit {
     this.structservice.getagent().subscribe(data=>{
       this.agents=data
       this.longueuragent=data.length
+      
 
       console.log(this.agents)
+      for(var i=0;i<=this.longueuragent;i++){
+        this.statutagent=this.agents[i].statut
+
+        console.log(this.statutagent)
+      }
 
       })
 
   }
+
   OnClick(id:any){
 this.structservice.getstructbyid(id).subscribe(d=>{
   this.mastruct=d
@@ -71,7 +87,30 @@ this.structservice.getstructbyid(id).subscribe(d=>{
 })
 
   }
-edit(){
+
+  OnClickupdateagent(id:any){
+    this.structservice.getuserbyid(id).subscribe(d=>{
+      this.unagent=d
+      this.idagent=this.unagent.id
+      this.agentstructnom=this.unagent.structure.nom
+      this.nomagent=this.unagent.nom + this.unagent.prenom
+     /// this.numeroagent=this.mastruct.email
+      //this.nomdelastructagent=this.mastruct.latitude
+
+      console.log(this.unagent)
+    })
+    
+      }
+      
+      valideragent(){
+        this.structservice.valideragent(this.idagent).subscribe(data=>{
+          this.aaaa=data
+          console.log(this.aaaa)
+
+        })
+      }
+      
+      edit(){
   var struct=[{
     'nom':this.nom,
     'latitude':this.latitude,

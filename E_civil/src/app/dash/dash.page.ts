@@ -84,7 +84,7 @@ export class DashPage implements OnInit {
 
   deconnecter(){
     localStorage.clear()
-    this.router.navigate(['../login'])
+    this.router.navigate(['../connexion'])
   }
 
 }

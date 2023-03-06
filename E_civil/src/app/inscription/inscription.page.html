@@ -96,15 +96,21 @@
           </div>
        
 
-          <div class="form__field">
-            <input [(ngModel)]="form.lieuderesidence" name="lieuderesidence" required minlength="3"  #lieuderesidence="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && lieuderesidence.errors }" type="text" id="inputs"
-               placeholder="Lieu de résidence">
-          </div>
+         
 
           <div class="form__field">
+            <select [(ngModel)]="roles"  name="role" required   #role="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && role.errors }" class="form-field" id="inputs"  class="select" required>
+              <option  selected>--Vous êtes--</option>
+              <option value="agent">Agent d'une structure </option>
+              <option value="user">Utilisateur simple </option>
+              <!-- <option *ngFor="let entite of Entites" >{{entite.libelleentite}}</option> -->
+
+            </select>
+          </div>
+          <div class="form__field">
             <input [(ngModel)]="form.tel" name="tel" required minlength="3" maxlength="20" #tel="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && lieuderesidence.errors }" type="text" id="inputs"
+              [ngClass]="{ 'is-invalid': f.submitted && tel.errors }" type="text" id="inputs"
                placeholder=" Numéro de téléphone">
           </div>
 
@@ -112,7 +118,7 @@
           <div class="form__field">
             <select [(ngModel)]="form.genre"  name="genre" required   #genre="ngModel"
               [ngClass]="{ 'is-invalid': f.submitted && genre.errors }" class="form-field"id="inputs"  class="select" required>
-              <option selected>--Votre Genre--</option>
+              <option  selected>--Votre Genre--</option>
               <option value="1">Masculin</option>
               <option value="2">Feminin</option>
               <!-- <option *ngFor="let entite of Entites" >{{entite.libelleentite}}</option> -->

@@ -13,11 +13,12 @@ import { StorageService } from '../Services/storage.service';
 export class InscriptionPage implements OnInit {
  
 
+  roles:any
   form: any = {
     nom:null,
     prenom:null,
     genre:null,
-    lieuderesidence: null,
+    role:[],
     username:null,
     email:null,
     password:null,
@@ -30,7 +31,7 @@ export class InscriptionPage implements OnInit {
 
   isLoggedIn = false;
   isLoginFailed = false;
-  roles: string[] = [];
+  //roles: string[] = [];
   message: any;
 
  
@@ -39,10 +40,21 @@ export class InscriptionPage implements OnInit {
 
   ngOnInit() {
   }
+  rolegestion(){
+    
+  }
   onSubmit(): void {
-    const { nom,prenom,genre,lieuderesidence,username, email, password ,tel} = this.form;
+    const { nom,prenom,genre,username, email, password ,tel} = this.form;
 
-    this.authService.register(nom,prenom,genre,lieuderesidence,username, email, password,tel).subscribe({
+    alert(this.form.role);
+
+    // if(this.form.role.includes("agent")){
+    //   this.form.role.push("agent")
+    // }
+    this.form.role.push(this.roles)
+    console.log(this.form)
+
+    this.authService.register(nom,prenom,genre,this.form.role,username, email, password,tel).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
@@ -55,7 +67,7 @@ export class InscriptionPage implements OnInit {
           color: '#000000',
           heightAuto: false,
           confirmButtonColor: '#ACBE11',
-          background: '#fff url(../../assets/images/logo.jpg)',
+         // background: '#fff url(../../assets/images/logo.jpg)',
           backdrop: `
             rgba(0,0,123,0.4)
             url("/images/nyan-cat.gif")

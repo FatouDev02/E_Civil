@@ -26,23 +26,33 @@
 </ion-header>
 
 <ion-content>
+
   <div class="row">
 
-    <div id="card" class="row shadow-lg  mb-1 bg-white rounded" >
+    <div id="card" class="row shadow-lg  mb-1  bg-white rounded" >
      
-      <div class="col-lg-4 col-8">
-        <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-start">
-          
+        
+      
 
-    <!-- <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" *ngIf="showAdmin">
-      Ajouter 
-    </button> -->
-    <button type="button" class="btn buttonColor" data-bs-toggle="modal" data-bs-target="#modal-form" >
-      Ajouter 
-    </button>
-          
-        <!-- Modal Content -->
-        <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <h1 style="color:black;margin-top: 2%;"  >{{type1}}  <span style="color: #ACBE11; ">Du Mali </span>  <br>
+         
+        </h1>
+       
+   
+    
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-6">
+        <!-- <button type="button" class="btn buttonColor" data-bs-toggle="modal" *ngIf="showAdmin" data-bs-target="#modal-form" >
+          Ajouter +
+        </button> -->
+        <button type="button" class="btn buttonColor" data-bs-toggle="modal" *ngIf="showAdmin"  data-bs-target="#modal-form" >
+          Ajouter 
+        </button>
+       
+
+         <!-- Modal Content -->
+         <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                   <div class="modal-body p-0">
@@ -113,20 +123,8 @@
         <!-- End of Modal Content -->
     
         </div>
-    
-      </div>
-      <div  class="col-lg-4 col-8" >
-      
-
-        <h1 style="color:black" >{{type1}}  <span style="color: #ACBE11;">Du Mali </span>  <br>
-         
-        </h1>
-       
-      </div>
-      
     </div>
-    
-  </div>
+</div>
 
   <div class="container" id="cont2">
       <div class="row" >

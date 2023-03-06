@@ -19,7 +19,7 @@
     <div class="register">
       <div class="row" style="margin: 10px 10px;">
 
-        <div id="card" class="shadow-lg  bg-white" >
+        <div id="card"  >
           <div class="img-wrapper">
             <img src="../../assets/images/logo.jpg" alt="" id="svg" class="site__logo" width="80" height="100%">
                 </div>
@@ -39,18 +39,21 @@
        <div class="row" *ngFor= "let all of allstruct">
           <div class="col-12 col-md-12"> 
            <!-- <a [routerLink]="['/valideagentnext',allstruct.id]"> <h5> {{all.nom}}</h5> </a>  -->
-           <ion-button (click)="envoyerdemvalidation()">
+           <!-- <ion-button (click)="envoyerdemvalidation()">
             <h5> {{all.nom}}</h5>
-           </ion-button>
+           </ion-button> -->
+           <div class="form__field">
+            <input type="submit" value=" {{all.nom}}" (click)="envoyerdemvalidation()">
+          </div>
           </div>
          
 
        </div>
 
 
-        <div class="form__field">
+        <!-- <div class="form__field">
           <input type="submit" value="Envoyer">
-        </div>
+        </div> -->
        
 
       </form>

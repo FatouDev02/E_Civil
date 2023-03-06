@@ -15,7 +15,8 @@ export class AccueilPage implements OnInit {
   structid: any;
   roles: any;
   monrole: any;
-
+  agentnotif:any;
+  notiflong: any;
   constructor(private storageService: StorageService,private structservice:StructService) { }
 
   ngOnInit() {
@@ -31,6 +32,14 @@ export class AccueilPage implements OnInit {
     if(this.roles=="ADMIN"){
       this.monrole=user.roles;
     }
+
+  }
+  getnotif(){
+    this.structservice.getuserbyid(this.id).subscribe(data=>{
+      this.agentnotif=data.notifrdvusers
+      this.notiflong=this.agentnotif.length
+      console.log(this.agentnotif)
+    })
 
   }
 

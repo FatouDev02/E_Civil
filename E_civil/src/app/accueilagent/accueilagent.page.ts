@@ -4,6 +4,7 @@ import { StructService } from '../Services/struct.service';
 import * as L from 'leaflet';
 import { Router } from '@angular/router';
 import { threadId } from 'worker_threads';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-accueilagent',
@@ -14,6 +15,7 @@ export class AccueilagentPage implements OnInit {
   [x: string]: any;
 
   id: any
+  p=1;
   username: any
   nom: any
   prenom: any
@@ -41,6 +43,7 @@ export class AccueilagentPage implements OnInit {
   textFiltre: any;
   longueur: any
   rdv: any
+  nombre:any
   rdvusername: any
   user: any
   nbreacten: any
@@ -61,6 +64,7 @@ export class AccueilagentPage implements OnInit {
   casbyid:any
   resbyid:any
   natbyid:any
+  mademandeetat:any
   constructor(private storageService: StorageService,
     private structservice: StructService,
     private router: Router) { }
@@ -95,12 +99,12 @@ export class AccueilagentPage implements OnInit {
       //TOUT LES ACTES DE NAISANCE D'UNE STRUCTURE FONCTION POUR LE FILTRE
       //this.actenbystruct(this.newid)
       //RECUPÉRER LA LISTE DE PRESENCE
-      this.structservice.getrdvdujour(this.newid).subscribe(data => {
-        this.rdv = data
-        this.rdvusername = data.nom
-        console.log(this.rdv)
+      // this.structservice.getrdvdujour(this.newid,2).subscribe(data => {
+      //   this.rdv = data
+      //   this.rdvusername = data.nom
+      //   console.log(this.rdv)
 
-      })
+      // })
       //compteur
 
       this.teststruct = this.structid.typestructure.type
@@ -180,6 +184,18 @@ export class AccueilagentPage implements OnInit {
 
 
   }
+  //GENERER LA LISTE DE PRESENCE()
+  Lister(){
+    console.log(this.nombre)     
+
+    this.structservice.getrdvdujour(this.newid,this.nombre).subscribe(data => {
+   this.rdv = data
+      this.rdvusername = data.nom
+      console.log(this.rdv)
+
+    })
+
+  }
   //POUR LA GEOLOCALISATION
   ionViewDidEnter() {
 
@@ -227,6 +243,8 @@ export class AccueilagentPage implements OnInit {
     if (this.textFiltre == "Acte de naissance") {
       this.structservice.getactenbyidstruct(this.newid).subscribe(data => {
         this.listacten = data
+        this.longueur = this.listacten.length;
+        console.log(this.longueur)
       })
     }
     else if (this.textFiltre == "Acte de mariage") {
@@ -275,10 +293,12 @@ export class AccueilagentPage implements OnInit {
           " Genre : " + "  " + this.detailacte.genre + "                    " +
           " Lieu de Naissance : " + "  " + this.detailacte.lieudenaissance + "                    " +
           " Numéro du Volet  : " + "  " + this.detailacte.numvolet + "                    " +
-          " Profession du père  : " + "  " + this.detailacte.profmere + "                    " +
-          " Profession de la mère : " + "  " + this.detailacte.profpere + "                    "
+          " Profession du père  : " + "  " + this.detailacte.profpere + "                    " +
+          " Profession de la mère : " + "  " + this.detailacte.profmere + "                    "
         )
-       // console.log(this.detailacte)
+       console.log(this.detailacte.id)
+       console.log(this.longueur)
+
       }
       )
     }
@@ -368,7 +388,8 @@ export class AccueilagentPage implements OnInit {
   Alldemande() {
     this.structservice.getactenbyidstruct(this.newid).subscribe(data => {
       this.listacten = data;
-      this.longueur = data.listacten.length;
+      this.longueur = this.listacten.length;
+      console.log(this.longueur)
 
     })
   }
@@ -379,6 +400,41 @@ export class AccueilagentPage implements OnInit {
       console.log(this.agentnotif);
     })
 
+
+  }
+  
+  validerdemande(){
+    Swal.fire({
+      title: 'Vous etes sur de valider cette declaration ?',
+      text: "Cette action est irréversible",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ACBE11',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, Valider!',
+      heightAuto: false
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+         this.structservice.validerdem(this.detailacte.id).subscribe(data=>{
+         this.mademandeetat=data
+         console.log(this.mademandeetat)
+    
+
+       })
+       Swal.fire({
+        title: 'Valider!',
+        text: 'La demande a été validée ',
+        icon: 'success',
+        confirmButtonColor: '#ACBE11',
+
+        heightAuto: false
+      });
+      }
+
+
+    })
+   
 
   }
 

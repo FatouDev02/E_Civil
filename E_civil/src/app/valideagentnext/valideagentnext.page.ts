@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { StructService } from '../Services/struct.service';
 
@@ -14,7 +14,7 @@ id:any
   dem: Object;
   iduse: any;
   mmm:any
-  constructor(private route:ActivatedRoute,
+  constructor(private route:ActivatedRoute, private router:Router,
     private structservice:StructService) { }
 
   ngOnInit() {
@@ -63,15 +63,23 @@ id:any
     //   heightAuto:false
     // })
     Swal.fire({
-      title: 'Votre demande a été prise en compte veuillez \n patientez avant la validation du compte',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      },
-      heightAuto:false
-    })
+      title: "Votre demande a été prise en compte veuillez \n patientez avant la validation du compte",
+      showConfirmButton: true,
+      confirmButtonText: "OK",
+      confirmButtonColor: '#ABDE11',
+      heightAuto: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigateByUrl('/dash/inscription').then(() => {
+          this.router.navigate(["/dash/inscription"])
+        })
+
+          // this.actualisePagApresSuppresion()
+          // this.router.navigateByUrl('/dashboard/personnel-externe')
+          // window.location.reload();
+    }
+  });
+ 
   }
 
 }

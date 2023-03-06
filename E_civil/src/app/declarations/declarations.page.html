@@ -20,7 +20,7 @@
 <ion-content>
   <div class="row">
 
-    <div id="card"  class="shadow-lg p-1 mb-2 bg-white rounded" >
+    <div id="card2"  class="shadow-lg p-1 mb-2 bg-white rounded" >
       
 
       <h1 >Mes  <span style="color: #ACBE11;"> Declarations</span>  <br>
@@ -37,11 +37,12 @@
       <div class="col-lg-6 col-6">
         <div class="filtre ">
           <select class="form-select form-select-md larger" id="filtre" aria-label=".form-select-sm example"
-            (change)="activitesavenir()" [(ngModel)]="textFiltre" name="textFiltre">
+            (change)="alldemm()" [(ngModel)]="textFiltre" name="textFiltre">
+            <option>Tout</option>
+
             <option>Acte de naissance</option>
             <option>Acte de mariage</option>
-            <option >  Acte de décès
-            </option>
+            <option >  Acte de décès </option>
             <option>Casier judiciaire</option>
             <option>Certificat de residence</option>
             <option>Certificat de Nationnalité</option>
@@ -65,17 +66,16 @@
 
     <div class="row1-container row">
 
-
+      <div *ngIf="longueur == 0">
+        <p>Aucune Declaration Enregistrée </p>
+      </div> 
       <div class="col-md-2  box blue" *ngFor="let all of alldem ">
-        <div *ngIf="longueur == 0">
-          <p>Aucune Declaration Enregistrée</p>
-        </div> 
+       
         
         <h2 routerLink="/dash/strucutures">
           {{textFiltre}}
-         
         </h2>
-        <p *ngIf="!shownonh"> Pour: {{all.nom}} {{all.prenom}}</p>
+        <p *ngIf="!shownonh" > Pour: {{all.nom}} {{all.prenom}}</p>
         <p *ngIf="shownonh"> Pour: MR {{all.nomh}} et Mlle {{all.nomf}}</p>
 
         <p></p>
@@ -95,7 +95,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="h6 modal-title mb-0" id="modal-title-default">Terms of Service</h2>
+                <h2 class="h6 modal-title mb-0" id="modal-title-default">Details de la demande</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -104,7 +104,6 @@
                 <p>{{newdet}}</p>
                 <div >
                   <div  >
-                    <p>sdfghjkl</p>
                     <img src="{{photo}}" alt="">
                   </div>
                 </div>
@@ -112,8 +111,10 @@
                  </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-primary">I Got It</button>
-                <button type="button" class="btn btn-primary text-danger ml-auto" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-sm btn-primary">I Got It</button> -->
+                <button type="button" class="btn  ml-auto" data-dismiss="modal"
+                style="color:#ACBE11; background-color: azure;"
+                >Fermer</button>
             </div>
         </div>
     </div>

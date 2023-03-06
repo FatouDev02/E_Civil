@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AccueilagentPageRoutingModule } from './accueilagent-routing.module';
 
 import { AccueilagentPage } from './accueilagent.page';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AccueilagentPageRoutingModule
+    AccueilagentPageRoutingModule,
+  NgxPaginationModule
   ],
   declarations: [AccueilagentPage]
 })

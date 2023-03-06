@@ -22,6 +22,8 @@ export class DeclarationsPage implements OnInit {
   resbyid: any;
   natbyid: any;
   photo:any
+  actenn: any;
+  mariage: any;
   constructor(private demandeservice:DemandeService, private storageService:StorageService, private structservice:StructService
     ) { }
 
@@ -29,23 +31,67 @@ export class DeclarationsPage implements OnInit {
     const user=this.storageService.getUser();
     this.id=user.id
     console.log(this.id)
-this.activitesavenir()
+this.alldemm()
 
   }
 
-  activitesavenir(){
-    console.log(this.textFiltre);
+  alldemm(){
 
     if(this.textFiltre=="Acte de naissance"){
       this.demandeservice.Getacten(this.id).subscribe(data=>{
         this.alldem=data;
-        this.longueur=data.length
-        console.log(this.alldem)
+        this.longueur=this.alldem.length
+        console.log(this.longueur)
       })
     }
+
     else if(this.textFiltre=="Acte de mariage"){
       this.demandeservice.Getactem(this.id).subscribe(data=>{
         this.alldem=data;
+        this.longueur= this.alldem.length
+        for(var i=0;i<data.length;i++){
+          this.shownonh=data[i].nomh
+          console.log(this.shownonh)
+        }   
+        console.log(this.longueur)
+
+         })
+    } else if(this.textFiltre=="Acte de décès"){
+      this.demandeservice.Getacted(this.id).subscribe(data=>{
+        this.alldem=data;
+        this.longueur=this.alldem.length
+      })
+    } else if(this.textFiltre=="Casier judiciaire"){
+      this.demandeservice.Getcasier(this.id).subscribe(data=>{
+        this.alldem=data;
+        this.longueur=this.alldem.length
+        console.log(this.longueur)
+
+      })
+    } else if(this.textFiltre=="Certificat de residence"){
+      this.demandeservice.Getresidence(this.id).subscribe(data=>{
+        this.alldem=data;
+        this.longueur=data.length
+      })
+    } else if(this.textFiltre=="Certificat de Nationnalité"){
+      this.demandeservice.Getnation(this.id).subscribe(data=>{
+        this.alldem=data;
+        this.longueur=data.length
+      })
+    }
+    
+
+    }
+
+   
+    Alldemande(){
+      this.demandeservice.Getacten(this.id).subscribe(data=>{
+        this.actenn=data;
+        this.longueur=data.length
+        console.log(this.alldem)
+      })
+      this.demandeservice.Getactem(this.id).subscribe(data=>{
+        this.mariage=data;
         this.longueur=data.length
         for(var i=0;i<data.length;i++){
           this.shownonh=data[i].nomh
@@ -53,57 +99,6 @@ this.activitesavenir()
         }
         
         console.log(this.alldem)
-      })
-    } else if(this.textFiltre=="Acte de décès"){
-      this.demandeservice.Getacted(this.id).subscribe(data=>{
-        this.alldem=data;
-
-        this.longueur=data.length
-        console.log(this.alldem)
-      })
-    } else if(this.textFiltre=="Casier judiciaire"){
-      this.demandeservice.Getcasier(this.id).subscribe(data=>{
-        this.alldem=data;
-        this.longueur=data.length
-        console.log(this.alldem)
-      })
-    } else if(this.textFiltre=="Certificat de residence"){
-      this.demandeservice.Getresidence(this.id).subscribe(data=>{
-        this.alldem=data;
-        this.longueur=data.length
-        console.log(this.alldem)
-      })
-    } else if(this.textFiltre=="Certificat de Nationnalité"){
-      this.demandeservice.Getnation(this.id).subscribe(data=>{
-        this.alldem=data;
-        this.longueur=data.length
-        console.log(this.alldem)
-      })
-    }
-    else{
-      this.Alldemande();
-    }
-    console.log(this.longueur)
-
-
-    }
-
-   
-    Alldemande(){
-      this.demandeservice.Getacten(this.id).subscribe(data=>{
-        console.log(data.message)
-        console.log("////////////////////////" +JSON.stringify(this.alldem))
-          this.alldem=data;
-          console.log(this.alldem)
-
-        // if(data.message =="ok"){
-        //   this.alldem=data;
-        //   this.longueur=data.length
-        //   console.log(this.alldem)
-        // }else{
-        //   this.alldem="Aucune Déclarations enregistrée"
-        // }
-  
       })
     }
 
@@ -134,7 +129,7 @@ this.activitesavenir()
       this.structservice.getactembyid(id).subscribe(data=>{
         this.actembyid=data
         //this.longueur=this.actembyid.length
-console.log(this.longueur)
+        console.log(this.longueur)
         this.newdet = (" Nom et Prenom de l'homme : " + "  " + this.actembyid.nomh + " \n" +
         "Nom et Prénom de la femme :" + this.actembyid.nomf + " " +
         "Profession de l'homme: " + "  " + this.actembyid.proh + "" +
@@ -210,6 +205,8 @@ console.log(this.longueur)
       console.log(this.natbyid)
       })
     }
+
+
   }
  
 

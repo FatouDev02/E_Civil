@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar class="new-background-color">
+  <ion-toolbar>
     <ion-title style="text-align: center;" class="title mesclass">Republique du Mali <br>
       <span class="mesclass" style="color: #5ba820;">Un peuple</span>-
       <span class="mesclass" style="color: hwb(60 8% 0%);">Un but</span>-
@@ -15,17 +15,33 @@
         <!-- <ion-icon name="arrow-back"></ion-icon> -->
       </ion-button>
     </ion-buttons>
+
+    <ion-icon name="notifications-outline" slot="end"  id="open-popover"
+      style="margin-right: 10px;width: 40px; height: 40px;margin-top: 5px;">
+    
+    </ion-icon>
+   <ion-popover [keepContentsMounted]="true" trigger="open-popover">
+    <ng-template >
+    <ion-content class="ion-padding">dfghjklm</ion-content>
+    <!-- <ion-card color="light"  *ngFor="let a of agentnotif ">
+      <ion-card-content style="text-transform: capitalize;">
+        {{a.description}} 
+      </ion-card-content>
+    </ion-card> -->
+    </ng-template>
+  
+
+   </ion-popover>
     <ion-img src="../../assets/images/logo.jpg" slot="end"
       style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
     </ion-img>
-    <!-- <ion-icon name="notifications" slot="end" style="margin-right: 10px;width: 40px; height: 40px; color: #1d1c1c;"></ion-icon> -->
-    <!-- <ion-icon name="person" ios="ios-person" slot="end" style="margin-right: 10px;width: 40px; height: 40px;color: #131212;"></ion-icon> -->
+
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<!-- 
   <div class="row">
     <div class="col-12">
       <div class="d-grid m-2 gap-2 d-md-flex justify-content-md-end">
@@ -33,7 +49,7 @@
           personnel</button>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="container-fluid">
     <div class="row mt-3 mb-3">
       <!-- <div class="col"></div> -->
@@ -67,12 +83,11 @@
         <br>
 
         <h2 class="titreStatus">Assurez la gestion de l'application</h2>
-        <p>
-          <b > E-Sebenw </b>
-          à Votre Service
-        </p>
-        <hr size="3">
-
+        
+   <button class="buttonColor" data-bs-toggle="modal" data-bs-target="#modal-formm"
+aria-label="close" >          Gérer ses agents
+</button>        
+        <hr size="3">   
       </div>
       <!-- <div class="">
         <div class="socials">
@@ -96,20 +111,20 @@
         <th scope="col">Longitude</th>
         <th scope="col" class="hideColonne hideColonneOder">Latitude</th>
         <!-- <th scope="col">Contact</th> -->
-        <th scope="col" class="hideColonne hideColonneOder">Commune</th>
+        <!-- <th scope="col" class="hideColonne hideColonneOder">Commune</th> -->
         <!-- <th scope="col" class="hideColonne">Action</th> -->
         <th scope="col">Plus</th>
 
       </tr>
     </thead>
     <tbody >
-      <tr *ngFor="let s of messetruct">
+      <tr *ngFor="let s of messetruct  ">
         <!-- <tr *ngFor="let table of PersonnelEntite | paginate: { itemsPerPage: 8, currentPage: pages}"> -->
         <td> {{s.nom}} </td>
         <td> {{s.longitude}} </td>
         <td class="hideColonne hideColonneOder"> {{s.latitude}} </td>
         <!-- <td> {{table.contact}} </td> -->
-        <td class="hideColonne hideColonneOder"> MMMMMMMMMMMM </td>
+        <!-- <td class="hideColonne hideColonneOder"> MMMMMMMMMMMM </td> -->
         <td>
           <ion-icon name="create-outline"  style="height: 20px;width:20px;color: #ACBE11;"
           data-bs-toggle="modal" data-bs-target="#modal-form"
@@ -124,7 +139,9 @@
     </tbody>
 
   </table>
-
+  <!-- <div class="pagination">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div> -->
   <div class="position-relative">
     <div class="position-absolute top-0 end-0 mt-4">
       <!-- <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)=" pages = $event"> </pagination-controls> -->
@@ -203,4 +220,123 @@
         </div>
       </div>
       <!-- End of Modal Content -->
+      <!-- Modal Content -->
+      <div class="modal fade" id="modal-formm" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="card  shadow-soft border-light p-4">
+                       
+                        <button type="button" class="btn-close" aria-label="Close"  data-dismiss="modal-formm"> 
+                          <span aria-hidden="true">&times;</span>
+    
+                        </button>
+                       
+                        <div class="card-header text-center pb-0">
+                            <h2 class="h4">E-Sebenw</h2>
+                            <span>Liste des agents</span>   
+                        </div>
+                        <div class="table-responsive">
+
+                          <table class="table table-bordered">
+                            <thead>
+                        
+                              <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col" class="hideColonne hideColonneOder">Structure concernéeh>
+                                <!-- <th scope="col">Contact</th> -->
+                                <th scope="col" class="hideColonne hideColonneOder">Statut</th>
+                                <!-- <th scope="col" class="hideColonne">Action</th> -->
+                                <th scope="col">Plus</th>
+                        
+                              </tr>
+                            </thead>
+                            <tbody >
+                              <tr *ngFor="let s of agents  ">
+                                <!-- <tr *ngFor="let table of PersonnelEntite | paginate: { itemsPerPage: 8, currentPage: pages}"> -->
+                                <td> {{s.nom}} </td>
+                                <td> {{s.prenom}} </td>
+                                <td class="hideColonne hideColonneOder"> {{s.structure.nom}} </td>
+                                <!-- <td> {{table.contact}} </td> -->
+                                <td class="hideColonne hideColonneOder" *ngIf="!statutagent"> Agentnonvalider </td>
+                                <td class="hideColonne hideColonneOder" *ngIf="statutagent"> Agent Valider </td>
+
+
+                                <td>
+                                  <ion-icon name="create-outline"  style="height: 20px;width:20px;color: #ACBE11;"
+                                  data-bs-toggle="modal" data-bs-target="#modal-formupdateagent"
+                                  aria-label="close"
+                                  (click)="OnClickupdateagent(s.id)"
+                                  ></ion-icon>
+                                  <!-- <ion-icon name="trash-outline"  style="height: 20px;width:20px;color: #ACBE11;" (click)="delete()" ></ion-icon> -->
+                                </td>
+                                 <!-- <td class="hideColonne"> <span class="voirPlus">voir plus</span> </td> -->
+                              </tr>
+                        
+                            </tbody>
+                        
+                          </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- End of Modal Content -->
+        <!-- Modal Content update agent -->
+        <div class="modal fade" id="modal-formupdateagent" tabindex="-1" role="dialog" aria-labelledby="modal-formupdateagent" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-body p-0">
+                      <div class="card  shadow-soft border-light p-4">
+                         
+                          <button type="button" class="btn-close" aria-label="Close"  data-dismiss="modal-form"> 
+                            <span aria-hidden="true">&times;</span>
+      
+                          </button>
+                         
+                          <div class="card-header text-center pb-0">
+                              <h2 class="h4">E-civil</h2>
+                              <span>Valider cet Agent </span>   
+                          </div>
+                          <div class="card-body">
+                              <form (ngSubmit)="valideragent()"    class="mt-4">
+                                 <!-- Form -->
+                                 <div class="form-group">
+                                  <label for="exampleInputPassword6">Nom et Prénom de l'agent</label>
+                                  <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                    </div>
+                                    <input class="form-control"  [(ngModel)]="nomagent" name="nomagent" [value]="nomagent" id="nomagent" type="text" >
+                                  </div>
+
+                              </div>
+                              <!-- End of Form -->
+                                 
+                                
+                                   <!-- Form -->
+                                   <div class="form-group">
+                                    <label for="exampleInputIcon3">Nom de la Structure </label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                        </div>
+                                        <input class="form-control"  [(ngModel)]="agentstructnom" name="agentstructnom" [value]="agentstructnom" id="agentstructnom" type="text" >
+                                    </div>
+                               
+                                
+                               
+                                     
+                                  </div>
+                                  <button type="submit" class="btn buttonColor">Valider</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <!-- End of Modal Content -->
 </ion-content>

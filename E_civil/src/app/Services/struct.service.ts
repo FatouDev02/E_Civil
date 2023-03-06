@@ -12,8 +12,12 @@ export class StructService {
   constructor(private http:HttpClient) { }
 
   getall():Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/listtype`);
+  }
+  getallstruct():Observable<any>{
     return this.http.get(`${this.env.api}/ecivil/struct/list`);
   }
+
   getstructbytype(id:number): Observable<any>{
     return this.http.get(`${this.env.api}/ecivil/struct/liststructbytype/${id}`)
   }
@@ -27,6 +31,14 @@ export class StructService {
   }
   getstructbyid(id:number){
     return this.http.get(`${this.env.api}/ecivil/struct/getstruct/${id}`)
+
+  }
+  // getuserbyid(id:number){
+  //   return this.http.get(`${this.env.api}/ecivil/user/getbyid/${id}`)
+
+  // }
+  valideragent(id:number){
+    return this.http.post(`${this.env.api}/ecivil/user/valideragent/${id}`,null)
 
   }
   deltructbyid(id:number):Observable<any>{
@@ -83,6 +95,11 @@ export class StructService {
     return this.http.get(`${this.env.api}/ecivil/struct/getagent/${id}`)
 
   }
+  
+  getuserbyid(id:any): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/getuser/${id}`)
+
+  }
   add(structt:any): Observable<any>{
     const data:FormData=new FormData();
     data.append('structt', JSON.stringify(structt).slice(1,JSON.stringify(structt).lastIndexOf(']')));
@@ -125,8 +142,14 @@ export class StructService {
     return this.http.get(`${this.env.api}/ecivil/nationnalite/listnatbystruct/${id}`)
   }
 
-  getrdvdujour(id:number): Observable<any>{
-    return this.http.get(`${this.env.api}/ecivil/struct/rdv/${id}`)
+  getrdvdujour(id:number,nbre:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/rdv/${id}/${nbre}`)
   }
-  
+  validerdem(id:number): Observable<any>{
+    return this.http.post(`${this.env.api}/ecivil/acten/validation/${id}`,null)
+  }
+  getacten(id:number): Observable<any>{
+    return this.http.post(`${this.env.api}/ecivil/struct/rdv/${id}`,null)
+  }
+
 }

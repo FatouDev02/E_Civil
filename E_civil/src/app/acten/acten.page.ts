@@ -78,7 +78,7 @@ export class ActenPage implements OnInit {
               'profpere':this.profpere,
               'profmere':this.profmere,
               'genre':this.genre,
-              // 'numvolet':this.numvolet,
+              'numvolet':this.numvolet,
               'datedenaissance':this.datedenaissance,
               'lieudenaissance':this.lieudenaissance,
             }]
@@ -86,13 +86,18 @@ export class ActenPage implements OnInit {
            // data.append('file',this.fichier)
             
             data.append('acten',JSON.stringify(acten).slice(1,JSON.stringify(acten).lastIndexOf(']')))
-            this.actenservice.addacten(this.numvolet,acten,this.id,this.iduser).subscribe(
+            this.actenservice.addacten(acten,this.id,this.iduser).subscribe(
               (data)=>{
+                console.log(data.message)
                //this.myform.reset()
                this.a=data
-                console.log(this.a)
-                this.MessageSuccess();
 
+               console.log(this.a)
+
+                console.log(this.a.data)
+
+                //this.MessageSuccess();
+          
                //this.router.navigate(['/dash/structures'])
               }
             );

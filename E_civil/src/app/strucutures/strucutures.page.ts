@@ -60,6 +60,7 @@ export class StrucuturesPage implements OnInit {
     this.structservice.getdemandebytypestruct(id).subscribe(
           (data)=>{
               this.dem=data
+              
               console.log(this.dem)
           }
         );

@@ -17,10 +17,10 @@ env=environment
     return this.http.get(`${this.env.api}/Ecivil/acten/get/${id}`);
   }
 
-  addacten(numvolet:any,acten:any,id:any,iduser:any):Observable<any>{
+  addacten(acten:any,id:any,iduser:any):Observable<any>{
     const data:FormData=new FormData();
     data.append('acten', JSON.stringify(acten).slice(1,JSON.stringify(acten).lastIndexOf(']')));
-    return this.http.post(`${this.env.api}/ecivil/acten/add/${numvolet}/${id}/${iduser}`,data);
+    return this.http.post(`${this.env.api}/ecivil/acten/add/${id}/${iduser}`,data);
  
   }
   addactem(actem:any,id:any,iduser:any):Observable<any>{
