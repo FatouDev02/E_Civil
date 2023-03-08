@@ -145,11 +145,62 @@ export class StructService {
   getrdvdujour(id:number,nbre:number): Observable<any>{
     return this.http.get(`${this.env.api}/ecivil/struct/rdv/${id}/${nbre}`)
   }
+  getrdvactem(id:number,nbre:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/rdvactem/${id}/${nbre}`)
+  } 
+  getrdvacted(id:number,nbre:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/rdvacted/${id}/${nbre}`)
+  } 
+  getrdvcas(id:number,nbre:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/rdvcas/${id}/${nbre}`)
+  }
+   getrdvdunat(id:number,nbre:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/rdvres/${id}/${nbre}`)
+  } 
+  getrdvres(id:number,nbre:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/struct/rdvnat/${id}/${nbre}`)
+  }
+
+
+
+
+
+
   validerdem(id:number): Observable<any>{
     return this.http.post(`${this.env.api}/ecivil/acten/validation/${id}`,null)
   }
+  valideractem(id:number): Observable<any>{
+    return this.http.post(`${this.env.api}/ecivil/actem/validationactem/${id}`,null)
+  }
+   valideracted(id:number): Observable<any>{
+    return this.http.post(`${this.env.api}/ecivil/acted/validationacted/${id}`,null)
+  }
+   validercas(id:number): Observable<any>{
+    return this.http.post(`${this.env.api}/ecivil/casier/validation/${id}`,null)
+  }
+   validerres(id:number): Observable<any>{
+    return this.http.post(`${this.env.api}/ecivil/residence/validation/${id}`,null)
+  }
+   validernat(id:number): Observable<any>{
+    return this.http.post(`${this.env.api}/ecivil/nationnalite/validation/${id}`,null)
+  }
+
   getacten(id:number): Observable<any>{
     return this.http.post(`${this.env.api}/ecivil/struct/rdv/${id}`,null)
+  }
+  countacten(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/acten/count/${id}`)
+  }
+  countactem(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/actem/count/${id}`)
+  } countacted(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/acted/count/${id}`)
+  } countacas(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/casier/count/${id}`)
+  } countres(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/residence/count/${id}`)
+  } countnat(id:number): Observable<any>{
+    return this.http.get(`${this.env.api}/ecivil/nationnalite/count/${id}`)
   }
 
 }

@@ -36,9 +36,9 @@ export class StrucuturesPage implements OnInit {
     this.ListStruct();
     const user=this.storageService.getUser();
     this.id=user.id
-    console.log(this.id)
+   // console.log(this.id)
     this.roles = user.roles;
-    console.log(this.roles)
+   // console.log(this.roles)
     this.showAdmin = this.roles.includes('ADMIN');
     this.showuser = this.roles.includes('USER');
     this.showagent = this.roles.includes('Agent');
@@ -72,7 +72,7 @@ export class StrucuturesPage implements OnInit {
       (data)=>{
           this.struct=data
 
-          console.log(this.struct)
+         // console.log(this.struct)
       }
     );
   }
@@ -114,8 +114,8 @@ export class StrucuturesPage implements OnInit {
       (data)=>{
           this.mystruct=data
           this.length=this.mystruct.length
-          console.log(this.length)
-          console.log(this.mystruct)
+         // console.log(this.length)
+          //console.log(this.mystruct)
           this.MessageSuccess();
          // this.router.navigate(['/dash/strucutures'])
 

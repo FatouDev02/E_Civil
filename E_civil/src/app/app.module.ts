@@ -12,7 +12,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [AppComponent],
   imports: [BrowserModule,
     HttpClientModule,
-    NgxPaginationModule,
     IonicModule.forRoot(), AppRoutingModule,RouterModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

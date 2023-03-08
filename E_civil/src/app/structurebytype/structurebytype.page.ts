@@ -36,6 +36,7 @@ nom:any
   showuser: any;
   showagent: any;
   mystruct: any;
+  iddem: any;
 
   constructor(private route:ActivatedRoute,private router:Router,
     private geolocation:Geolocation,
@@ -61,6 +62,10 @@ this.showagent = this.roles.includes('Agent');
 
     var idstruct = this.route.snapshot.params['id']
     this.id = idstruct
+
+    var iddem = this.route.snapshot.params['iddem']
+    this.iddem = iddem
+    console.log("id de la demande : " + iddem)
 
     const typestruct = this.route.snapshot.params['type']
     this.type = typestruct

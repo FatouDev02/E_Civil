@@ -70,12 +70,12 @@
 
           <div class="input-box mb-3">
             <Label for="inputs" >Date de naissance de l'homme *</Label>
-            <input type="date" [(ngModel)]="datenh"  id="inputs" name="datenh" class="form-control" autocomplete="off"  required>
+            <input type="date"  max="2005-01-01"  [(ngModel)]="datenh"  id="inputs" name="datenh" class="form-control" autocomplete="off"  required>
           </div>
 
           <div class="input-box mb-3">
             <label for="inputs" class="form-label"> Date de naissance de la femme *</label>
-            <input type="date" id="inputs" class="form-control" name="datenf"  [(ngModel)]="datenf"  required>
+            <input type="date" id="inputs" class="form-control" name="datenf"  [(ngModel)]="datenf"  required max="2007-01-01">
           </div>
 
           <div class="input-box mb-3">
@@ -90,6 +90,9 @@
 
          
           <div class="input-box mb-3">
+            <div>
+              <p> {{messageerreur}}</p>
+            </div>
             <Label for="inputs" >Date prévu pour le mariage*</Label>
             <input type="date" [(ngModel)]="datemariage"  id="inputs" name="datemariage"  class="form-control" autocomplete="off"  required>
           </div>

@@ -27,7 +27,8 @@ export class ActenPage implements OnInit {
   id:any
   isLoggedIn = false;
   iduser:any
-
+  iddem: any;
+  messageerreur:any
   constructor( private router:Router,private actenservice:ActenService,
     private route:ActivatedRoute,
     private storageService:StorageService,
@@ -36,12 +37,12 @@ export class ActenPage implements OnInit {
   ngOnInit() {
     const idstruct = this.route.snapshot.params['id']
     this.id = idstruct
-    console.log("id de la structure : " + idstruct)
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
       this.iduser = this.storageService.getUser().id;
-      console.log('user id'+this.iduser);
     }
+    const iddem = this.route.snapshot.params['iddem']
+    this.iddem = iddem
 
   }
           //Pop up enregistrement reussi
@@ -88,18 +89,16 @@ export class ActenPage implements OnInit {
             data.append('acten',JSON.stringify(acten).slice(1,JSON.stringify(acten).lastIndexOf(']')))
             this.actenservice.addacten(acten,this.id,this.iduser).subscribe(
               (data)=>{
-                console.log(data.message)
+                console.log(data)
                //this.myform.reset()
                this.a=data
-
-               console.log(this.a)
-
-                console.log(this.a.data)
-
-                //this.MessageSuccess();
+               this.messageerreur=this.a.contenue
+               console.log(this.messageerreur)
+                this.MessageSuccess();
           
                //this.router.navigate(['/dash/structures'])
               }
+              
             );
            }
   

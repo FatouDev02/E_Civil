@@ -9,12 +9,12 @@
     <ion-buttons slot="start">
       <ion-menu-button> </ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-button ion-button navPop>
         <ion-back-button text="" icon="arrow-back"></ion-back-button>
-        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+       <ion-icon name="arrow-back"></ion-icon> 
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
 
     <ion-icon name="notifications-outline" slot="end"  id="open-popover"
       style="margin-right: 10px;width: 40px; height: 40px;margin-top: 5px;">
@@ -118,7 +118,7 @@ aria-label="close" >          Gérer ses agents
       </tr>
     </thead>
     <tbody >
-      <tr *ngFor="let s of messetruct  ">
+      <tr *ngFor="let s of messetruct ">
         <!-- <tr *ngFor="let table of PersonnelEntite | paginate: { itemsPerPage: 8, currentPage: pages}"> -->
         <td> {{s.nom}} </td>
         <td> {{s.longitude}} </td>
@@ -126,6 +126,7 @@ aria-label="close" >          Gérer ses agents
         <!-- <td> {{table.contact}} </td> -->
         <!-- <td class="hideColonne hideColonneOder"> MMMMMMMMMMMM </td> -->
         <td>
+          
           <ion-icon name="create-outline"  style="height: 20px;width:20px;color: #ACBE11;"
           data-bs-toggle="modal" data-bs-target="#modal-form"
           aria-label="close"
@@ -220,7 +221,7 @@ aria-label="close" >          Gérer ses agents
         </div>
       </div>
       <!-- End of Modal Content -->
-      <!-- Modal Content -->
+      <!-- Modal Content gestion agent -->
       <div class="modal fade" id="modal-formm" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -244,7 +245,7 @@ aria-label="close" >          Gérer ses agents
                               <tr>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Prénom</th>
-                                <th scope="col" class="hideColonne hideColonneOder">Structure concernéeh>
+                                <th scope="col" class="hideColonne hideColonneOder">Structure concernée</th>
                                 <!-- <th scope="col">Contact</th> -->
                                 <th scope="col" class="hideColonne hideColonneOder">Statut</th>
                                 <!-- <th scope="col" class="hideColonne">Action</th> -->
@@ -259,8 +260,8 @@ aria-label="close" >          Gérer ses agents
                                 <td> {{s.prenom}} </td>
                                 <td class="hideColonne hideColonneOder"> {{s.structure.nom}} </td>
                                 <!-- <td> {{table.contact}} </td> -->
-                                <td class="hideColonne hideColonneOder" *ngIf="!statutagent"> Agentnonvalider </td>
-                                <td class="hideColonne hideColonneOder" *ngIf="statutagent"> Agent Valider </td>
+                                <td class="hideColonne hideColonneOder" *ngIf="!s.statut" > Agent non valide </td>
+                                <td class="hideColonne hideColonneOder"  *ngIf="s.statut"> {{s.statut}} </td>
 
 
                                 <td>

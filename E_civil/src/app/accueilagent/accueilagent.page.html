@@ -22,7 +22,6 @@
     </ion-icon>
     <ion-popover [keepContentsMounted]="true" trigger="open-popover">
       <ng-template>
-        <ion-content class="ion-padding">dfghjklm</ion-content>
         <ion-card color="light" *ngFor="let a of agentnotif ">
           <ion-card-content style="text-transform: capitalize;">
             {{a.description}}
@@ -48,7 +47,7 @@
     <div class="container " id="pays">
       <div class=" row  " id="cc">
 
-        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbreacten">
+        <div id="card" class="col-8 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="nbreacten" >
           <div class="cercle">
             <h2>{{nbreacten}}</h2>
           </div>
@@ -89,8 +88,11 @@
           <div class="cercle">
             <h2>{{nbrenat}}</h2>
           </div>
+
+
           <p>Nombre de demandes de Nationnalité </p>
         </div>
+        
 
       </div>
     </div>
@@ -111,20 +113,39 @@
           <form (ngSubmit)="Lister()">
 
             <div class="row">
-              <div class="col-8 col-md-8 ">
+              <div class="col-8 col-md-6">
                 <input type="number" placeholder="Veuillez définir un nombre" [(ngModel)]="nombre" name="nombre">
 
               </div>
-              <div class="col-4 col-md-4">
+              <div class="col-8 col-md-6 ">
+
+                <select class="form-select form-select-md larger btn" id="filtre" aria-label=".form-select-sm example"
+                  (change)="Lister()" [(ngModel)]="listfiltre" name="listfiltre">
+                  <option selected >Choisir</option>
+
+                  <option  *ngIf="showacte">Acte de naissance</option>
+    
+                  <option   *ngIf="showacte">Acte de mariage</option>
+                  <option *ngIf="showacte">Acte de décès</option>
+                  <option *ngIf="showcas">Casier Judiciaire</option>
+                  <option *ngIf="showres">Certificat de résidence</option>
+                  <option *ngIf="showcas">Certificat de nationnalité</option>
+    
+    
+                </select>
+    
+              </div>
+              <!-- <div class="col-4 col-md-8">
                 <button class="btn" type="submit">Génerer la liste</button>
 
-              </div>
+              </div> -->
 
 
             </div>
+            <p> {{messageerreur}}</p>
           </form>
 
-
+<!-- Liste de presence -->
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead>
@@ -154,6 +175,8 @@
               </tbody>
             </table>
           </div>
+          <!--FIn  Liste de presence -->
+
 
 
 
@@ -181,8 +204,8 @@
 
             <select class="form-select form-select-md larger" id="filtre" aria-label=".form-select-sm example"
               (change)="filtrer()" [(ngModel)]="textFiltre" name="textFiltre">
-              <option selected *ngIf="showacte">Acte de naissance</option>
-
+<option selected>  Choisir</option>
+              <option  *ngIf="showacte">Acte de naissance</option>
               <option *ngIf="showacte">Acte de mariage</option>
               <option *ngIf="showacte">Acte de décès</option>
               <option *ngIf="showcas">Casier Judiciaire</option>
@@ -201,7 +224,11 @@
 
 
       <div class="table-responsive">
-        <table class="table table-bordered">
+        <!-- <div *ngIf="longueur == 0">
+          <p style=" text-align:center;font-size:larger ">Aucune demande à Traiter </p>
+        </div> -->
+        <table class="table table-bordered" >
+         
           <thead>
           
             <tr>
@@ -213,13 +240,11 @@
 
             </tr>
           </thead> 
-            <div *ngIf="longueur == 0">
-                <p style=" text-align:center;font-size:larger ">Aucune demande à Traiter </p>
-              </div>
-          <tbody *ngFor="let s of listacten ">
+           
+          <tbody *ngFor="let s of listacten " >
             <!-- <tbody *ngFor="let s of listacten | paginate: { itemsPerPage: 5, currentPage: p } "> -->
            
-            <tr>
+            <tr  >
               <td class="hideColonne hideColonneOder">{{s.user.nom}}</td>
               <td> {{s.user.prenom}}</td>
               <td class="hideColonne hideColonneOder">{{s.user.genre}}</td>
@@ -263,9 +288,23 @@
                       <h3 *ngIf="actembyid && showacte">Par:{{actembyid.user.prenom}} {{actembyid.user.nom}} </h3>
                       <h3 *ngIf="detailacte && showacte">Par:{{detailacte.user.prenom}} {{detailacte.user.nom}} </h3>
                       <h3 *ngIf="actedbyid && showacte">Par:{{actedbyid.user.prenom}} {{actedbyid.user.nom}} </h3>
-                      <h3 *ngIf="casbyid && showcas">Par:{{casbyid.user.prenom}} {{casbyid.user.nom}} </h3>
-                      <h3 *ngIf="resbyid && showres">Par:{{resbyid.user.prenom}} {{resbyid.user.nom}} </h3>
-                      <h3 *ngIf="natbyid && showcas">Par:{{natbyid.user.prenom}} {{natbyid.user.nom}} </h3>
+                      <h3 *ngIf="casbyid && showcas">Par:{{casbyid.user.prenom}} {{casbyid.user.nom}} 
+                        <div  *ngIf="casbyid && showcas">
+                          <img src="{{photoacten}}" alt="">
+                        </div>
+                         </h3>
+                      
+                      <h3 *ngIf="resbyid && showres">Par:{{resbyid.user.prenom}} {{resbyid.user.nom}}
+                        <div  *ngIf="resbyid && showres">
+                          <img src="{{photoacten}}" alt="">
+                        </div>
+                         </h3>
+                      <h3 *ngIf="natbyid && showcas">Par:{{natbyid.user.prenom}} {{natbyid.user.nom}} 
+                        <div  *ngIf="natbyid && showcas">
+                          <img src="{{photoacten}}" alt="">
+                        </div>
+                      </h3>
+                      
 
                     </div>
 

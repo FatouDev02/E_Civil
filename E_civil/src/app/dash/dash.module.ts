@@ -8,6 +8,7 @@ import { DashPageRoutingModule } from './dash-routing.module';
 
 import { DashPage } from './dash.page';
 import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     IonicModule,
     DashPageRoutingModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   declarations: [DashPage]
 

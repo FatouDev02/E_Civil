@@ -13,12 +13,12 @@
     <ion-buttons slot="start">
       <ion-menu-button> </ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-button ion-button navPop>
         <ion-back-button text="" icon="arrow-back"></ion-back-button>
-        <!-- <ion-icon name="arrow-back"></ion-icon> -->
+        <ion-icon name="arrow-back"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-img src="../../assets/images/logo.jpg" slot="end" style="margin-right: 10px;width: 60px; height: 60px;margin-top: 5px;">
     </ion-img> 
   </ion-toolbar>
@@ -81,8 +81,12 @@
             <label for="inputs" class="form-label"> Profession de la mère *</label>
             <input type="text" id="inputs" class="form-control" name="profmere"  [(ngModel)]="profmere" placeholder="Profession"  required>
           </div>
-
+          
           <div class="input-box mb-3">
+            <div>
+              <p> {{messageerreur}}</p>
+          
+            </div>
             <label for="inputs" class="form-label"> Date de naissance  *</label>
             <input type="date" id="inputs" class="form-control" name="datedenaissance"  [(ngModel)]="datedenaissance"  required>
           </div>
@@ -93,6 +97,8 @@
           </div>
    
           <div class="input-box mb-3">
+            <Label for="inputs" > Genre *</Label>
+
             <select  name="genre" 
             [(ngModel)]="genre"  id="inputs"  class="form-control" autocomplete="off" required>
               <option value="selected">-- Genre--</option>

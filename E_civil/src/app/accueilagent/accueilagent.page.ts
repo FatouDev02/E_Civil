@@ -13,6 +13,13 @@ import Swal from 'sweetalert2';
 })
 export class AccueilagentPage implements OnInit {
   [x: string]: any;
+count:any
+countm:any
+countd:any
+countc:any
+countn:any
+countr:any
+photoacten:any
 
   id: any
   p=1;
@@ -65,6 +72,8 @@ export class AccueilagentPage implements OnInit {
   resbyid:any
   natbyid:any
   mademandeetat:any
+  listfiltre:any
+  messageerreur:any
   constructor(private storageService: StorageService,
     private structservice: StructService,
     private router: Router) { }
@@ -75,10 +84,8 @@ export class AccueilagentPage implements OnInit {
     console.log(user);
     //ID DE L'UTILISATEUR
     this.id = user.id
-    console.log(this.id)
 
     this.username = user.username
-    console.log(this.username)
     //NOM ET PRENOM DE L'UTILISATEUR 
     this.usernom = user.nom
     this.prenom = user.prenom
@@ -91,7 +98,7 @@ export class AccueilagentPage implements OnInit {
       this.latitude = data.latitude
 
       console.log("//////////////////" + JSON.stringify(this.structid))
-      console.log("//////////// iddddddd   " + this.iddelastructure)
+      console.log("//////////// idstructtt:   " + this.iddelastructure)
       this.newid = this.iddelastructure
       console.log(this.newid)
 
@@ -108,7 +115,6 @@ export class AccueilagentPage implements OnInit {
       //compteur
 
       this.teststruct = this.structid.typestructure.type
-      console.log(this.teststruct)
       this.showacte = this.teststruct.includes('Mairies')
       this.showcas = this.teststruct.includes('Tribunaux')
       this.showres = this.teststruct.includes('Commissariats')
@@ -116,18 +122,18 @@ export class AccueilagentPage implements OnInit {
 
       //TOUT LES ACTES DE NAISSANCE D'UNE STRUCTURE
       this.structservice.getactenbyidstruct(this.newid).subscribe(data => {
+
         this.listacten = data
         console.log(this.listacten)
+
       })
       this.structservice.getactembyidstruct(this.newid).subscribe(data => {
         this.listactem = data
-        console.log(this.listactem)
 
 
       })
       this.structservice.getcasbyidstruct(this.newid).subscribe(data => {
         this.listcas = data;
-        console.log(this.listcas)
 
       })
       this.structservice.getnatbyidstruct(this.newid).subscribe(data => {
@@ -136,7 +142,6 @@ export class AccueilagentPage implements OnInit {
       })
       this.structservice.getresbyidstruct(this.newid).subscribe(data => {
         this.listres = data;
-        console.log(this.listres)
 
 
       })
@@ -149,27 +154,58 @@ export class AccueilagentPage implements OnInit {
 
         //console.log(this.listacted.length)
         if (this.teststruct == "Mairies") {
-          this.nbreacten = this.listacten.length
-          this.nbreactem = this.listactem.length
-          this.nbreacted = this.listacted.length
+          this.structservice.countacten(this.newid).subscribe(data=>{
+            this.count=data
+
+            this.nbreacten = this.count.length
+        
+
+          }),
+          this.structservice.countactem(this.newid).subscribe(data=>{
+            this.countm=data
+            this.nbreactem = this.countm.length
+            console.log(this.countm)
+            console.log(this.nbreactem)
 
 
 
-          console.log(this.nbreacten)
-          console.log(this.nbreactem)
-          console.log(this.nbreacted)
+          }),
+          this.structservice.countacted(this.newid).subscribe(data=>{
+            this.countd=data
+            this.nbreacted = this.countd.length
+
+          })
+
+         
 
 
+        
 
-        } else if (this.teststruct == "Tribunaux") {
-          this.nbrecas = this.listcas.length
-          this.nbrenat = this.listnat.length
-          console.log(this.nbrecas)
-          console.log(this.nbrenat)
+
+        } 
+        else if (this.teststruct == "Tribunaux") {
+          this.structservice.countacas(this.newid).subscribe(data=>{
+            this.countc=data
+            this.nbrecas = this.countc.length
+          
+          }) ,
+          this.structservice.countnat(this.newid).subscribe(data=>{
+            this.countn=data
+            this.nbrenat = this.countn.length
+            console.log(this.countc)
+
+            console.log(this.nbrecas)
+
+          })
+          
+       
         } else if (this.teststruct == "Commissariats") {
 
-          this.nbreres = this.listres.length
-          console.log(this.nbreres)
+          this.structservice.countres(this.newid).subscribe(data=>{
+            this.countr=data
+            this.nbreacted = this.countr.length
+
+          })
 
 
         }
@@ -186,14 +222,67 @@ export class AccueilagentPage implements OnInit {
   }
   //GENERER LA LISTE DE PRESENCE()
   Lister(){
-    console.log(this.nombre)     
+    if (this.listfiltre == "Acte de naissance") {
 
-    this.structservice.getrdvdujour(this.newid,this.nombre).subscribe(data => {
-   this.rdv = data
-      this.rdvusername = data.nom
-      console.log(this.rdv)
 
-    })
+      this.structservice.getrdvdujour(this.newid,this.nombre).subscribe(data => {
+      
+           this.rdv = data
+           
+           this.rdvusername = data.nom
+            this.messageerreur=this.rdv.contenue
+            console.log(this.messageerreur)
+
+          
+
+         })
+    }
+    else if (this.listfiltre == "Acte de mariage") {
+      this.structservice.getrdvactem(this.newid,this.nombre).subscribe(data => {
+      
+        this.rdv = data
+        this.messageerreur=this.rdv.contenue
+
+         })
+    }
+    else if (this.listfiltre == "Acte de décès") {
+      this.structservice.getrdvacted(this.newid,this.nombre).subscribe(data => {
+      
+        this.rdv = data
+           this.rdvusername = data.nom
+           this.messageerreur=this.rdv.contenue
+
+         })
+    }
+    else if (this.listfiltre == "Casier Judiciaire") {
+
+      this.structservice.getrdvcas(this.newid,this.nombre).subscribe(data => {
+      
+        this.rdv = data
+        this.messageerreur=this.rdv.contenue
+
+           this.rdvusername = data.nom
+         })
+    }
+    else if (this.listfiltre == "Certificat de résidence") {
+      this.structservice.getrdvres(this.newid,this.nombre).subscribe(data => {
+      
+        this.rdv = data
+        this.messageerreur=this.rdv.contenue
+
+           this.rdvusername = data.nom
+         })
+    }
+    else if (this.listfiltre == "Certificat de nationnalité") {
+      this.structservice.getrdvdunat(this.newid,this.nombre).subscribe(data => {
+      
+        this.rdv = data
+        this.messageerreur=this.rdv.contenue
+
+           this.rdvusername = data.nom
+         })
+    }
+  
 
   }
   //POUR LA GEOLOCALISATION
@@ -232,19 +321,18 @@ export class AccueilagentPage implements OnInit {
     this.structservice.getactenbyidstruct(this.newid).subscribe(data => {
       this.listacten = data
 
-      console.log(this.listacten)
+      //console.log(this.listacten)
     })
   }
 
   //FILTRER LE SDEMANDES
   filtrer() {
-    console.log(this.textFiltre);
 
     if (this.textFiltre == "Acte de naissance") {
       this.structservice.getactenbyidstruct(this.newid).subscribe(data => {
         this.listacten = data
         this.longueur = this.listacten.length;
-        console.log(this.longueur)
+       // console.log(this.longueur)
       })
     }
     else if (this.textFiltre == "Acte de mariage") {
@@ -264,12 +352,13 @@ export class AccueilagentPage implements OnInit {
       })
     }
     else if (this.textFiltre == "Certificat de résidence") {
-      this.structservice.getnatbyidstruct(this.newid).subscribe(data => {
+      this.structservice.getresbyidstruct(this.newid).subscribe(data => {
         this.listacten = data;
+
       })
     }
     else if (this.textFiltre == "Certificat de nationnalité") {
-      this.structservice.getresbyidstruct(this.newid).subscribe(data => {
+      this.structservice.getnatbyidstruct(this.newid).subscribe(data => {
         this.listacten = data
       })
     }
@@ -296,8 +385,7 @@ export class AccueilagentPage implements OnInit {
           " Profession du père  : " + "  " + this.detailacte.profpere + "                    " +
           " Profession de la mère : " + "  " + this.detailacte.profmere + "                    "
         )
-       console.log(this.detailacte.id)
-       console.log(this.longueur)
+      
 
       }
       )
@@ -337,50 +425,43 @@ export class AccueilagentPage implements OnInit {
       })
     }
     else if (this.textFiltre == "Casier Judiciaire") {
+      console.log(this.casbyid)
+
       this.structservice.getcasbyid(id).subscribe(data=>{
         this.casbyid=data
-        this.newdet = (" Nom  " + "  " + this.actedbyid.nom + " \n" +
-        " Prénom " + this.actedbyid.prenom + " " +
-        "Date  de Naissance  " + "  " + this.actedbyid.daten + "" +
-        "Date  de décès" + "  " + this.actedbyid.dated + ""+ 
-        "Profession :" + this.actedbyid.profession + " " +
-        "Lieu de Naissance:" + this.actedbyid.lieunaiss + " " +
-        "Lieu de décès:" + this.actedbyid.lieudeces + " " +
-        "Volet de l'hopital:" + this.actedbyid.numvolet + " " 
+        this.newdet = (" Nom  " + "  " + this.casbyid.nom + " \n" +
+        " Prénom " + this.casbyid.prenom + " " +
+        
+        "Lieu de Naissance:" + this.casbyid.lieudenaissance + " "  
       )
-     console.log(this.casbyid)
+      this.photoacten=this.casbyid.photoacten
+    console.log(this.casbyid)
 
       })
     }
      else if (this.textFiltre =="Certificat de résidence") {
       this.structservice.getresbyid(id).subscribe(data=>{
         this.resbyid=data
-        this.newdet = (" Nom  " + "  " + this.actedbyid.nom + " \n" +
-        " Prénom " + this.actedbyid.prenom + " " +
-        "Date  de Naissance  " + "  " + this.actedbyid.daten + "" +
-        "Date  de décès" + "  " + this.actedbyid.dated + ""+ 
-        "Profession :" + this.actedbyid.profession + " " +
-        "Lieu de Naissance:" + this.actedbyid.lieunaiss + " " +
-        "Lieu de décès:" + this.actedbyid.lieudeces + " " +
-        "Volet de l'hopital:" + this.actedbyid.numvolet + " " 
+        this.newdet = (" Nom  " + "  " + this.resbyid.nom + " \n" +
+        " Prénom " + this.resbyid.prenom + " " +
+        "Lieu de Naissance:" + this.resbyid.lieudenaissance + " " 
       )
-      console.log(this.resbyid)
+      this.photoacten=this.resbyid.photoacten
+
+     // console.log(this.resbyid)
 
       })
     } 
     else if (this.textFiltre =="Certificat de nationnalité") {
       this.structservice.getnatbyid(id).subscribe(data=>{
         this.natbyid=data
-        this.newdet = (" Nom  " + "  " + this.actedbyid.nom + " \n" +
-        " Prénom " + this.actedbyid.prenom + " " +
-        "Date  de Naissance  " + "  " + this.actedbyid.daten + "" +
-        "Date  de décès" + "  " + this.actedbyid.dated + ""+ 
-        "Profession :" + this.actedbyid.profession + " " +
-        "Lieu de Naissance:" + this.actedbyid.lieunaiss + " " +
-        "Lieu de décès:" + this.actedbyid.lieudeces + " " +
-        "Volet de l'hopital:" + this.actedbyid.numvolet + " " 
-      )
-      console.log(this.natbyid)
+        this.newdet =  (" Nom  " + "  " + this.natbyid.nom + " \n" +
+        " Prénom " + this.natbyid.prenom + " " +
+        "Lieu de Naissance:" + this.natbyid.lieudenaissance + " "  
+             )
+     // console.log(this.natbyid)
+     this.photoacten=this.resbyid.photoacten
+
       })
     }
   }
@@ -389,7 +470,7 @@ export class AccueilagentPage implements OnInit {
     this.structservice.getactenbyidstruct(this.newid).subscribe(data => {
       this.listacten = data;
       this.longueur = this.listacten.length;
-      console.log(this.longueur)
+     // console.log(this.longueur)
 
     })
   }
@@ -397,7 +478,7 @@ export class AccueilagentPage implements OnInit {
     this.structservice.getagentbyid(this.id).subscribe(data => {
       this.agentnotif = data.notification
 
-      console.log(this.agentnotif);
+     // console.log(this.agentnotif);
     })
 
 
@@ -416,12 +497,53 @@ export class AccueilagentPage implements OnInit {
 
     }).then((result) => {
       if (result.isConfirmed) {
-         this.structservice.validerdem(this.detailacte.id).subscribe(data=>{
-         this.mademandeetat=data
-         console.log(this.mademandeetat)
-    
 
+
+
+       if (this.listfiltre == "Acte de naissance") {
+       
+        this.structservice.validerdem(this.detailacte.id).subscribe(data=>{
+          this.mademandeetat=data
+        //  console.log(this.mademandeetat)
        })
+       }
+      
+       else if (this.listfiltre == "Acte de mariage") {
+      
+        this.structservice.valideractem(this.actembyid.id).subscribe(data=>{
+          this.mademandeetat=data
+        })
+      }
+      
+
+      else if (this.listfiltre == "Acte de décès") {
+        console.log(this.listfiltre)
+
+        this.structservice.valideracted(this.actedbyid.id).subscribe(data => {
+          this.mademandeetat=data
+          console.log(this.mademandeetat)
+
+           })
+      }
+
+      else if (this.listfiltre== "Casier Judiciaire") {
+        this.structservice.validercas(this.casbyid.id).subscribe(data => {
+          this.mademandeetat=data
+
+           })
+      }   else if (this.listfiltre == "Certificat de résidence") {
+        this.structservice.validerres(this.resbyid.id).subscribe(data => {
+          this.mademandeetat=data
+
+           })
+      }   else if (this.listfiltre ==  "Certificat de nationnalité") {
+        this.structservice.validernat(this.natbyid.id).subscribe(data => {
+          this.mademandeetat=data
+
+           })
+      }
+    
+   
        Swal.fire({
         title: 'Valider!',
         text: 'La demande a été validée ',

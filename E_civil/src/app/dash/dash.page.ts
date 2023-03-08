@@ -40,6 +40,9 @@ export class DashPage implements OnInit {
       const user = this.storageService.getUser();
       this.nom=user.nom
       this.prenom=user.prenom
+      console.log(this.nom)
+      console.log(this.prenom)
+
       this.roles = user.roles;
 
       this.showAdminBoard = this.roles.includes('ADMIN');
@@ -63,7 +66,7 @@ export class DashPage implements OnInit {
         this.storageService.clean();
         this.router.navigateByUrl("/connexion")
 
-        window.location.reload();
+       // window.location.reload();
       },
       error: err => {
         console.log(err);

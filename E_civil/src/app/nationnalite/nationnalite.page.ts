@@ -23,6 +23,7 @@ export class NationnalitePage implements OnInit {
   photoacten: any;
   lieuderesidence: any;
   mydata: any;
+  messageerreur: any;
   constructor( private router:Router,private actenservice:ActenService,
     private route:ActivatedRoute,
     private storageService:StorageService,
@@ -75,7 +76,11 @@ export class NationnalitePage implements OnInit {
     this.actenservice.addnationn(this.id,this.iduser,nationnalite,this.lieuderesidence,this.fichier).subscribe(data => {
       this.mydata = data
       console.log(this.mydata)
-      this.MessageSuccess()
+
+      this.messageerreur=this.mydata.contenue
+      console.log(this.messageerreur)
+      
+     //this.MessageSuccess()
     });
   }
    //Pop up enregistrement reussi

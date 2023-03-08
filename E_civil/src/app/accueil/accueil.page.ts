@@ -24,11 +24,11 @@ export class AccueilPage implements OnInit {
     this.id=user.id
     console.log(this.id)
     this.username=user.username
-    console.log(this.username)
+   // console.log(this.username)
     this.nom=user.nom
     this.prenom=user.prenom
     this.roles = user.roles;
-    console.log(this.roles)
+    //console.log(this.roles)
     if(this.roles=="ADMIN"){
       this.monrole=user.roles;
     }
@@ -38,7 +38,7 @@ export class AccueilPage implements OnInit {
     this.structservice.getuserbyid(this.id).subscribe(data=>{
       this.agentnotif=data.notifrdvusers
       this.notiflong=this.agentnotif.length
-      console.log(this.agentnotif)
+   //   console.log(this.agentnotif)
     })
 
   }

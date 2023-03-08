@@ -24,6 +24,7 @@ export class DeclarationsPage implements OnInit {
   photo:any
   actenn: any;
   mariage: any;
+  genre: any;
   constructor(private demandeservice:DemandeService, private storageService:StorageService, private structservice:StructService
     ) { }
 
@@ -108,13 +109,24 @@ this.alldemm()
     if (this.textFiltre =="Acte de naissance") {
       this.structservice.getactenbyid(id).subscribe(dataa => {
         this.detailacte = dataa
+       
        // this.longueur=this.detailacte.length
-        console.log(this.longueur)
+        console.log(this.detailacte)
+        // if( this.genre== "1"){
+        //   this.genre= this.detailacte.genre
+        //   this.genre="Masculin"
+        // } else if(this.genre=="2"){
+        //   this.genre= this.detailacte.genre
+
+        //   this.genre="Feminin"
+
+        // }
         this.newdet = (" Nom : " + "  " + this.detailacte.nom + "    \n                " +
           "Prenom :" + this.detailacte.prenom + "                    " +
           " Nom du père : " + "  " + this.detailacte.nompere + "                    " +
           " Nom  de la mère: " + "  " + this.detailacte.nommere + "                    " +
           " Date de Naissance : " + "  " + this.detailacte.datedenaissance + "                    " +
+        
           " Genre : " + "  " + this.detailacte.genre + "                    " +
           " Lieu de Naissance : " + "  " + this.detailacte.lieudenaissance + "                    " +
           " Numéro du Volet  : " + "  " + this.detailacte.numvolet + "                    " +
@@ -170,11 +182,9 @@ this.alldemm()
         this.newdet = (" Nom  " + "  " + this.casbyid.nom + " \n" +
         " Prénom " + this.casbyid.prenom + " " +
         " Lieu de Naissance " + this.casbyid.lieudenaissance + " " +
-        "Photo de l'acte de Naissance" + "  " + this.casbyid.photoacten + ""
-        
-
+        "Photo de l'acte de Naissance" + "  " + " "
               )
-              console.log(this.photo)
+             // console.log(this.photo)
 
      console.log(this.casbyid)
 

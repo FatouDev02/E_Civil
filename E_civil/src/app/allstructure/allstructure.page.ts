@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as L from 'leaflet';
-import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { Geolocation, Geoposition } from "@ionic-native/geolocation/ngx";
 import {Icon} from 'leaflet'
 import { StructService } from '../Services/struct.service';
 @Component({
@@ -48,51 +48,16 @@ ionViewDidEnter(){
       //zoomOffset: -1,
     }).addTo(this.map);
     this.loadMap(icon);
+    this.getCurrentPositionn(icon);
 
-    
 
-
-  //}
-  /*for(let i=0;i<=this.length;i++){
-   
-    console.log(" long " +this.length+this.allstruct[i].longitude)
-      this.long=this.allstruct[i].longitude
-      this.lat=this.allstruct[i].latitude
-     // this.idd=this.allstruct[i].id
-    console.log(" longitude"+this.long)
-
-    console.log(" Latitude " +this.lat)
-    
-   this.map=L.map('mapId').setView([this.long,this.lat],6);
-   const lmarker=L.marker([this.lat,this.long])
-  console.log("zerty"+ this.map)
-  //permet d'afficher la vue en plusieur forme de map
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }  
-    ).addTo(this.map);
-
-      //creer un marqueur
-      const markPoint=L.marker([this.long,this.lat],
-        )
-      this.map.addLayer(markPoint); 
-    
-    
-  }*/
-  
 
 }
 loadMap(icon:any): void {
 
   for(let i=0;i<this.messetruct.length;i++){
-    console.log(this.messetruct.length)
-
-    
-
-    //autres methodes
-    //for(const el of this.allstruct) {
-      //console.log(el.longitude);
-      console.log(this.messetruct[i].longitude)
+    //console.log(this.messetruct.length)
+    //  console.log(this.messetruct[i].longitude)
     const marker = L.marker([this.messetruct[i].longitude, this.messetruct[i].latitude], {icon} ).bindPopup(this.messetruct[i].nom);
     
     marker.addTo(this.map);
@@ -102,14 +67,32 @@ loadMap(icon:any): void {
   
 } 
 
-// getCurrentPosition() {
-//   this.geolocation.getCurrentPosition().then((resp) => {
-//     console.log(resp.coords.latitude, resp.coords.longitude);
+getCurrentPositionn(icon:any) {
+  // this.geolocation.getCurrentPosition().then((resp) => {
+  //   console.log(resp.coords.latitude, resp.coords.longitude);
 
-//   }).catch((error) => {
-//     console.log('Error getting location', error);
-//   });
-// }
+  // }).catch((error) => {
+  //   console.log('Error getting location', error);
+  // });
+  // Récupérer la position actuelle de l'utilisateur
+this.geolocation.getCurrentPosition().then((position: Geoposition) => {
+  // Position trouvée avec succès
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+console.log(latitude)
+console.log(longitude)
+  // Centrer la carte sur la position actuelle de l'utilisateur
+  this.map.setView([latitude, longitude], 15);
+
+  // Ajouter un marqueur à la position actuelle de l'utilisateur
+  L.marker([latitude, longitude]).addTo(this.map)
+    .bindPopup('Vous êtes ici !')
+    .openPopup();
+}).catch((err) => {
+  // Erreur lors de la récupération de la position
+  console.log(err);
+});
+}
 
 // watchPosition(){
 //   let watch = this.geolocation.watchPosition();

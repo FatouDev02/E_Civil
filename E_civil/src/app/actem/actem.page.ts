@@ -19,6 +19,7 @@ export class ActemPage implements OnInit {
   proh:any
   nomf:any
   nomh:any
+  messageerreur:any
   ///////////////////
   id:any
   iduser:any
@@ -86,7 +87,9 @@ addactem(){
       //this.myform.reset()
       this.a=data
        console.log(this.a)
-       this.MessageSuccess();
+       this.messageerreur=this.a.contenue
+               console.log(this.messageerreur)
+      // this.MessageSuccess();
       // this.router.navigate(['/dash/accueil'])
 
       //this.router.navigate(['/dash/structures'])
